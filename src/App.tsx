@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Briefcase, GraduationCap, Instagram, Send, Youtube } from 'lucide-react';
 import heroImage from './HHero.png';
 
