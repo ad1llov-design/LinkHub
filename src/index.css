@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --accent: #ffffff;
+  --spacing-unit: 8px;
+  --container-width: 1200px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-oswald {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+/* Container */
+.container-custom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Animations */
+/* Start state: Shifted DOWN (50px), Invisible, Blurred */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px); 
+    filter: blur(10px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* End state: Original position (0), Visible, Sharp */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); 
+    filter: blur(0);
+}
+
+/* Ensure animation works on mobile */
+@media (max-width: 768px) {
+    .reveal {
+        transition: all 0.8s ease-out; /* Slightly faster on mobile */
+    }
+}
+
+/* Social Button - Glassmorphism & Elastic Hover */
+.btn-glass {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 32px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: white;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic effect */
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.btn-glass:hover {
+    background: white;
+    color: black;
+    transform: translateY(-5px) scale(1.02); /* Float UP */
+    border-color: white;
+    box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-glass svg {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-glass:hover svg {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Base Styles */
+
+/* HERO SECTION - REFACTORED FOR STICKY */
+.hero {
+    min-height: 100vh;
+    /* Flexbox handled in JS className for responsiveness */
+}
+
+.hero-text {
+    z-index: 2;
+    position: relative;
+    flex: 1;
+    /* max-width handled in JS */
+}
+
+.hero-title {
+    font-size: clamp(4rem, 9vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    mix-blend-mode: difference;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* Hero Image styles moved to Tailwind classes in App.tsx for sticky control */
+.hero-image {
+    /* position relative is default */
+}
+
+/* SECTIONS */
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.about, .projects {
+    padding: 120px 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.info-card {
+    border-top: 1px solid #333;
+    padding-top: 30px;
+}
+
+.info-card h4 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-item {
+    margin-bottom: 30px;
+}
+
+.info-item span {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item strong {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/* PROJECTS GRID */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.project-card {
+    position: relative;
+    background: #111;
+    height: 550px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    border: 1px solid #222;
+}
+
+/* Hover: Float UP (-10px) */
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #444;
+}
+
+.project-card:hover .project-bg {
+    transform: scale(1.05);
+    opacity: 0.5;
+}
+
+.project-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    transition: 0.8s;
+    z-index: 0;
+    filter: grayscale(100%);
+}
+
+.project-card:hover .project-bg {
+    filter: grayscale(0%);
+}
+
+.project-content {
+    position: relative;
+    z-index: 1;
+}
+
+.project-title {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.project-desc {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    max-width: 350px;
+    /* Description floats up when hovered */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.project-card:hover .project-desc {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .container-custom {
+        max-width: 900px;
+    }
+    .hero-title {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-custom {
+        padding: 0 20px;
+    }
+    
+    .hero {
+        /* flex-col set via Tailwind */
+        padding-top: 40px;
+    }
+    .hero-text {
+        margin-bottom: 40px;
+    }
+    .hero-title {
+        font-size: 15vw;
+        letter-spacing: -1px;
+    }
+    .hero-image {
+        /* w-full set via Tailwind */
+        height: 50vh;
+    }
+    
+    .about-grid, .project-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .project-card {
+        height: 400px;
+    }
+}
