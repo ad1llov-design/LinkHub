@@ -282,31 +282,6 @@ function App() {
           </div>
       </section>
 
-      {/* 4. CURRENT FOCUS / В РАБОТЕ */}
-      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
-          <h2 className="section-title reveal">В работе</h2>
-          <div className="focus-grid">
-
-              <div className="focus-card reveal">
-                  <span className="focus-status">● В процессе</span>
-                  <h4>Финтех-приложение</h4>
-                  <p>Мобильное приложение для управления личными финансами с AI-рекомендациями.</p>
-              </div>
-
-              <div className="focus-card reveal">
-                  <span className="focus-status">● Прототипирование</span>
-                  <h4>EdTech Платформа</h4>
-                  <p>Онлайн-платформа для курсов с интерактивным контентом и геймификацией.</p>
-              </div>
-
-              <div className="focus-card reveal">
-                  <span className="focus-status">● Дизайн</span>
-                  <h4>Маркетплейс</h4>
-                  <p>Площадка для локальных брендов с AR-примеркой и умным поиском.</p>
-              </div>
-
-          </div>
-      </section>
 
       {/* 5. TIMELINE / СРОКИ РЕАЛИЗАЦИИ */}
       <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>

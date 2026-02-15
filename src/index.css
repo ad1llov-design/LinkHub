@@ -470,49 +470,6 @@ ul { list-style: none; }
     text-transform: uppercase;
 }
 
-/* CURRENT FOCUS */
-.focus-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.focus-card {
-    padding: 36px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.focus-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--glass-border);
-}
-
-.focus-card .focus-status {
-    display: inline-block;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 6px 14px;
-    border-radius: 100px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-}
-
-.focus-card h4 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-}
-
-.focus-card p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
 
 /* TIMELINE / DEADLINES */
 .timeline-grid {
