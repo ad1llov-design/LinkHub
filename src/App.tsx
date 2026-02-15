@@ -1,9 +1,18 @@
-import { useEffect, useRef } from 'react';
-import { Briefcase, GraduationCap, Instagram, Send, Youtube } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Briefcase, GraduationCap, Instagram, Send, Youtube, Sun, Moon } from 'lucide-react';
 import heroImage from './HHero.png';
 
 function App() {
   const heroImageRef = useRef<HTMLDivElement>(null);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    if (isLight) {
+      document.body.classList.add('light-theme');
+    } else {
+      document.body.classList.remove('light-theme');
+    }
+  }, [isLight]);
 
   useEffect(() => {
     // Reveal Animation Observer
@@ -26,8 +35,24 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden font-inter">
+    <div className="min-h-screen overflow-x-hidden font-inter" style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-primary)' }}>
       
+      {/* Theme Toggle Button */}
+      <button
+        onClick={() => setIsLight(!isLight)}
+        className="fixed top-6 right-6 z-50 p-3 rounded-full transition-all duration-300 hover:scale-110 active:scale-95"
+        style={{
+          background: 'var(--glass-bg)',
+          border: '1px solid var(--glass-border)',
+          color: 'var(--text-primary)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+        }}
+        aria-label="Toggle Theme"
+      >
+        {isLight ? <Moon size={24} /> : <Sun size={24} />}
+      </button>
+
       {/* HERO BLOCK - Refactored for Sticky Layout */}
       {/* Container is relative to hold the absolute/sticky image */}
       <header className="hero container-custom relative flex flex-col md:flex-row items-start justify-between py-[100px] min-h-screen">
@@ -36,7 +61,7 @@ function App() {
           <div className="hero-text reveal flex-1 md:max-w-[50%] z-10 pt-[20vh]">
               <div className="hero-subtitle">Frontend Developer & UX/UI Designer</div>
               <h1 className="hero-title">Adylov <br /> Botirzhon</h1>
-              <p style={{ color: '#888', maxWidth: '480px', fontSize: '1.2rem', lineHeight: '1.5' }}>
+              <p style={{ color: 'var(--text-secondary)', maxWidth: '480px', fontSize: '1.2rem', lineHeight: '1.5' }}>
                   Создаю цифровые продукты, объединяющие эстетику и функциональность. 
                   Фокус на минимализме, производительности и удобстве пользователя.
                   Работаю над проектами, которые привлекают внимание и заставляют людей оставаться.
@@ -56,37 +81,37 @@ function App() {
       </header>
 
       {/* ABOUT BLOCK */}
-      <section className="about container-custom relative z-10 bg-[#0a0a0a]">
+      <section className="about container-custom relative z-10" style={{ backgroundColor: 'var(--bg-color)' }}>
           <h2 className="section-title reveal">Обо мне</h2>
           <div className="about-grid">
               
               {/* Education */}
               <div className="info-card reveal">
-                  <h4><GraduationCap size={32} className="text-white" /> Образование</h4>
+                  <h4><GraduationCap size={32} /> Образование</h4>
                   <div className="info-item">
                       <span>2025 - Наст. время</span>
                       <strong>Ошский государственный университет</strong>
-                      <p style={{ color: '#666' }}>Программная инженерия</p>
+                      <p style={{ color: 'var(--text-secondary)' }}>Программная инженерия</p>
                   </div>
                   <div className="info-item">
                       <span>2025</span>
                       <strong>UX/UI Продвинутый курс</strong>
-                      <p style={{ color: '#666' }}>Google Сертификация</p>
+                      <p style={{ color: 'var(--text-secondary)' }}>Google Сертификация</p>
                   </div>
               </div>
 
               {/* Experience */}
               <div className="info-card reveal">
-                  <h4><Briefcase size={32} className="text-white" /> Опыт работы</h4>
+                  <h4><Briefcase size={32} /> Опыт работы</h4>
                   <div className="info-item">
                       <span>2025 - Наст. время</span>
                       <strong>Lead Frontend Developer</strong>
-                      <p style={{ color: '#666' }}></p>
+                      <p style={{ color: 'var(--text-secondary)' }}></p>
                   </div>
                   <div className="info-item">
                       <span>2025 - Наст. время</span>
                       <strong>Freelance Web Developer & UX/UI Designer</strong>
-                      <p style={{ color: '#666' }}></p>
+                      <p style={{ color: 'var(--text-secondary)' }}></p>
                   </div>
               </div>
 
@@ -94,7 +119,7 @@ function App() {
       </section>
 
       {/* PROJECTS BLOCK */}
-      <section className="projects container-custom relative z-10 bg-[#0a0a0a]">
+      <section className="projects container-custom relative z-10" style={{ backgroundColor: 'var(--bg-color)' }}>
           <h2 className="section-title reveal">Мои Проекты</h2>
           <div className="project-grid">
               
@@ -134,7 +159,7 @@ function App() {
       </section>
 
       {/* SOCIAL HUB (FOOTER) */}
-      <footer className="container-custom relative z-10 bg-[#0a0a0a]" style={{ paddingBottom: '100px', paddingTop: '60px' }}>
+      <footer className="container-custom relative z-10" style={{ paddingBottom: '100px', paddingTop: '60px', backgroundColor: 'var(--bg-color)' }}>
           <h2 className="section-title reveal" style={{ textAlign: 'center', border: 'none', marginBottom: '60px' }}>Связаться со мной</h2>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 reveal">
@@ -156,7 +181,7 @@ function App() {
 
           </div>
 
-          <p style={{ color: '#444', fontSize: '0.8rem', textAlign: 'center', marginTop: '60px' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', textAlign: 'center', marginTop: '60px' }}>
             &copy; 2026 Adylov . Все права защищены.
           </p>
       </footer>

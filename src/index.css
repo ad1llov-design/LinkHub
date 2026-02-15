@@ -6,9 +6,28 @@
   --bg-color: #0a0a0a;
   --text-primary: #ffffff;
   --text-secondary: #888888;
+  --card-bg: #111111;
+  --border-color: #222222;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
   --accent: #ffffff;
+  --btn-hover-bg: #ffffff;
+  --btn-hover-text: #000000;
   --spacing-unit: 8px;
   --container-width: 1200px;
+}
+
+.light-theme {
+  --bg-color: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #555555;
+  --card-bg: #F5F5F7;
+  --border-color: #e5e5e5;
+  --glass-bg: rgba(0, 0, 0, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --accent: #000000;
+  --btn-hover-bg: #000000;
+  --btn-hover-text: #ffffff;
 }
 
 body {
@@ -78,9 +97,9 @@ ul { list-style: none; }
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: white;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: 12px;
     backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic effect */
@@ -89,10 +108,10 @@ ul { list-style: none; }
 }
 
 .btn-glass:hover {
-    background: white;
-    color: black;
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
     transform: translateY(-5px) scale(1.02); /* Float UP */
-    border-color: white;
+    border-color: var(--btn-hover-bg);
     box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.3);
 }
 
@@ -145,7 +164,8 @@ ul { list-style: none; }
 .section-title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     margin-bottom: 60px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--glass-border);
     padding-bottom: 20px;
 }
 
@@ -160,7 +180,7 @@ ul { list-style: none; }
 }
 
 .info-card {
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--border-color);
     padding-top: 30px;
 }
 
@@ -200,7 +220,7 @@ ul { list-style: none; }
 
 .project-card {
     position: relative;
-    background: #111;
+    background: var(--card-bg);
     height: 550px;
     overflow: hidden;
     display: flex;
@@ -208,7 +228,7 @@ ul { list-style: none; }
     padding: 40px;
     transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
-    border: 1px solid #222;
+    border: 1px solid var(--border-color);
 }
 
 /* Hover: Float UP (-10px) */
@@ -249,7 +269,7 @@ ul { list-style: none; }
 }
 
 .project-desc {
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
     font-size: 1rem;
     max-width: 350px;
     /* Description floats up when hovered */
