@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Briefcase, GraduationCap, Instagram, Send, Youtube, Sun, Moon } from 'lucide-react';
+import { Briefcase, GraduationCap, Instagram, Send, Youtube, Sun, Moon, Palette, CheckCircle, Layers, Monitor, Smartphone } from 'lucide-react';
 import heroImage from './HHero.png';
 
 function App() {
@@ -154,6 +154,240 @@ function App() {
                       <p className="project-desc">E-commerce платформа с высокой нагрузкой и кастомным дизайном.</p>
                   </div>
               </article>
+
+          </div>
+      </section>
+
+      {/* ===================== */}
+      {/* NEW SECTIONS          */}
+      {/* ===================== */}
+
+      {/* 1. WORKFLOW / ПРОЦЕСС РАБОТЫ */}
+      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
+          <h2 className="section-title reveal">Процесс работы</h2>
+          <div className="workflow-grid">
+
+              <div className="workflow-step reveal">
+                  <div className="step-number">01</div>
+                  <h4>Брифинг</h4>
+                  <p>Знакомимся с вашим бизнесом, целями и аудиторией. Формируем техническое задание.</p>
+              </div>
+
+              <div className="workflow-step reveal">
+                  <div className="step-number">02</div>
+                  <h4>Прототип</h4>
+                  <p>Создаём интерактивный прототип в Figma. Согласовываем каждый экран с вами.</p>
+              </div>
+
+              <div className="workflow-step reveal">
+                  <div className="step-number">03</div>
+                  <h4>Разработка</h4>
+                  <p>Верстаем и программируем. Pixel-perfect, чистый код, адаптивность.</p>
+              </div>
+
+              <div className="workflow-step reveal">
+                  <div className="step-number">04</div>
+                  <h4>Запуск</h4>
+                  <p>Тестируем, оптимизируем и деплоим. Поддерживаем после релиза.</p>
+              </div>
+
+          </div>
+      </section>
+
+      {/* 2. DESIGN APPROACH / НАШ ПОДХОД */}
+      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
+          <h2 className="section-title reveal">Наш подход к дизайну</h2>
+          <div className="approach-grid">
+
+              <div className="approach-card reveal">
+                  <div className="icon-wrap"><Palette size={28} /></div>
+                  <h4>Эстетика</h4>
+                  <p>Каждый проект — это визуальное высказывание. Мы создаём дизайн, который запоминается с первого взгляда.</p>
+              </div>
+
+              <div className="approach-card reveal">
+                  <div className="icon-wrap"><Layers size={28} /></div>
+                  <h4>Системность</h4>
+                  <p>Дизайн-система, компоненты, токены. Всё масштабируется и поддерживается легко.</p>
+              </div>
+
+              <div className="approach-card reveal">
+                  <div className="icon-wrap"><Monitor size={28} /></div>
+                  <h4>Удобство</h4>
+                  <p>Не просто красиво — удобно. UX-исследования, юзабилити-тесты, A/B тестирование.</p>
+              </div>
+
+              <div className="approach-card reveal">
+                  <div className="icon-wrap"><Smartphone size={28} /></div>
+                  <h4>Адаптивность</h4>
+                  <p>Mobile-first подход. Идеальный вид на любом устройстве, от iPhone до 4K-монитора.</p>
+              </div>
+
+          </div>
+      </section>
+
+      {/* 3. PORTFOLIO / РЕАЛИЗОВАННЫЕ ПРОЕКТЫ */}
+      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
+          <h2 className="section-title reveal">Портфолио</h2>
+          <div className="portfolio-grid">
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">Web Design</span>
+                      <h3 className="portfolio-name">E-Commerce Platform</h3>
+                  </div>
+              </article>
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">Mobile App</span>
+                      <h3 className="portfolio-name">HealthTrack App</h3>
+                  </div>
+              </article>
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">Branding</span>
+                      <h3 className="portfolio-name">Tech Startup Identity</h3>
+                  </div>
+              </article>
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">Landing Page</span>
+                      <h3 className="portfolio-name">Crypto Dashboard</h3>
+                  </div>
+              </article>
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">UI/UX</span>
+                      <h3 className="portfolio-name">SaaS Platform</h3>
+                  </div>
+              </article>
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">Corporate</span>
+                      <h3 className="portfolio-name">Agency Website</h3>
+                  </div>
+              </article>
+
+          </div>
+      </section>
+
+      {/* 4. CURRENT FOCUS / В РАБОТЕ */}
+      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
+          <h2 className="section-title reveal">В работе</h2>
+          <div className="focus-grid">
+
+              <div className="focus-card reveal">
+                  <span className="focus-status">● В процессе</span>
+                  <h4>Финтех-приложение</h4>
+                  <p>Мобильное приложение для управления личными финансами с AI-рекомендациями.</p>
+              </div>
+
+              <div className="focus-card reveal">
+                  <span className="focus-status">● Прототипирование</span>
+                  <h4>EdTech Платформа</h4>
+                  <p>Онлайн-платформа для курсов с интерактивным контентом и геймификацией.</p>
+              </div>
+
+              <div className="focus-card reveal">
+                  <span className="focus-status">● Дизайн</span>
+                  <h4>Маркетплейс</h4>
+                  <p>Площадка для локальных брендов с AR-примеркой и умным поиском.</p>
+              </div>
+
+          </div>
+      </section>
+
+      {/* 5. TIMELINE / СРОКИ РЕАЛИЗАЦИИ */}
+      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
+          <h2 className="section-title reveal">Сроки реализации</h2>
+          <div className="timeline-grid">
+
+              <div className="timeline-card reveal">
+                  <div className="timeline-days">5-7</div>
+                  <div className="timeline-label">рабочих дней</div>
+                  <h4>Лендинг</h4>
+                  <p>Одностраничный сайт с анимациями, адаптивной вёрсткой и формой заявки.</p>
+              </div>
+
+              <div className="timeline-card reveal">
+                  <div className="timeline-days">14-20</div>
+                  <div className="timeline-label">рабочих дней</div>
+                  <h4>Корпоративный сайт</h4>
+                  <p>Многостраничный сайт с CMS, блогом и интеграцией аналитики.</p>
+              </div>
+
+              <div className="timeline-card reveal">
+                  <div className="timeline-days">30+</div>
+                  <div className="timeline-label">рабочих дней</div>
+                  <h4>Веб-приложение</h4>
+                  <p>Полноценная SPA/PWA с авторизацией, базой данных и API.</p>
+              </div>
+
+          </div>
+      </section>
+
+      {/* 6. PRICING / СТОИМОСТЬ */}
+      <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
+          <h2 className="section-title reveal">Стоимость</h2>
+          <div className="pricing-grid">
+
+              {/* ===== ТАРИФ START ===== */}
+              <div className="pricing-card reveal">
+                  <div className="pricing-tier">Start</div>
+                  <div className="pricing-price">$300</div>
+                  <div className="pricing-unit">Лендинг «‎под ключ»</div>
+                  <ul className="pricing-features">
+                      <li><CheckCircle size={18} /> Дизайн в Figma</li>
+                      <li><CheckCircle size={18} /> Адаптивная вёрстка</li>
+                      <li><CheckCircle size={18} /> Анимации и hover-эффекты</li>
+                      <li><CheckCircle size={18} /> SEO-оптимизация</li>
+                      <li><CheckCircle size={18} /> Деплой на хостинг</li>
+                  </ul>
+                  <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="pricing-btn">Заказать</a>
+              </div>
+
+              {/* ===== ТАРИФ BUSINESS ===== */}
+              <div className="pricing-card featured reveal">
+                  <div className="pricing-tier">Business</div>
+                  <div className="pricing-price">$800</div>
+                  <div className="pricing-unit">Корпоративный сайт</div>
+                  <ul className="pricing-features">
+                      <li><CheckCircle size={18} /> Всё из тарифа Start</li>
+                      <li><CheckCircle size={18} /> До 10 страниц</li>
+                      <li><CheckCircle size={18} /> CMS (редактирование контента)</li>
+                      <li><CheckCircle size={18} /> Интеграция аналитики</li>
+                      <li><CheckCircle size={18} /> Техподдержка 30 дней</li>
+                      <li><CheckCircle size={18} /> Блог / Новости</li>
+                  </ul>
+                  <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="pricing-btn">Заказать</a>
+              </div>
+
+              {/* ===== ТАРИФ PREMIUM ===== */}
+              <div className="pricing-card reveal">
+                  <div className="pricing-tier">Premium</div>
+                  <div className="pricing-price">$1500+</div>
+                  <div className="pricing-unit">Веб-приложение / SaaS</div>
+                  <ul className="pricing-features">
+                      <li><CheckCircle size={18} /> Всё из тарифа Business</li>
+                      <li><CheckCircle size={18} /> Кастомная разработка</li>
+                      <li><CheckCircle size={18} /> Авторизация и личный кабинет</li>
+                      <li><CheckCircle size={18} /> API и интеграции</li>
+                      <li><CheckCircle size={18} /> Техподдержка 90 дней</li>
+                      <li><CheckCircle size={18} /> Исходный код в собственность</li>
+                  </ul>
+                  <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="pricing-btn">Заказать</a>
+              </div>
 
           </div>
       </section>
