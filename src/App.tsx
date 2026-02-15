@@ -395,7 +395,7 @@ function App() {
                   <span>Telegram</span>
               </a>
 
-              <a href="https://wa.me/" className="btn-glass w-full md:w-auto" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+996557555058" className="btn-glass w-full md:w-auto" target="_blank" rel="noopener noreferrer">
                   <MessageCircle size={28} />
                   <span>WhatsApp</span>
               </a>
