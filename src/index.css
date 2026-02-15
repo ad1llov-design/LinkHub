@@ -32,6 +32,12 @@
   --card-text: #000000;
 }
 
+/* FORCE BLACK TEXT IN LIGHT MODE */
+.light-theme .project-title,
+.light-theme .project-desc {
+    color: #000000 !important;
+}
+
 body {
     margin: 0;
     padding: 0;
