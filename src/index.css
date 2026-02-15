@@ -13,6 +13,7 @@
   --accent: #ffffff;
   --btn-hover-bg: #ffffff;
   --btn-hover-text: #000000;
+  --card-text: #ffffff;
   --spacing-unit: 8px;
   --container-width: 1200px;
 }
@@ -28,6 +29,7 @@
   --accent: #000000;
   --btn-hover-bg: #000000;
   --btn-hover-text: #ffffff;
+  --card-text: #000000;
 }
 
 body {
@@ -270,11 +272,11 @@ ul { list-style: none; }
     font-size: 2.5rem;
     margin-bottom: 8px;
     font-weight: 700;
-    color: #ffffff; /* Always white for readability over image */
+    color: var(--card-text);
 }
 
 .project-desc {
-    color: rgba(255, 255, 255, 0.9); /* High contrast */
+    color: var(--card-text);
     font-size: 1rem;
     max-width: 100%;
     /* Description floats up when hovered */
