@@ -219,77 +219,37 @@ function App() {
           <h2 className="section-title reveal">{t.portfolio_title}</h2>
           <div className="portfolio-grid">
 
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop')" }}></div>
+              <a href="#" className="portfolio-card reveal block">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
                       <span className="portfolio-category">{t.cat_fintech}</span>
                       <h3 className="portfolio-name">{t.project_fintech}</h3>
                   </div>
-              </article>
+              </a>
 
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop')" }}></div>
-                  <div className="portfolio-overlay">
-                      <span className="portfolio-category">{t.cat_startup}</span>
-                      <h3 className="portfolio-name">{t.project_security}</h3>
-                  </div>
-              </article>
-
-               <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=600&auto=format&fit=crop')" }}></div>
-                  <div className="portfolio-overlay">
-                      <span className="portfolio-category">{t.cat_architecture}</span>
-                      <h3 className="portfolio-name">{t.project_bureau}</h3>
-                  </div>
-              </article>
-
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop')" }}></div>
+              <a href="#" className="portfolio-card reveal block">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
                       <span className="portfolio-category">{t.cat_webdesign}</span>
                       <h3 className="portfolio-name">{t.project_ecommerce}</h3>
                   </div>
-              </article>
+              </a>
 
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop')" }}></div>
+               <a href="#" className="portfolio-card reveal block">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=800&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">{t.cat_architecture}</span>
+                      <h3 className="portfolio-name">{t.project_bureau}</h3>
+                  </div>
+              </a>
+
+              <a href="#" className="portfolio-card reveal block">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
                       <span className="portfolio-category">{t.cat_mobile}</span>
                       <h3 className="portfolio-name">{t.project_health}</h3>
                   </div>
-              </article>
-
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop')" }}></div>
-                  <div className="portfolio-overlay">
-                      <span className="portfolio-category">{t.cat_branding}</span>
-                      <h3 className="portfolio-name">{t.project_tech}</h3>
-                  </div>
-              </article>
-
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop')" }}></div>
-                  <div className="portfolio-overlay">
-                      <span className="portfolio-category">{t.cat_landing}</span>
-                      <h3 className="portfolio-name">{t.project_crypto}</h3>
-                  </div>
-              </article>
-
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=600&auto=format&fit=crop')" }}></div>
-                  <div className="portfolio-overlay">
-                      <span className="portfolio-category">{t.cat_uiux}</span>
-                      <h3 className="portfolio-name">{t.project_saas}</h3>
-                  </div>
-              </article>
-
-              <article className="portfolio-card reveal">
-                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop')" }}></div>
-                  <div className="portfolio-overlay">
-                      <span className="portfolio-category">{t.cat_corporate}</span>
-                      <h3 className="portfolio-name">{t.project_agency}</h3>
-                  </div>
-              </article>
+              </a>
 
           </div>
       </section>
