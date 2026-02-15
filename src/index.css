@@ -335,13 +335,13 @@ ul { list-style: none; }
 /* PORTFOLIO GRID */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
 .portfolio-card {
     position: relative;
-    height: 380px;
+    height: 450px;
     overflow: hidden;
     border-radius: 16px;
     border: 1px solid var(--border-color);
