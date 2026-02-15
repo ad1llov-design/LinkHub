@@ -65,15 +65,15 @@ ul { list-style: none; }
 /* Start state: Shifted DOWN (50px), Invisible, Blurred */
 .reveal {
     opacity: 0;
-    transform: translateY(50px); 
+    transform: translateY(30px) scale(0.95); /* Subtle scale up */
     filter: blur(10px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); /* Premium Easing */
 }
 
 /* End state: Original position (0), Visible, Sharp */
 .reveal.active {
     opacity: 1;
-    transform: translateY(0); 
+    transform: translateY(0) scale(1); 
     filter: blur(0);
 }
 
@@ -247,35 +247,44 @@ ul { list-style: none; }
     inset: 0;
     background-size: cover;
     background-position: center;
-    opacity: 0.7;
-    transition: 0.8s;
+    opacity: 0.6; /* Darker by default */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 0;
-    filter: grayscale(100%);
+    filter: grayscale(100%) brightness(0.8); /* Darker and monochrome */
 }
 
 .project-card:hover .project-bg {
-    filter: grayscale(0%);
+    filter: grayscale(0%) brightness(1); /* Full color on hover */
+    transform: scale(1.1); /* Slow zoom */
 }
 
 .project-content {
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Content above overlay */
+    width: 100%;
+    /* Gradient Overlay for Text Readability */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
+    padding: 30px;
+    margin: -40px; /* Compensate for card padding */
+    margin-top: auto; /* Push to bottom */
 }
 
 .project-title {
     font-size: 2.5rem;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     font-weight: 700;
+    color: #ffffff; /* Always white for readability over image */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .project-desc {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9); /* High contrast */
     font-size: 1rem;
-    max-width: 350px;
+    max-width: 100%;
     /* Description floats up when hovered */
     transform: translateY(20px);
     opacity: 0;
-    transition: 0.4s;
+    transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-card:hover .project-desc {
