@@ -187,64 +187,64 @@ function App() {
           </div>
       </section>
 
-      {/* 3. PORTFOLIO / РЕАЛИЗОВАННЫЕ ПРОЕКТЫ */}
+      {/* 3. PORTFOLIO / НАШИ РАБОТЫ */}
       <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
-          <h2 className="section-title reveal">Портфолио</h2>
+          <h2 className="section-title reveal">Наши работы</h2>
           <div className="portfolio-grid">
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">FinTech</span>
-                      <h3 className="portfolio-name">Mobile Banking App</h3>
+                      <span className="portfolio-category">Финтех</span>
+                      <h3 className="portfolio-name">Мобильный Банкинг</h3>
                   </div>
               </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">StartUp</span>
-                      <h3 className="portfolio-name">Cyber Security Landing</h3>
+                      <span className="portfolio-category">Стартап</span>
+                      <h3 className="portfolio-name">Лендинг Кибербезопасности</h3>
                   </div>
               </article>
 
                <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">Architecture</span>
-                      <h3 className="portfolio-name">Bureau Portfolio</h3>
+                      <span className="portfolio-category">Архитектура</span>
+                      <h3 className="portfolio-name">Портфолио Бюро</h3>
                   </div>
               </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">Web Design</span>
-                      <h3 className="portfolio-name">E-Commerce Platform</h3>
+                      <span className="portfolio-category">Веб-дизайн</span>
+                      <h3 className="portfolio-name">E-Commerce Платформа</h3>
                   </div>
               </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">Mobile App</span>
-                      <h3 className="portfolio-name">HealthTrack App</h3>
+                      <span className="portfolio-category">Мобильное приложение</span>
+                      <h3 className="portfolio-name">Трекер Здоровья</h3>
                   </div>
               </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">Branding</span>
-                      <h3 className="portfolio-name">Tech Startup Identity</h3>
+                      <span className="portfolio-category">Брендинг</span>
+                      <h3 className="portfolio-name">IT Стартап</h3>
                   </div>
               </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">Landing Page</span>
-                      <h3 className="portfolio-name">Crypto Dashboard</h3>
+                      <span className="portfolio-category">Лендинг</span>
+                      <h3 className="portfolio-name">Крипто Дашборд</h3>
                   </div>
               </article>
 
@@ -252,15 +252,15 @@ function App() {
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
                       <span className="portfolio-category">UI/UX</span>
-                      <h3 className="portfolio-name">SaaS Platform</h3>
+                      <h3 className="portfolio-name">SaaS Платформа</h3>
                   </div>
               </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop')" }}></div>
                   <div className="portfolio-overlay">
-                      <span className="portfolio-category">Corporate</span>
-                      <h3 className="portfolio-name">Agency Website</h3>
+                      <span className="portfolio-category">Корпоративный</span>
+                      <h3 className="portfolio-name">Сайт Агентства</h3>
                   </div>
               </article>
 
