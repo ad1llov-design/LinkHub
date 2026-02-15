@@ -9,7 +9,7 @@ export const translations = {
     
     // NAVIGATION / SECTIONS
     nav_about: "Обо мне",
-    nav_works: "Наши работы",
+    nav_works: "Мои работы",
     nav_process: "Процесс",
     nav_pricing: "Стоимость",
     nav_contact: "Контакты",
@@ -48,7 +48,7 @@ export const translations = {
     approach_4_desc: "Mobile-first подход. Идеальный вид на любом устройстве.",
 
     // PORTFOLIO
-    portfolio_title: "Наши работы",
+    portfolio_title: "Мои работы",
     project_fintech: "Мобильный Банкинг",
     cat_fintech: "Финтех",
     project_security: "Лендинг Кибербезопасности",
@@ -98,7 +98,7 @@ export const translations = {
     
     // NAVIGATION / SECTIONS
     nav_about: "About",
-    nav_works: "Our Works",
+    nav_works: "My Works",
     nav_process: "Process",
     nav_pricing: "Pricing",
     nav_contact: "Contact",
@@ -137,7 +137,7 @@ export const translations = {
     approach_4_desc: "Mobile-first approach. Perfect look on any device.",
 
     // PORTFOLIO
-    portfolio_title: "Our Works",
+    portfolio_title: "My Works",
     project_fintech: "Mobile Banking App",
     cat_fintech: "FinTech",
     project_security: "Cyber Security Landing",
@@ -187,7 +187,7 @@ export const translations = {
     
     // NAVIGATION / SECTIONS
     nav_about: "Мен жөнүндө",
-    nav_works: "Биздин иштер",
+    nav_works: "Менин иштерим",
     nav_process: "Процесс",
     nav_pricing: "Баалар",
     nav_contact: "Байланыш",
@@ -226,7 +226,7 @@ export const translations = {
     approach_4_desc: "Mobile-first ыкмасы. Каалаган түзмөктө идеалдуу көрүнүш.",
 
     // PORTFOLIO
-    portfolio_title: "Биздин иштер",
+    portfolio_title: "Менин иштерим",
     project_fintech: "Мобилдик Банкинг",
     cat_fintech: "Финтех",
     project_security: "Киберкоопсуздук Лендинги",
