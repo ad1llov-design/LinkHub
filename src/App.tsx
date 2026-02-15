@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { Briefcase, GraduationCap, Instagram, Send, Youtube, Sun, Moon, Palette, CheckCircle, Layers, Monitor, Smartphone, Globe } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Briefcase, GraduationCap, Instagram, Send, MessageCircle, Sun, Moon, Palette, CheckCircle, Layers, Monitor, Smartphone, Globe } from 'lucide-react';
 import heroImage from './HHero.png';
 import { translations, Lang } from './translations';
 
