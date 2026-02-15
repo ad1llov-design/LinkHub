@@ -262,10 +262,6 @@ ul { list-style: none; }
     position: relative;
     z-index: 2; /* Content above overlay */
     width: 100%;
-    /* Gradient Overlay for Text Readability */
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
-    padding: 30px;
-    margin: -40px; /* Compensate for card padding */
     margin-top: auto; /* Push to bottom */
 }
 
