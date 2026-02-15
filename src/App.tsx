@@ -39,6 +39,7 @@ function App() {
   }, []);
 
   return (
+    // Main Container
     <div className="min-h-screen overflow-x-hidden font-inter" style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-primary)' }}>
       
       {/* Language Switcher & Theme Toggle Container */}
