@@ -118,45 +118,6 @@ function App() {
           </div>
       </section>
 
-      {/* PROJECTS BLOCK */}
-      <section className="projects container-custom relative z-10" style={{ backgroundColor: 'var(--bg-color)' }}>
-          <h2 className="section-title reveal">Мои Проекты</h2>
-          <div className="project-grid">
-              
-              <article className="project-card reveal">
-                  <div className="project-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')" }}></div>
-                  <div className="project-content">
-                      <h3 className="project-title">FinTech App</h3>
-                      <p className="project-desc">Редизайн интерфейса мобильного банкинга. Безопасность и удобство.</p>
-                  </div>
-              </article>
-
-              <article className="project-card reveal">
-                  <div className="project-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop')" }}></div>
-                  <div className="project-content">
-                      <h3 className="project-title">Cyber Start</h3>
-                      <p className="project-desc">Футуристичный лендинг для стартапа в сфере кибербезопасности.</p>
-                  </div>
-              </article>
-
-               <article className="project-card reveal">
-                  <div className="project-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=800&auto=format&fit=crop')" }}></div>
-                  <div className="project-content">
-                      <h3 className="project-title">Architect Bureau</h3>
-                      <p className="project-desc">Минималистичное портфолио для архитектурного бюро.</p>
-                  </div>
-              </article>
-
-              <article className="project-card reveal">
-                  <div className="project-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1472851294608-415522f96485?q=80&w=800&auto=format&fit=crop')" }}></div>
-                  <div className="project-content">
-                      <h3 className="project-title">Store Platform</h3>
-                      <p className="project-desc">E-commerce платформа с высокой нагрузкой и кастомным дизайном.</p>
-                  </div>
-              </article>
-
-          </div>
-      </section>
 
       {/* ===================== */}
       {/* NEW SECTIONS          */}
@@ -230,6 +191,30 @@ function App() {
       <section className="container-custom relative z-10" style={{ padding: '120px 0', backgroundColor: 'var(--bg-color)' }}>
           <h2 className="section-title reveal">Портфолио</h2>
           <div className="portfolio-grid">
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">FinTech</span>
+                      <h3 className="portfolio-name">Mobile Banking App</h3>
+                  </div>
+              </article>
+
+              <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">StartUp</span>
+                      <h3 className="portfolio-name">Cyber Security Landing</h3>
+                  </div>
+              </article>
+
+               <article className="portfolio-card reveal">
+                  <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  <div className="portfolio-overlay">
+                      <span className="portfolio-category">Architecture</span>
+                      <h3 className="portfolio-name">Bureau Portfolio</h3>
+                  </div>
+              </article>
 
               <article className="portfolio-card reveal">
                   <div className="portfolio-img" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop')" }}></div>
