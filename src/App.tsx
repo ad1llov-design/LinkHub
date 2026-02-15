@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import { useRef, useState, useEffect } from 'react';
 import { Briefcase, GraduationCap, Instagram, Send, MessageCircle, Sun, Moon, Palette, CheckCircle, Layers, Monitor, Smartphone, Globe } from 'lucide-react';
 import heroImage from './HHero.png';
 import { translations, Lang } from './translations';
@@ -396,9 +395,9 @@ function App() {
                   <span>Telegram</span>
               </a>
 
-              <a href="https://youtube.com" className="btn-glass w-full md:w-auto" target="_blank" rel="noopener noreferrer">
-                  <Youtube size={28} />
-                  <span>YouTube</span>
+              <a href="https://wa.me/" className="btn-glass w-full md:w-auto" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle size={28} />
+                  <span>WhatsApp</span>
               </a>
 
           </div>
