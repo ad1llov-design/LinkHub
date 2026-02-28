@@ -27,8 +27,6 @@ interface PricingProps {
   description?: string;
   annualBillingText?: string;
   saveText?: string;
-  billedMonthlyText?: string;
-  billedAnnuallyText?: string;
   popularBadgeText?: string;
 }
 
@@ -38,8 +36,6 @@ export function Pricing({
   description = "Choose the plan that works for you\nAll plans include access to our platform, lead generation tools, and dedicated support.",
   annualBillingText = "Annual billing",
   saveText = "(Save 20%)",
-  billedMonthlyText = "billed monthly",
-  billedAnnuallyText = "billed annually",
   popularBadgeText = "Popular",
 }: PricingProps) {
   const [isMonthly, setIsMonthly] = useState(true);
@@ -174,10 +170,6 @@ export function Pricing({
                   </span>
                 )}
               </div>
-
-              <p className="text-xs leading-5 text-[var(--text-secondary)] mt-2">
-                {isMonthly ? billedMonthlyText : billedAnnuallyText}
-              </p>
 
               <ul className="mt-8 gap-4 flex flex-col text-sm">
                 {plan.features.map((feature, idx) => (

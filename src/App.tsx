@@ -15,9 +15,21 @@ import {
   Star,
   Layers3,
 } from 'lucide-react';
+import { 
+  SiReact, 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiTailwindcss, 
+  SiVercel, 
+  SiFigma, 
+  SiWordpress, 
+  SiNodedotjs, 
+  SiFramer 
+} from 'react-icons/si';
 import { DottedSurface } from './components/ui/dotted-surface';
 import { SplineSceneBasic } from './components/ui/demo';
 import { Pricing, PricingPlan } from './components/blocks/pricing';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
 
 function App() {
@@ -199,8 +211,6 @@ function App() {
             description={t.pricing.description}
             annualBillingText={t.pricing.annualBillingText}
             saveText={t.pricing.saveText}
-            billedMonthlyText={t.pricing.billedMonthlyText}
-            billedAnnuallyText={t.pricing.billedAnnuallyText}
             popularBadgeText={t.pricing.popularBadgeText}
           />
         </section>
@@ -231,11 +241,14 @@ function App() {
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.why.title}</h2>
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
             {t.why.items.map((item) => (
-              <div key={item} className="card-premium flex items-center gap-3 p-4">
-                <ShieldCheck size={18} className="text-emerald-500" />
-                <span>{item}</span>
+              <div key={item} className="card-premium flex items-start flex-col gap-3 p-6 min-w-[280px] w-[280px] shrink-0 snap-start relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 mb-2">
+                  <ShieldCheck size={20} className="text-emerald-500" />
+                </div>
+                <span className="font-medium text-[var(--text-primary)] leading-tight">{item}</span>
               </div>
             ))}
           </div>
@@ -243,12 +256,20 @@ function App() {
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.process.title}</h2>
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <div className="flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar relative">
+            {/* Connecting Line */}
+            <div className="absolute top-10 left-0 w-[200%] h-0.5 bg-[var(--border-color)] -z-10" />
             {t.process.steps.map((step, idx) => (
-              <div key={step} className="card-premium p-4">
-                <div className="mb-2 text-xs uppercase tracking-[0.16em] text-[var(--text-secondary)]">{String(idx + 1).padStart(2, '0')}</div>
-                <h3 className="text-lg font-semibold">{step}</h3>
-                <p className="mt-2 text-sm text-[var(--text-secondary)]">{processDescriptions[lang][idx]}</p>
+              <div key={step} className="card-premium p-6 min-w-[300px] w-[300px] shrink-0 snap-start flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-8 h-8 rounded-full bg-[var(--text-primary)] text-[var(--bg-color)] flex items-center justify-center font-bold text-sm ring-4 ring-[var(--bg-color)]">
+                      {idx + 1}
+                    </div>
+                    <h3 className="text-xl font-semibold">{step}</h3>
+                  </div>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{processDescriptions[lang][idx]}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -256,15 +277,15 @@ function App() {
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.cases.title}</h2>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
             {t.cases.items.map((caseItem) => (
-              <article key={caseItem.name} className="card-premium p-6">
-                <h3 className="text-lg font-semibold">{caseItem.name}</h3>
-                <ul className="mt-4 grid gap-2">
+              <article key={caseItem.name} className="card-premium p-8 min-w-[320px] w-[320px] shrink-0 snap-start border-t-4 border-t-sky-500">
+                <h3 className="text-xl font-semibold mb-6">{caseItem.name}</h3>
+                <ul className="grid gap-3">
                   {caseItem.metrics.map((metric) => (
-                    <li key={metric} className="stat-chip flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-                      <Rocket size={14} className="text-sky-500" />
-                      {metric}
+                    <li key={metric} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
+                      <Rocket size={16} className="text-sky-500 mt-0.5" />
+                      <span className="leading-tight">{metric}</span>
                     </li>
                   ))}
                 </ul>
@@ -293,23 +314,29 @@ function App() {
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.faq.title}</h2>
-          <div className="grid gap-4 md:grid-cols-2">
-            {t.faq.items.map((item) => (
-              <article key={item.q} className="card-premium p-6">
-                <h3 className="text-lg font-semibold">{item.q}</h3>
-                <p className="mt-3 text-sm text-[var(--text-secondary)]">{item.a}</p>
-              </article>
-            ))}
+          <div className="card-premium p-6 md:p-8">
+            <Accordion type="single" collapsible className="w-full">
+              {t.faq.items.map((item, i) => (
+                <AccordionItem key={item.q} value={`item-${i}`} className={i === t.faq.items.length - 1 ? "border-b-0" : ""}>
+                  <AccordionTrigger className="text-left text-base md:text-lg">{item.q}</AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base leading-relaxed text-[var(--text-secondary)]">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.guarantees.title}</h2>
-          <div className="grid gap-3 md:grid-cols-2">
+          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
             {t.guarantees.items.map((item) => (
-              <div key={item} className="card-premium flex items-center gap-3 p-4">
-                <CheckCircle2 size={18} className="text-emerald-500" />
-                <span>{item}</span>
+              <div key={item} className="card-premium p-6 min-w-[280px] w-[280px] shrink-0 snap-start flex flex-col gap-3">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/10 shrink-0">
+                  <CheckCircle2 size={24} className="text-emerald-500" />
+                </div>
+                <span className="font-medium text-[var(--text-primary)] leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
@@ -317,10 +344,10 @@ function App() {
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.audience.title}</h2>
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
             {t.audience.items.map((item) => (
-              <div key={item} className="card-premium p-5 text-center">
-                {item}
+              <div key={item} className="card-premium p-6 min-w-[260px] w-[260px] shrink-0 snap-start flex items-center justify-center text-center">
+                <div className="font-medium">{item}</div>
               </div>
             ))}
           </div>
@@ -328,13 +355,26 @@ function App() {
 
         <section className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.technologies.title}</h2>
-          <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-5">
-            {t.technologies.items.map((tech) => (
-              <div key={tech} className="card-premium flex items-center justify-center gap-2 p-4 text-sm font-medium">
-                <Layers3 size={16} className="opacity-60" />
-                {tech}
-              </div>
-            ))}
+          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+            {t.technologies.items.map((tech) => {
+              let Icon: any = Layers3;
+              if (tech.includes('React')) Icon = SiReact;
+              if (tech.includes('Next.js')) Icon = SiNextdotjs;
+              if (tech.includes('TypeScript')) Icon = SiTypescript;
+              if (tech.includes('Tailwind')) Icon = SiTailwindcss;
+              if (tech.includes('Vercel')) Icon = SiVercel;
+              if (tech.includes('Figma')) Icon = SiFigma;
+              if (tech.includes('WordPress')) Icon = SiWordpress;
+              if (tech.includes('Node.js')) Icon = SiNodedotjs;
+              if (tech.includes('Framer')) Icon = SiFramer;
+
+              return (
+                <div key={tech} className="card-premium flex items-center justify-center gap-3 p-6 min-w-[200px] w-[200px] shrink-0 snap-start text-sm font-medium transition hover:scale-105">
+                  <Icon size={24} className="opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <span>{tech}</span>
+                </div>
+              );
+            })}
           </div>
         </section>
 

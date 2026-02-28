@@ -4,21 +4,22 @@
 
 :root {
   --bg-color: #000000;
-  --text-primary: #ffffff;
+  --text-primary: #FFFFFF;
   --text-secondary: #888888;
-  --card-bg: #090909;
-  --border-color: #1a1a1a;
+  /* GLASSMORPHISM - Transparent Alpha Backgrounds */
+  --card-bg: #1a1a1acc; /* 80% opaque dark gray */
+  --border-color: #333333;
   --glass-bg: rgba(9, 9, 9, 0.6);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-hover: rgba(255, 255, 255, 0.04);
 }
 
 .light-theme {
-  --bg-color: #ffffff;
+  --bg-color: #FFFFFF;
   --text-primary: #000000;
   --text-secondary: #666666;
-  --card-bg: #f9f9f9;
-  --border-color: #eaeaea;
+  --card-bg: #ffffffcc; /* 80% opaque white */
+  --border-color: #e5e5e5;
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(0, 0, 0, 0.08);
   --glass-hover: rgba(0, 0, 0, 0.04);
@@ -59,11 +60,16 @@ body {
 }
 
 .card-premium {
-  border: 1px solid var(--border-color);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-bg), white 3%) 0%, var(--card-bg) 100%);
-  border-radius: 1rem;
-  box-shadow: 0 12px 35px -22px rgba(0, 0, 0, 0.45);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  background: var(--card-bg); /* Now uses RGBA transparent hex */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .card-premium {
+  border: 1px solid rgba(0, 0, 0, 0.08); /* Darker border for light mode glass */
 }
 
 .card-premium:hover {
@@ -164,10 +170,23 @@ body {
 }
 
 .stat-chip {
-  border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  padding: 0.45rem 0.6rem;
-  background: color-mix(in srgb, var(--card-bg), white 2%);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 0.375rem 0.875rem;
+  transition: background 0.2s ease;
+}
+
+.stat-chip:hover {
+  background: var(--glass-hover);
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes spotlight {
