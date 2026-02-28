@@ -21,7 +21,6 @@ import { Lang, translations } from './translations';
 
 function App() {
   const [lang, setLang] = useState<Lang>('ru');
-  const [scrollY, setScrollY] = useState(0);
   const { resolvedTheme, setTheme } = useTheme();
   const isLight = resolvedTheme === 'light';
   const t = translations[lang];
@@ -56,12 +55,6 @@ function App() {
   };
 
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -85,19 +78,6 @@ function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-primary)]">
       <DottedSurface />
-
-      <div
-        aria-hidden
-        className="pointer-events-none fixed left-1/2 top-[-260px] h-[520px] w-[720px] -translate-x-1/2 rounded-full blur-3xl"
-        style={{
-          background: isLight
-            ? 'radial-gradient(circle, rgba(56,189,248,0.22) 0%, rgba(14,165,233,0.06) 52%, transparent 75%)'
-            : 'radial-gradient(circle, rgba(59,130,246,0.32) 0%, rgba(59,130,246,0.08) 56%, transparent 78%)',
-          transform: `translate(-50%, ${scrollY * 0.08}px)`,
-        }}
-      />
-
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.18),transparent_45%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.12),transparent_35%)] opacity-70" />
 
       <header className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--glass-bg)]/90 backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8">
@@ -197,13 +177,13 @@ function App() {
             {t.pricing.columns.map((col, colIndex) => (
               <article
                 key={col}
-                className={`card-premium p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(0,0,0,0.6)] ${
-                  colIndex === 1 ? 'ring-1 ring-sky-500/50' : ''
+                className={`card-premium p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl ${
+                  colIndex === 1 ? 'ring-1 ring-[var(--text-secondary)] bg-[var(--border-color)]/20' : ''
                 }`}
               >
                 <div className="mb-3 flex items-center justify-between">
                   <h3 className="text-2xl font-semibold">{col}</h3>
-                  {colIndex === 1 && <span className="rounded-full bg-sky-500/15 px-3 py-1 text-xs text-sky-400">Best Value</span>}
+                  {colIndex === 1 && <span className="rounded-full bg-[var(--text-primary)] px-3 py-1 text-xs font-bold text-[var(--bg-color)]">Best Value</span>}
                 </div>
                 <p className="mb-4 text-3xl font-bold text-[var(--text-primary)]">{pricingPriceRow.values[colIndex]}</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
@@ -359,7 +339,7 @@ function App() {
         </section>
 
         <section className="reveal py-10 md:py-16">
-          <div className="card-premium bg-gradient-to-r from-sky-500/15 via-indigo-500/10 to-fuchsia-500/15 p-8 md:p-10">
+          <div className="card-premium p-8 md:p-10 border border-[var(--text-secondary)]">
             <h2 className="text-3xl font-semibold md:text-4xl">{t.consult.title}</h2>
             <p className="mt-3 max-w-3xl text-[var(--text-secondary)]">{t.consult.text}</p>
             <a

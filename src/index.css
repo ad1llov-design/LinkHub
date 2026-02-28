@@ -3,25 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #080b12;
-  --text-primary: #edf2ff;
-  --text-secondary: #92a0b8;
-  --card-bg: #0f1522;
-  --border-color: #1d2a3d;
-  --glass-bg: rgba(11, 19, 32, 0.58);
-  --glass-border: rgba(128, 164, 255, 0.22);
-  --glass-hover: rgba(128, 164, 255, 0.1);
+  --bg-color: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --card-bg: #090909;
+  --border-color: #1a1a1a;
+  --glass-bg: rgba(9, 9, 9, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.04);
 }
 
 .light-theme {
-  --bg-color: #f7f9ff;
-  --text-primary: #121925;
-  --text-secondary: #5c6880;
-  --card-bg: #ffffff;
-  --border-color: #d8e1f2;
-  --glass-bg: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(17, 27, 47, 0.16);
-  --glass-hover: rgba(17, 27, 47, 0.06);
+  --bg-color: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --card-bg: #f9f9f9;
+  --border-color: #eaeaea;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-hover: rgba(0, 0, 0, 0.04);
 }
 
 *,
@@ -39,7 +39,7 @@ body,
 
 body {
   font-family: Inter, sans-serif;
-  background: radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.18), transparent 45%), var(--bg-color);
+  background: var(--bg-color);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -83,7 +83,7 @@ body {
   width: 100%;
   border: 1px solid var(--border-color);
   border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--card-bg), transparent 8%);
+  background: var(--card-bg);
   color: var(--text-primary);
   padding: 0.7rem 0.9rem;
   outline: none;
@@ -91,21 +91,19 @@ body {
 }
 
 .field:focus {
-  border-color: rgba(59, 130, 246, 0.55);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  border-color: var(--text-secondary);
+  box-shadow: 0 0 0 2px var(--border-color);
 }
 
 .btn-cta {
-  color: #02050c;
-  background: linear-gradient(135deg, #56d4ff 0%, #4f7dff 45%, #7f56ff 100%);
-  box-shadow: 0 12px 30px -16px rgba(79, 125, 255, 0.9);
-  transition: transform 0.24s ease, filter 0.24s ease, box-shadow 0.24s ease;
+  color: var(--bg-color);
+  background: var(--text-primary);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-cta:hover {
   transform: translateY(-2px);
-  filter: brightness(1.06);
-  box-shadow: 0 18px 40px -16px rgba(79, 125, 255, 0.8);
+  opacity: 0.9;
 }
 
 .reveal {
