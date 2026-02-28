@@ -190,8 +190,6 @@ function App() {
           </div>
         </section>
 
-        </section>
-
         <section id="pricing" className="reveal py-10 md:py-16">
           <h2 className="section-title">{t.pricing.title}</h2>
           <p className="mb-5 text-sm uppercase tracking-[0.14em] text-[var(--text-secondary)]">{t.pricing.subtitle}</p>
