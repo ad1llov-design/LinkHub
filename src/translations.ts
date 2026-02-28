@@ -57,11 +57,14 @@ type Locale = {
   guarantees: { title: string; items: string[] };
   audience: { title: string; items: string[] };
   technologies: { title: string; items: string[] };
+  antiPortfolio: { label: string; title: string; items: string[]; closing: string };
+  calculator: { title: string; text: string; button: string };
   consult: { title: string; text: string; button: string };
   contacts: {
     title: string;
-    text: string;
-    form: { name: string; contact: string; message: string; submit: string };
+    description: string;
+    form: { name: string; contact: string; submit: string };
+    socialText: string;
   };
   footer: string;
 };
@@ -267,15 +270,27 @@ export const translations: Record<Lang, Locale> = {
       title: 'Используемые технологии',
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
+    antiPortfolio: {
+      label: 'Не сотрудничаем',
+      title: 'Мы категорически не работаем с тем, что связано:',
+      items: ['алкоголь', 'табак', 'сетевой маркетинг', 'финансовые пирамиды', 'микрокредитные компании', 'банки', 'политические партии', 'экстрасенсы, чародеи, маги и т.д.'],
+      closing: 'Благодарим за понимание 👍'
+    },
+    calculator: {
+      title: 'Хотите узнать, сколько будет стоить сайт со скидкой? Пройдите калькулятор!',
+      text: 'Ответьте всего на 10 вопросов и мы рассчитаем вам стоимость и вышлем КП',
+      button: 'Калькулятор цен'
+    },
     consult: {
       title: 'Бесплатная консультация по вашему проекту',
       text: 'Разберем задачу, предложу структуру сайта и план запуска под ваш бюджет.',
       button: 'Получить консультацию',
     },
     contacts: {
-      title: 'Контакты',
-      text: 'Оставьте заявку — отвечу в ближайшее время и предложу оптимальное решение.',
-      form: { name: 'Ваше имя', contact: 'Telegram / WhatsApp / Email', message: 'Кратко о проекте', submit: 'Отправить заявку' },
+      title: 'Есть дополнительные вопросы?',
+      description: 'Оставьте свои контакты и мы перезвоним Вам',
+      form: { name: 'Имя', contact: 'Телефон', submit: 'Перезвоните мне' },
+      socialText: 'Нажмите, чтобы связаться с нами через мессенджеры',
     },
     footer: '© 2026 LinkHUB Studio. Все права защищены.',
   },
@@ -479,15 +494,27 @@ export const translations: Record<Lang, Locale> = {
       title: 'Tech stack',
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
+    antiPortfolio: {
+      label: 'We do not work with',
+      title: 'We strictly do not collaborate with projects related to:',
+      items: ['alcohol', 'tobacco', 'network marketing', 'pyramid schemes', 'microcredit loops', 'banks', 'political parties', 'psychics, fortune-tellers, mages, etc.'],
+      closing: 'Thank you for understanding 👍'
+    },
+    calculator: {
+      title: 'Want to know how much your website will cost with a discount? Try the calculator!',
+      text: 'Answer just 10 questions, and we will calculate the cost of your project.',
+      button: 'Price Calculator'
+    },
     consult: {
       title: 'Free consultation for your project',
       text: 'We will review your task and prepare a site structure plus launch plan for your budget.',
       button: 'Get consultation',
     },
     contacts: {
-      title: 'Contact',
-      text: 'Send a request and I will reply shortly with the best implementation option.',
-      form: { name: 'Your name', contact: 'Telegram / WhatsApp / Email', message: 'Project details', submit: 'Send request' },
+      title: 'Have additional questions?',
+      description: 'Leave your contacts, and we will call you back',
+      form: { name: 'Name', contact: 'Phone', submit: 'Call me back' },
+      socialText: 'Click to reach us via messengers',
     },
     footer: '© 2026 LinkHUB Studio. All rights reserved.',
   },
@@ -691,15 +718,27 @@ export const translations: Record<Lang, Locale> = {
       title: 'Колдонулган технологиялар',
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
+    antiPortfolio: {
+      label: 'Биз кызматташпайбыз',
+      title: 'Биз төмөнкү багыттар менен такыр иштебейбиз:',
+      items: ['алкоголь', 'тамеки', 'тармак маркетинги (сетевой)', 'финансы пирамидасы', 'микрокредиттик компаниялар', 'банктар', 'саясий партиялар', 'көз ачыктар, сыйкырчылар ж.б.'],
+      closing: 'Түшүнгөнүңүз үчүн чоң рахмат 👍'
+    },
+    calculator: {
+      title: 'Сайттын баасын арзандатуу менен билгиңиз келеби? Калькулятордон өтүңүз!',
+      text: 'Болгону 10 суроого жооп берип, баасын эсептеп беребиз',
+      button: 'Баа эсептөөчү калькулятор'
+    },
     consult: {
       title: 'Долбооруңуз боюнча акысыз консультация',
       text: 'Маселени талдап, бюджетиңизге ылайык сайт структурасы жана ишке киргизүү планын сунуштайм.',
       button: 'Консультация алуу',
     },
     contacts: {
-      title: 'Байланыш',
-      text: 'Заявка калтырыңыз — жакын арада жооп берип, оптималдуу чечим сунуштайм.',
-      form: { name: 'Атыңыз', contact: 'Telegram / WhatsApp / Email', message: 'Долбоор жөнүндө кыскача', submit: 'Заявка жөнөтүү' },
+      title: 'Суроолоруңуз барбы?',
+      description: 'Байланыш маалыматтарыңызды калтырыңыз, биз сизге чалабыз',
+      form: { name: 'Атыңыз', contact: 'Телефон номериңиз', submit: 'Мага чалыңыз' },
+      socialText: 'Мессенджер аркылуу байланышуу үчүн төмөнкүнү басыңыз',
     },
     footer: '© 2026 LinkHUB Studio. Бардык укуктар корголгон.',
   },

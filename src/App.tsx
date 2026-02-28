@@ -9,7 +9,7 @@ import {
   Send,
   MessageCircle,
   Mail,
-  Code2,
+  Lock,
   ShieldCheck,
   Rocket,
   Layers3,
@@ -27,7 +27,7 @@ import {
 } from 'react-icons/si';
 import { DottedSurface } from './components/ui/dotted-surface';
 import { SplineSceneBasic } from './components/ui/demo';
-import { Pricing, PricingPlan } from './components/blocks/pricing';
+import { Pricing } from './components/blocks/pricing';
 import { TestimonialsSection } from './components/blocks/testimonials-with-marquee';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
@@ -88,29 +88,6 @@ function App() {
   }, [lang]);
 
   const navAnchors = useMemo(() => ['#hero', '#services', '#pricing', '#portfolio', '#contacts'], []);
-
-  const pricingPlans: PricingPlan[] = useMemo(() => {
-    return t.pricing.columns.map((col, index) => {
-      const isPopular = index === 1;
-      const priceStr = t.pricing.rows[t.pricing.rows.length - 1].values[index];
-      const monthlyPriceNum = parseInt(priceStr.replace(/\D/g, ''), 10) || 0;
-      const yearlyPriceNum = Math.floor(monthlyPriceNum * 0.8); // 20% discount
-
-      const features = t.pricing.rows.slice(0, -1).map(row => `${row.feature}: ${row.values[index]}`);
-
-      return {
-        name: col,
-        price: monthlyPriceNum.toString(),
-        yearlyPrice: yearlyPriceNum.toString(),
-        period: '', // Empty as the design manages the period at the component top layer
-        features: features,
-        description: '', // You can add custom descriptions per plan if needed
-        buttonText: t.consult.button,
-        href: '#contacts',
-        isPopular: isPopular,
-      };
-    });
-  }, [t]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-primary)]">
@@ -205,17 +182,6 @@ function App() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section id="pricing">
-          <Pricing 
-            plans={pricingPlans} 
-            title={t.pricing.title} 
-            description={t.pricing.description}
-            annualBillingText={t.pricing.annualBillingText}
-            saveText={t.pricing.saveText}
-            popularBadgeText={t.pricing.popularBadgeText}
-          />
         </section>
 
         <section id="portfolio" className="py-10 md:py-16">
@@ -372,6 +338,78 @@ function App() {
           </div>
         </section>
 
+        <Pricing
+          title={t.pricing.title}
+          description={t.pricing.description}
+          annualBillingText={t.pricing.annualBillingText}
+          saveText={t.pricing.saveText}
+          popularBadgeText={t.pricing.popularBadgeText}
+          plans={[
+            {
+              name: t.pricing.columns[0],
+              price: t.pricing.rows[6].values[0],
+              yearlyPrice: String(Number(t.pricing.rows[6].values[0]) * 0.8),
+              period: "per project",
+              features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[0]}`),
+              description: "Complete solution for standard requirements.",
+              buttonText: t.hero.ctaPrimary,
+              href: "#contacts",
+              isPopular: false,
+            },
+            {
+              name: t.pricing.columns[1],
+              price: t.pricing.rows[6].values[1],
+              yearlyPrice: String(Number(t.pricing.rows[6].values[1]) * 0.8),
+              period: "per project",
+              features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[1]}`),
+              description: "Optimal balance of cost and features.",
+              buttonText: t.hero.ctaPrimary,
+              href: "#contacts",
+              isPopular: true,
+            },
+            {
+              name: t.pricing.columns[2],
+              price: t.pricing.rows[6].values[2],
+              yearlyPrice: String(Number(t.pricing.rows[6].values[2]) * 0.8),
+              period: "per project",
+              features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[2]}`),
+              description: "Maximum capabilities for complex projects.",
+              buttonText: t.hero.ctaPrimary,
+              href: "#contacts",
+              isPopular: false,
+            }
+          ]}
+        />
+
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal text-red-500 flex items-center gap-3">
+            {t.antiPortfolio.label}
+          </h2>
+          <div className="card-premium reveal p-6 md:p-8 flex flex-col gap-5 border-l-4 border-l-red-500 overflow-hidden relative">
+            <Lock className="absolute -right-6 -bottom-6 opacity-5 w-48 h-48 pointer-events-none" />
+            <h3 className="text-xl md:text-2xl font-bold">{t.antiPortfolio.title}</h3>
+            <div className="flex flex-wrap gap-3">
+              {t.antiPortfolio.items.map((item) => (
+                <div key={item} className="bg-red-500/10 text-red-500 px-4 py-2 rounded-lg font-medium text-sm border border-red-500/20">
+                  {item}
+                </div>
+              ))}
+            </div>
+            <p className="font-medium mt-2">{t.antiPortfolio.closing}</p>
+          </div>
+        </section>
+
+        <section className="py-10 md:py-16 text-center flex flex-col items-center">
+          <h2 className="text-3xl md:text-4xl font-bold max-w-2xl reveal">{t.calculator.title}</h2>
+          <p className="mt-4 text-[var(--text-secondary)] max-w-xl reveal">{t.calculator.text}</p>
+          <a
+            href="#contacts"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 px-8 py-4 font-bold text-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)] reveal"
+          >
+            {t.calculator.button}
+          </a>
+        </section>
+
         <section className="py-10 md:py-16">
           <div className="card-premium reveal p-8 md:p-10 border border-[var(--text-secondary)]">
             <h2 className="text-3xl font-semibold md:text-4xl">{t.consult.title}</h2>
@@ -387,33 +425,29 @@ function App() {
         </section>
 
         <section id="contacts" className="py-10 md:py-16">
-          <h2 className="section-title reveal">{t.contacts.title}</h2>
-          <div className="grid gap-5 md:grid-cols-2">
-            <div className="card-premium reveal p-6">
-              <p className="mb-5 text-[var(--text-secondary)]">{t.contacts.text}</p>
-              <form className="space-y-3">
-                <input className="field" placeholder={t.contacts.form.name} />
-                <input className="field" placeholder={t.contacts.form.contact} />
-                <textarea className="field min-h-[120px]" placeholder={t.contacts.form.message} />
-                <button type="button" className="btn-cta inline-flex items-center gap-2 rounded-xl px-5 py-2.5 font-medium">
-                  {t.contacts.form.submit}
-                </button>
-              </form>
-            </div>
+          <div className="card-premium reveal max-w-3xl mx-auto p-8 md:p-12 text-center bg-gradient-to-b from-[var(--glass-bg)] to-indigo-900/10 border-indigo-500/20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.contacts.title}</h2>
+            <p className="text-[var(--text-secondary)] mb-8 text-lg">{t.contacts.description}</p>
+            
+            <form className="max-w-md mx-auto space-y-4 mb-10">
+              <input className="field text-center py-4 rounded-full" placeholder={t.contacts.form.name} />
+              <input className="field text-center py-4 rounded-full" placeholder={t.contacts.form.contact} />
+              <button type="button" className="w-full inline-flex justify-center items-center gap-2 rounded-full border border-[var(--border-color)] bg-transparent hover:bg-white/5 transition-colors px-5 py-4 font-bold text-lg mt-2">
+                {t.contacts.form.submit}
+              </button>
+            </form>
 
-            <div className="grid gap-3">
-              <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="card-premium reveal flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
-                <Send size={18} /> Telegram
+            <p className="mt-8 text-sm text-[var(--text-secondary)] mb-4">{t.contacts.socialText}</p>
+            <div className="flex justify-center flex-wrap gap-4">
+              <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] hover:-translate-y-1 transition-transform">
+                <Send size={20} />
               </a>
-              <a href="https://wa.me/+996557555058" target="_blank" rel="noopener noreferrer" className="card-premium reveal flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
-                <MessageCircle size={18} /> WhatsApp
+              <a href="https://wa.me/+996557555058" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] hover:-translate-y-1 transition-transform bg-gradient-to-br from-green-500/20 to-green-600/10">
+                <MessageCircle size={20} />
               </a>
-              <a href="mailto:hello@linkhub.dev" className="card-premium reveal flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
-                <Mail size={18} /> hello@linkhub.dev
+              <a href="mailto:hello@linkhub.dev" className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] hover:-translate-y-1 transition-transform">
+                <Mail size={20} />
               </a>
-              <div className="card-premium reveal flex items-center gap-3 p-5">
-                <Code2 size={18} /> React / Next.js / WordPress / Headless CMS
-              </div>
             </div>
           </div>
         </section>
