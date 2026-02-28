@@ -1,6 +1,6 @@
 export type Lang = 'ru' | 'en' | 'kg';
 
-type Locale = {
+export type Locale = {
   brand: string;
   nav: string[];
   hero: {

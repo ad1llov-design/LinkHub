@@ -31,12 +31,48 @@ import { Pricing } from './components/blocks/pricing';
 import { TestimonialsSection } from './components/blocks/testimonials-with-marquee';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import CalculatorPage from './pages/CalculatorPage';
 
 function App() {
   const [lang, setLang] = useState<Lang>('ru');
+  const [formData, setFormData] = useState({ name: '', phone: '' });
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const { resolvedTheme, setTheme } = useTheme();
   const isLight = resolvedTheme === 'light';
   const t = translations[lang];
+  const location = useLocation();
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) return;
+    setFormStatus('loading');
+    
+    // NOTE: Hardcoding token here is unsafe for production, but done via requirement.
+    // Replace YOUR_TELEGRAM_BOT_TOKEN_HERE / CHAT_ID
+    const botToken = 'YOUR_TELEGRAM_BOT_TOKEN_HERE';
+    const chatId = 'YOUR_TELEGRAM_CHAT_ID_HERE';
+    const msgTemplate = `🔥 Новая заявка с сайта:\n\n👤 Имя: ${formData.name}\n📞 Контакт: ${formData.phone}`;
+    
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: msgTemplate }),
+      });
+      
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({ name: '', phone: '' });
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+      }
+    } catch (err) {
+      setFormStatus('error');
+    }
+  };
+
   const processDescriptions: Record<Lang, string[]> = {
     ru: [
       'Оставляете заявку, фиксируем цели и KPI.',
@@ -135,7 +171,10 @@ function App() {
       </header>
 
       <main className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        <section id="hero" className="relative min-h-[92vh] overflow-hidden py-14 md:py-24">
+        <Routes>
+          <Route path="/" element={
+            <>
+              <section id="hero" className="relative min-h-[92vh] overflow-hidden py-14 md:py-24">
           <div className="absolute right-[-28%] top-[-10%] h-[72vh] w-[72vw] md:right-[-8%] md:top-[2%] md:h-[86vh] md:w-[52vw] hero-robot">
             <SplineSceneBasic />
           </div>
@@ -177,7 +216,7 @@ function App() {
           <div className="grid gap-4 md:grid-cols-2">
             {t.about.cards.map((card) => (
               <article key={card.title} className="card-premium reveal p-6 flex flex-col justify-center">
-                <h3 className="mb-3 text-xl font-semibold">{card.title}</h3>
+                <h3 className="mb-3 text-xl font-medium">{card.title}</h3>
                 <p className="text-[var(--text-secondary)]">{card.text}</p>
               </article>
             ))}
@@ -219,7 +258,7 @@ function App() {
                 <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
                   <ShieldCheck className="text-emerald-500" size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-[var(--text-primary)] relative z-10 leading-snug max-w-[80%]">
+                <h3 className="text-xl font-medium text-[var(--text-primary)] relative z-10 leading-snug max-w-[80%]">
                   {item}
                 </h3>
               </div>
@@ -237,7 +276,7 @@ function App() {
                   {idx + 1}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 text-[var(--text-primary)]">{step}</h3>
+                  <h3 className="text-xl font-medium mb-2 text-[var(--text-primary)]">{step}</h3>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{processDescriptions[lang][idx]}</p>
                 </div>
               </div>
@@ -290,7 +329,7 @@ function App() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.cases.items.map((caseItem) => (
               <article key={caseItem.name} className="card-premium reveal p-6 border-t-4 border-t-sky-500">
-                <h3 className="text-xl font-semibold mb-6">{caseItem.name}</h3>
+                <h3 className="text-xl font-medium mb-6">{caseItem.name}</h3>
                 <ul className="grid gap-3">
                   {caseItem.metrics.map((metric) => (
                     <li key={metric} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
@@ -348,7 +387,7 @@ function App() {
                   {/* Just an icon or initial */}
                   <CheckCircle2 size={24} />
                 </div>
-                <h3 className="font-semibold text-lg">{item.title}</h3>
+                <h3 className="font-medium text-lg">{item.title}</h3>
                 <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.text}</p>
               </div>
             ))}
@@ -445,13 +484,13 @@ function App() {
           <div className="card-premium reveal p-8 md:p-12 text-center flex flex-col items-center border border-emerald-500/20 bg-gradient-to-b from-[var(--glass-bg)] to-emerald-900/10">
             <h2 className="text-3xl md:text-4xl font-bold max-w-2xl">{t.calculator.title}</h2>
             <p className="mt-4 text-[var(--text-secondary)] max-w-xl text-lg">{t.calculator.text}</p>
-            <a
-              href="#contacts"
+            <Link
+              to="/calculator"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 px-10 py-5 font-bold text-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
             >
               {t.calculator.button}
               <ArrowRight size={20} />
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -460,12 +499,31 @@ function App() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.contacts.title}</h2>
             <p className="text-[var(--text-secondary)] mb-8 text-lg">{t.contacts.description}</p>
             
-            <form className="max-w-md mx-auto space-y-4 mb-10">
-              <input className="field text-center py-4 rounded-full" placeholder={t.contacts.form.name} />
-              <input className="field text-center py-4 rounded-full" placeholder={t.contacts.form.contact} />
-              <button type="button" className="w-full inline-flex justify-center items-center gap-2 rounded-full border border-[var(--border-color)] bg-transparent hover:bg-white/5 transition-colors px-5 py-4 font-bold text-lg mt-2">
-                {t.contacts.form.submit}
+            <form onSubmit={handleFormSubmit} className="max-w-md mx-auto space-y-4 mb-10">
+              <input 
+                required
+                value={formData.name}
+                onChange={e => setFormData({...formData, name: e.target.value})}
+                className="field text-center py-4 rounded-full w-full bg-[var(--card-bg)] border border-[var(--border-color)] px-4 focus:border-emerald-500 focus:outline-none transition-colors" 
+                placeholder={t.contacts.form.name} 
+              />
+              <input 
+                required
+                value={formData.phone}
+                onChange={e => setFormData({...formData, phone: e.target.value})}
+                className="field text-center py-4 rounded-full w-full bg-[var(--card-bg)] border border-[var(--border-color)] px-4 focus:border-emerald-500 focus:outline-none transition-colors" 
+                placeholder={t.contacts.form.contact} 
+              />
+              <button 
+                type="submit" 
+                disabled={formStatus === 'loading' || formStatus === 'success'}
+                className="w-full inline-flex justify-center items-center gap-2 rounded-full border border-[var(--border-color)] bg-transparent hover:bg-white/5 transition-colors px-5 py-4 font-bold text-lg mt-2 disabled:opacity-50"
+              >
+                {formStatus === 'loading' ? 'Отправка...' : formStatus === 'success' ? 'Отправлено! 🎉' : t.contacts.form.submit}
               </button>
+              {formStatus === 'error' && (
+                <p className="text-red-500 text-sm mt-2">Ошибка при отправке. Пожалуйста, напишите нам в мессенджеры.</p>
+              )}
             </form>
 
             <p className="mt-8 text-sm text-[var(--text-secondary)] mb-4">{t.contacts.socialText}</p>
@@ -482,9 +540,16 @@ function App() {
             </div>
           </div>
         </section>
+            </>
+          } />
+          <Route path="/calculator" element={<CalculatorPage t={t} />} />
+        </Routes>
       </main>
 
-      <footer className="bg-black text-white py-16 mt-16 border-t border-white/10 relative z-[100]">
+      {/* Conditionally render footer only if we are not taking up screen size, 
+          or just render it always. I will keep it globally accessible. */}
+      {location.pathname !== '/calculator' && (
+        <footer className="bg-black text-white py-16 mt-16 border-t border-white/10 relative z-[100]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Column 1: Brand Info */}
@@ -568,6 +633,7 @@ function App() {
           </div>
         </div>
       </footer>
+      )}
     </div>
   );
 }
