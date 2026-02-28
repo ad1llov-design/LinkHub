@@ -51,7 +51,7 @@ type Locale = {
   };
   testimonials: {
     title: string;
-    items: { author: string; role: string; text: string }[];
+    items: { author: { name: string; handle: string; avatar: string }; text: string }[];
   };
   faq: { title: string; items: { q: string; a: string }[] };
   guarantees: { title: string; items: string[] };
@@ -214,18 +214,27 @@ export const translations: Record<Lang, Locale> = {
       title: 'Отзывы клиентов',
       items: [
         {
-          author: 'Александр Р.',
-          role: 'CEO, FinTech стартап',
+          author: {
+            name: 'Александр Р.',
+            handle: '@aleks_fin',
+            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+          },
           text: 'Получили сайт уровня digital-агентства. Всё точно по срокам, а заявки пошли уже в первую неделю.',
         },
         {
-          author: 'Мария К.',
-          role: 'Маркетолог, онлайн-школа',
+          author: {
+            name: 'Мария К.',
+            handle: '@maria_edtech',
+            avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
+          },
           text: 'Сильный UX и грамотная структура. Реклама стала окупаться быстрее, чем на старом сайте.',
         },
         {
-          author: 'Данияр С.',
-          role: 'Основатель eCommerce бренда',
+          author: {
+            name: 'Данияр С.',
+            handle: '@daniyar_ecom',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
+          },
           text: 'Очень аккуратная работа: дизайн, код и аналитика. Видно профессиональный системный подход.',
         },
       ],
@@ -417,19 +426,28 @@ export const translations: Record<Lang, Locale> = {
       title: 'Client testimonials',
       items: [
         {
-          author: 'Alexander R.',
-          role: 'CEO, FinTech startup',
-          text: 'We got an agency-level website. Everything was on time, and leads started coming in during the first week.',
+          author: {
+            name: 'Alexander R.',
+            handle: '@aleks_fin',
+            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+          },
+          text: 'We got a digital agency-level website. Everything was on time, and leads started coming in the very first week.',
         },
         {
-          author: 'Maria K.',
-          role: 'Marketer, online school',
-          text: 'Strong UX and clear structure. Ads began paying off faster than with our old site.',
+          author: {
+            name: 'Maria K.',
+            handle: '@maria_edtech',
+            avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
+          },
+          text: 'Strong UX and logical structure. Advertising started paying off faster than with the old site.',
         },
         {
-          author: 'Daniyar S.',
-          role: 'Founder, eCommerce brand',
-          text: 'Very accurate work: design, code, and analytics. A truly professional systematic approach.',
+          author: {
+            name: 'Daniyar S.',
+            handle: '@daniyar_ecom',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
+          },
+          text: 'Very accurate work: design, code, and analytics. A professional, systematic approach is evident.',
         },
       ],
     },
@@ -620,19 +638,28 @@ export const translations: Record<Lang, Locale> = {
       title: 'Кардарлардын пикирлери',
       items: [
         {
-          author: 'Александр Р.',
-          role: 'CEO, FinTech стартап',
-          text: 'Digital-агенттик деңгээлдеги сайт алдык. Мөөнөт так сакталды, биринчи жумада эле заявкалар келди.',
+          author: {
+            name: 'Александр Р.',
+            handle: '@aleks_fin',
+            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+          },
+          text: 'Digital-агентство деңгээлиндеги сайт алдык. Баары өз убагында болду, биринчи жумада эле кардарлар келе баштады.',
         },
         {
-          author: 'Мария К.',
-          role: 'Маркетолог, онлайн-мектеп',
-          text: 'UX күчтүү жана структурасы так. Эски сайтка салыштырмалуу жарнама тезирээк актала баштады.',
+          author: {
+            name: 'Мария К.',
+            handle: '@maria_edtech',
+            avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
+          },
+          text: 'Мыкты UX жана туура структура. Жарнама эски сайтка караганда тезирээк актай баштады.',
         },
         {
-          author: 'Данияр С.',
-          role: 'eCommerce бренд негиздөөчү',
-          text: 'Дизайн, код жана аналитика өтө так жасалган. Чыныгы профессионал системалык ыкма.',
+          author: {
+            name: 'Данияр С.',
+            handle: '@daniyar_ecom',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
+          },
+          text: 'Аябай так иш: дизайн, код жана аналитика. Профессионалдык системалуу мамиле байкалып турат.',
         },
       ],
     },

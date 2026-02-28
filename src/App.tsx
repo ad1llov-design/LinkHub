@@ -12,7 +12,6 @@ import {
   Code2,
   ShieldCheck,
   Rocket,
-  Star,
   Layers3,
 } from 'lucide-react';
 import { 
@@ -29,6 +28,7 @@ import {
 import { DottedSurface } from './components/ui/dotted-surface';
 import { SplineSceneBasic } from './components/ui/demo';
 import { Pricing, PricingPlan } from './components/blocks/pricing';
+import { TestimonialsSection } from './components/blocks/testimonials-with-marquee';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
 
@@ -301,23 +301,10 @@ function App() {
           </div>
         </section>
 
-        <section className="py-10 md:py-16">
-          <h2 className="section-title reveal">{t.testimonials.title}</h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {t.testimonials.items.map((review) => (
-              <article key={review.author} className="card-premium reveal p-6">
-                <div className="mb-3 flex gap-1 text-amber-400">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={`${review.author}-${i}`} size={15} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-sm text-[var(--text-secondary)]">“{review.text}”</p>
-                <p className="mt-5 font-semibold">{review.author}</p>
-                <p className="text-xs text-[var(--text-secondary)]">{review.role}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+        <TestimonialsSection 
+          title={t.testimonials.title}
+          testimonials={t.testimonials.items}
+        />
 
         <section className="py-10 md:py-16">
           <h2 className="section-title reveal">{t.faq.title}</h2>
