@@ -73,10 +73,13 @@ function App() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
+          } else {
+            // Only remove if it's scrolling out of view (going below viewport or above)
+            entry.target.classList.remove('active');
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
     );
 
     const nodes = document.querySelectorAll('.reveal');
@@ -192,11 +195,11 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16" id="about">
-          <h2 className="section-title">{t.about.title}</h2>
+        <section className="py-10 md:py-16" id="about">
+          <h2 className="section-title reveal">{t.about.title}</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {t.about.cards.map((card) => (
-              <article key={card.title} className="card-premium p-6">
+              <article key={card.title} className="card-premium reveal p-6">
                 <h3 className="mb-3 text-xl font-semibold">{card.title}</h3>
                 <p className="text-[var(--text-secondary)]">{card.text}</p>
               </article>
@@ -215,8 +218,8 @@ function App() {
           />
         </section>
 
-        <section id="portfolio" className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.portfolio.title}</h2>
+        <section id="portfolio" className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.portfolio.title}</h2>
           <div className="grid gap-5 md:grid-cols-2">
             {t.portfolio.items.map((item) => (
               <a
@@ -224,7 +227,7 @@ function App() {
                 href={item.image}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="portfolio-card card-premium group overflow-hidden"
+                className="portfolio-card card-premium reveal group overflow-hidden"
               >
                 <div className="h-56 w-full bg-cover bg-center" style={{ backgroundImage: `url(${item.image})` }} />
                 <div className="space-y-2 p-5">
@@ -239,11 +242,11 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.why.title}</h2>
-          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.why.title}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.why.items.map((item) => (
-              <div key={item} className="card-premium flex items-start flex-col gap-3 p-6 min-w-[280px] w-[280px] shrink-0 snap-start relative overflow-hidden group">
+              <div key={item} className="card-premium reveal flex items-start flex-col gap-3 p-6 relative overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 mb-2">
                   <ShieldCheck size={20} className="text-emerald-500" />
@@ -254,37 +257,41 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.process.title}</h2>
-          <div className="flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar relative">
-            {/* Connecting Line */}
-            <div className="absolute top-10 left-0 w-[200%] h-0.5 bg-[var(--border-color)] -z-10" />
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.process.title}</h2>
+          <div className="max-w-3xl mx-auto flex flex-col gap-6 relative">
             {t.process.steps.map((step, idx) => (
-              <div key={step} className="card-premium p-6 min-w-[300px] w-[300px] shrink-0 snap-start flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-8 h-8 rounded-full bg-[var(--text-primary)] text-[var(--bg-color)] flex items-center justify-center font-bold text-sm ring-4 ring-[var(--bg-color)]">
-                      {idx + 1}
-                    </div>
-                    <h3 className="text-xl font-semibold">{step}</h3>
+              <div key={step} className="flex flex-col items-center group reveal">
+                <div className="card-premium p-6 md:p-8 w-full flex flex-col sm:flex-row gap-6 items-center text-center sm:text-left z-10 transition hover:-translate-y-1">
+                  <div className="w-14 h-14 shrink-0 rounded-full bg-[var(--text-primary)] text-[var(--bg-color)] flex items-center justify-center font-bold text-xl ring-8 ring-[var(--bg-color)]">
+                    {idx + 1}
                   </div>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{processDescriptions[lang][idx]}</p>
+                  <div>
+                    <h3 className="text-xl font-semibold">{step}</h3>
+                    <p className="text-sm md:text-base text-[var(--text-secondary)] mt-2 leading-relaxed">{processDescriptions[lang][idx]}</p>
+                  </div>
                 </div>
+                {/* Arrow pointing down to next step, except for the last one */}
+                {idx < t.process.steps.length - 1 && (
+                  <div className="h-10 w-0.5 bg-[var(--border-color)] my-2 relative transition-all group-hover:bg-emerald-500/50">
+                    <div className="absolute -bottom-2 -left-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[var(--border-color)] group-hover:border-t-emerald-500/50 transition-all" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.cases.title}</h2>
-          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.cases.title}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.cases.items.map((caseItem) => (
-              <article key={caseItem.name} className="card-premium p-8 min-w-[320px] w-[320px] shrink-0 snap-start border-t-4 border-t-sky-500">
+              <article key={caseItem.name} className="card-premium reveal p-6 border-t-4 border-t-sky-500">
                 <h3 className="text-xl font-semibold mb-6">{caseItem.name}</h3>
                 <ul className="grid gap-3">
                   {caseItem.metrics.map((metric) => (
                     <li key={metric} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
-                      <Rocket size={16} className="text-sky-500 mt-0.5" />
+                      <Rocket size={16} className="text-sky-500 mt-0.5 shrink-0" />
                       <span className="leading-tight">{metric}</span>
                     </li>
                   ))}
@@ -294,11 +301,11 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.testimonials.title}</h2>
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.testimonials.title}</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {t.testimonials.items.map((review) => (
-              <article key={review.author} className="card-premium p-6">
+              <article key={review.author} className="card-premium reveal p-6">
                 <div className="mb-3 flex gap-1 text-amber-400">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={`${review.author}-${i}`} size={15} fill="currentColor" />
@@ -312,9 +319,9 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.faq.title}</h2>
-          <div className="card-premium p-6 md:p-8">
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.faq.title}</h2>
+          <div className="card-premium reveal p-6 md:p-8">
             <Accordion type="single" collapsible className="w-full">
               {t.faq.items.map((item, i) => (
                 <AccordionItem key={item.q} value={`item-${i}`} className={i === t.faq.items.length - 1 ? "border-b-0" : ""}>
@@ -328,11 +335,11 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.guarantees.title}</h2>
-          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.guarantees.title}</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
             {t.guarantees.items.map((item) => (
-              <div key={item} className="card-premium p-6 min-w-[280px] w-[280px] shrink-0 snap-start flex flex-col gap-3">
+              <div key={item} className="card-premium reveal p-6 flex flex-col gap-3">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/10 shrink-0">
                   <CheckCircle2 size={24} className="text-emerald-500" />
                 </div>
@@ -342,20 +349,20 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.audience.title}</h2>
-          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.audience.title}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.audience.items.map((item) => (
-              <div key={item} className="card-premium p-6 min-w-[260px] w-[260px] shrink-0 snap-start flex items-center justify-center text-center">
+              <div key={item} className="card-premium reveal p-6 flex items-center justify-center text-center">
                 <div className="font-medium">{item}</div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.technologies.title}</h2>
-          <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+        <section className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.technologies.title}</h2>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
             {t.technologies.items.map((tech) => {
               let Icon: any = Layers3;
               if (tech.includes('React')) Icon = SiReact;
@@ -369,7 +376,7 @@ function App() {
               if (tech.includes('Framer')) Icon = SiFramer;
 
               return (
-                <div key={tech} className="card-premium flex items-center justify-center gap-3 p-6 min-w-[200px] w-[200px] shrink-0 snap-start text-sm font-medium transition hover:scale-105">
+                <div key={tech} className="card-premium reveal flex items-center justify-center gap-3 py-4 px-6 md:px-8 text-sm md:text-base font-medium transition hover:-translate-y-1">
                   <Icon size={24} className="opacity-80 group-hover:opacity-100 transition-opacity" />
                   <span>{tech}</span>
                 </div>
@@ -378,8 +385,8 @@ function App() {
           </div>
         </section>
 
-        <section className="reveal py-10 md:py-16">
-          <div className="card-premium p-8 md:p-10 border border-[var(--text-secondary)]">
+        <section className="py-10 md:py-16">
+          <div className="card-premium reveal p-8 md:p-10 border border-[var(--text-secondary)]">
             <h2 className="text-3xl font-semibold md:text-4xl">{t.consult.title}</h2>
             <p className="mt-3 max-w-3xl text-[var(--text-secondary)]">{t.consult.text}</p>
             <a
@@ -392,10 +399,10 @@ function App() {
           </div>
         </section>
 
-        <section id="contacts" className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.contacts.title}</h2>
+        <section id="contacts" className="py-10 md:py-16">
+          <h2 className="section-title reveal">{t.contacts.title}</h2>
           <div className="grid gap-5 md:grid-cols-2">
-            <div className="card-premium p-6">
+            <div className="card-premium reveal p-6">
               <p className="mb-5 text-[var(--text-secondary)]">{t.contacts.text}</p>
               <form className="space-y-3">
                 <input className="field" placeholder={t.contacts.form.name} />
@@ -408,16 +415,16 @@ function App() {
             </div>
 
             <div className="grid gap-3">
-              <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="card-premium flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
+              <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="card-premium reveal flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
                 <Send size={18} /> Telegram
               </a>
-              <a href="https://wa.me/+996557555058" target="_blank" rel="noopener noreferrer" className="card-premium flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
+              <a href="https://wa.me/+996557555058" target="_blank" rel="noopener noreferrer" className="card-premium reveal flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
                 <MessageCircle size={18} /> WhatsApp
               </a>
-              <a href="mailto:hello@linkhub.dev" className="card-premium flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
+              <a href="mailto:hello@linkhub.dev" className="card-premium reveal flex items-center gap-3 p-5 transition hover:-translate-y-0.5">
                 <Mail size={18} /> hello@linkhub.dev
               </a>
-              <div className="card-premium flex items-center gap-3 p-5">
+              <div className="card-premium reveal flex items-center gap-3 p-5">
                 <Code2 size={18} /> React / Next.js / WordPress / Headless CMS
               </div>
             </div>

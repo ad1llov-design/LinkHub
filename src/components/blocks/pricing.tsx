@@ -111,7 +111,7 @@ export function Pricing({
                   }
                 : {}
             }
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{
               duration: 1.6,
               type: "spring",
@@ -122,7 +122,7 @@ export function Pricing({
             }}
             className={cn(
               `rounded-2xl border-[1px] p-8 text-center lg:flex lg:flex-col lg:justify-center relative bg-[var(--card-bg)] text-[var(--text-primary)] transition-all duration-300`,
-              plan.isPopular ? "border-[var(--text-primary)] border-2 shadow-2xl" : "border-[var(--border-color)]",
+              plan.isPopular ? "border-[var(--text-primary)] border-2" : "border-[var(--border-color)]",
               "flex flex-col",
               !plan.isPopular && "mt-5",
               index === 0 || index === 2
@@ -188,7 +188,7 @@ export function Pricing({
                   "mt-auto group relative w-full gap-2 overflow-hidden text-sm font-semibold tracking-wide py-3 px-4 rounded-xl",
                   "transform-gpu ring-offset-current transition-all duration-300 ease-out",
                   plan.isPopular
-                    ? "bg-[var(--text-primary)] text-[var(--bg-color)] hover:opacity-90 shadow-lg"
+                    ? "bg-[var(--text-primary)] text-[var(--bg-color)] hover:opacity-90"
                     : "bg-[var(--bg-color)] text-[var(--text-primary)] border border-[var(--border-color)] hover:bg-[var(--border-color)]"
                 )}
               >
