@@ -1,271 +1,659 @@
 export type Lang = 'ru' | 'en' | 'kg';
 
-export const translations = {
+type Locale = {
+  brand: string;
+  nav: string[];
+  hero: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    benefits: string[];
+  };
+  about: {
+    title: string;
+    cards: { title: string; text: string }[];
+  };
+  services: {
+    title: string;
+    from: string;
+    includesLabel: string;
+    timelineLabel: string;
+    items: {
+      title: string;
+      description: string;
+      includes: string[];
+      timeline: string;
+      price: string;
+    }[];
+  };
+  pricing: {
+    title: string;
+    subtitle: string;
+    columns: string[];
+    rows: { feature: string; values: string[] }[];
+  };
+  portfolio: {
+    title: string;
+    items: { niche: string; name: string; task: string; done: string; result: string; image: string }[];
+  };
+  why: { title: string; items: string[] };
+  process: { title: string; steps: string[] };
+  cases: {
+    title: string;
+    items: { name: string; metrics: string[] }[];
+  };
+  testimonials: {
+    title: string;
+    items: { author: string; role: string; text: string }[];
+  };
+  faq: { title: string; items: { q: string; a: string }[] };
+  guarantees: { title: string; items: string[] };
+  audience: { title: string; items: string[] };
+  technologies: { title: string; items: string[] };
+  consult: { title: string; text: string; button: string };
+  contacts: {
+    title: string;
+    text: string;
+    form: { name: string; contact: string; message: string; submit: string };
+  };
+  footer: string;
+};
+
+export const translations: Record<Lang, Locale> = {
   ru: {
-    // HERO
-    hero_title: "Adylov Botirzhon",
-    hero_subtitle: "Frontend Developer & UX/UI Designer",
-    hero_desc: "Создаю цифровые продукты, объединяющие эстетику и функциональность. Фокус на минимализме, производительности и удобстве пользователя. Работаю над проектами, которые привлекают внимание и приносят пользу.",
-    
-    // NAVIGATION / SECTIONS
-    nav_about: "Обо мне",
-    nav_works: "Мои работы",
-    nav_process: "Процесс",
-    nav_pricing: "Стоимость",
-    nav_contact: "Контакты",
-
-    // ABOUT
-    about_title: "Обо мне",
-    education_title: "Образование",
-    education_uni: "Ошский государственный университет",
-    education_major: "Программная инженерия",
-    education_course: "UX/UI Продвинутый курс",
-    education_cert: "Google Сертификация",
-    experience_title: "Опыт работы",
-    experience_lead: "Lead Frontend Developer",
-    experience_freelance: "Freelance Web Developer & UX/UI Designer",
-
-    // WORKFLOW
-    workflow_title: "Процесс работы",
-    step_1_title: "Брифинг",
-    step_1_desc: "Знакомимся с вашим бизнесом, целями и аудиторией. Формируем техническое задание.",
-    step_2_title: "Прототип",
-    step_2_desc: "Создаём интерактивный прототип в Figma. Согласовываем каждый экран с вами.",
-    step_3_title: "Разработка",
-    step_3_desc: "Верстаем и программируем. Pixel-perfect, чистый код, адаптивность.",
-    step_4_title: "Запуск",
-    step_4_desc: "Тестируем, оптимизируем и деплоим. Поддерживаем после релиза.",
-
-    // APPROACH
-    approach_title: "Наш подход к дизайну",
-    approach_1_title: "Эстетика",
-    approach_1_desc: "Каждый проект — это визуальное высказывание. Мы создаём дизайн, который запоминается.",
-    approach_2_title: "Системность",
-    approach_2_desc: "Дизайн-система, компоненты, токены. Всё масштабируется легко.",
-    approach_3_title: "Удобство",
-    approach_3_desc: "Не просто красиво — удобно. UX-исследования и юзабилити-тесты.",
-    approach_4_title: "Адаптивность",
-    approach_4_desc: "Mobile-first подход. Идеальный вид на любом устройстве.",
-
-    // PORTFOLIO
-    portfolio_title: "Мои работы",
-    project_fintech: "Мобильный Банкинг",
-    cat_fintech: "Финтех",
-    project_security: "Лендинг Кибербезопасности",
-    cat_startup: "Стартап",
-    project_bureau: "Портфолио Бюро",
-    cat_architecture: "Архитектура",
-    project_ecommerce: "E-Commerce Платформа",
-    cat_webdesign: "Веб-дизайн",
-    project_health: "Трекер Здоровья",
-    cat_mobile: "Мобильное приложение",
-    project_tech: "IT Стартап",
-    cat_branding: "Брендинг",
-    project_crypto: "Крипто Дашборд",
-    cat_landing: "Лендинг",
-    project_saas: "SaaS Платформа",
-    cat_uiux: "UI/UX",
-    project_agency: "Сайт Агентства",
-    cat_corporate: "Корпоративный",
-
-    // TIMELINE
-    timeline_title: "Сроки реализации",
-    days: "рабочих дней",
-    timeline_landing: "Лендинг",
-    timeline_landing_desc: "Одностраничный сайт с анимациями и формой заявки.",
-    timeline_corp: "Корпоративный сайт",
-    timeline_corp_desc: "Многостраничный сайт с CMS и блогом.",
-    timeline_app: "Веб-приложение",
-    timeline_app_desc: "Полноценная SPA/PWA с авторизацией и базой данных.",
-
-    // PRICING
-    pricing_title: "Стоимость",
-    price_start_unit: "Лендинг «‎под ключ»",
-    price_business_unit: "Корпоративный сайт",
-    price_premium_unit: "Веб-приложение / SaaS",
-    btn_order: "Заказать",
-    popular: "Популярный",
-
-    // FOOTER
-    contact_title: "Связаться со мной",
-    copyright: "© 2026 Adylov. Все права защищены."
+    brand: 'LinkHUB Studio',
+    nav: ['Главная', 'Услуги', 'Тарифы', 'Портфолио', 'Контакты'],
+    hero: {
+      badge: 'Премиум веб-разработка',
+      title: 'Создаю сайты, которые продают и усиливают бренд',
+      subtitle:
+        'Лендинги, корпоративные сайты и интернет-магазины с современным дизайном, высокой скоростью и понятной воронкой заявки.',
+      ctaPrimary: 'Обсудить проект',
+      ctaSecondary: 'Посмотреть работы',
+      benefits: ['Запуск от 5 дней', 'Конверсионный UX/UI', 'SEO-ready структура', 'Поддержка после релиза'],
+    },
+    about: {
+      title: 'Обо мне',
+      cards: [
+        { title: 'Кто я', text: 'Веб-разработчик, который совмещает дизайн-мышление, маркетинг и чистую инженерную реализацию.' },
+        { title: 'Мой подход', text: 'Каждый экран проектируется как часть воронки: внимание, доверие, действие.' },
+        { title: 'Чем отличаюсь', text: 'Работаю как digital-студия: стратегия, дизайн, разработка, запуск и аналитика в одном процессе.' },
+        { title: 'Почему доверяют', text: 'Прозрачные сроки, четкие этапы, аргументированные решения и фокус на бизнес-результате.' },
+      ],
+    },
+    services: {
+      title: 'Услуги',
+      from: 'от',
+      includesLabel: 'Что входит',
+      timelineLabel: 'Сроки',
+      items: [
+        {
+          title: 'Лендинг',
+          description: 'Одностраничный сайт для быстрого запуска рекламы и лидогенерации.',
+          includes: ['Анализ ниши', 'Продающая структура', 'Форма заявки', 'Базовое SEO'],
+          timeline: '5-7 дней',
+          price: '$300',
+        },
+        {
+          title: 'Корпоративный сайт',
+          description: 'Многостраничный сайт компании с акцентом на доверие и презентацию услуг.',
+          includes: ['До 10 страниц', 'UI-кит', 'Интеграция аналитики', 'CMS/редактирование'],
+          timeline: '14-20 дней',
+          price: '$800',
+        },
+        {
+          title: 'Интернет-магазин',
+          description: 'E-commerce решение с каталогом, корзиной и удобным сценарием покупки.',
+          includes: ['Каталог и фильтры', 'Карточка товара', 'Оплата/доставка', 'Техоптимизация'],
+          timeline: '20-35 дней',
+          price: '$1200',
+        },
+        {
+          title: 'Дизайн в Figma',
+          description: 'Современный интерфейс с продуманной типографикой и единым стилем бренда.',
+          includes: ['Прототип', 'UI-система', 'Адаптивные экраны', 'Передача в разработку'],
+          timeline: '4-10 дней',
+          price: '$250',
+        },
+        {
+          title: 'Поддержка сайта',
+          description: 'Техническое сопровождение, улучшения и обновления после запуска.',
+          includes: ['Контент-обновления', 'Мониторинг', 'Мелкие доработки', 'Консультации'],
+          timeline: 'ежемесячно',
+          price: '$120',
+        },
+      ],
+    },
+    pricing: {
+      title: 'Тарифы',
+      subtitle: 'Сравнение пакетов',
+      columns: ['Start', 'Business', 'Premium'],
+      rows: [
+        { feature: 'Тип проекта', values: ['Лендинг', 'Корпоративный сайт', 'Сложный продукт / eCommerce'] },
+        { feature: 'Количество страниц', values: ['1', 'до 10', 'индивидуально'] },
+        { feature: 'Уникальный дизайн', values: ['Да', 'Да', 'Да + дизайн-система'] },
+        { feature: 'Анимации и интерактив', values: ['Базовые', 'Расширенные', 'Премиум уровень'] },
+        { feature: 'SEO-оптимизация', values: ['Базовая', 'Расширенная', 'Продвинутая'] },
+        { feature: 'Поддержка после запуска', values: ['7 дней', '30 дней', '90 дней'] },
+        { feature: 'Стоимость', values: ['$300', '$800', '$1500+'] },
+      ],
+    },
+    portfolio: {
+      title: 'Портфолио',
+      items: [
+        {
+          niche: 'FinTech',
+          name: 'Платформа для инвестиций',
+          task: 'Повысить доверие и заявки с платного трафика.',
+          done: 'Новая структура оффера, UI/UX, лендинг на React.',
+          result: '+38% заявок за 30 дней',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'Education',
+          name: 'Онлайн-школа языков',
+          task: 'Упаковать продукт и увеличить запись на пробный урок.',
+          done: 'Редизайн, квиз-форма, скорость загрузки < 2s.',
+          result: '+52% конверсия в заявку',
+          image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'eCommerce',
+          name: 'Магазин электроники',
+          task: 'Снизить отказы и поднять средний чек.',
+          done: 'Новый каталог, фильтры, карточки товара и UX корзины.',
+          result: '+27% средний чек',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'B2B',
+          name: 'Сайт IT-интегратора',
+          task: 'Сделать премиальную презентацию услуг.',
+          done: 'Корпоративный сайт, кейсы, SEO-структура, анимации.',
+          result: 'x2 входящих обращений',
+          image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop',
+        },
+      ],
+    },
+    why: {
+      title: 'Почему выбирают меня',
+      items: [
+        'Фокус на продажах, а не только на визуале',
+        'Чистый и масштабируемый код',
+        'Понятная коммуникация и отчеты по этапам',
+        'Быстрая загрузка и техническая оптимизация',
+        'Современный минималистичный дизайн',
+        'Поддержка и развитие после запуска',
+      ],
+    },
+    process: {
+      title: 'Этапы работы',
+      steps: ['Заявка', 'Брифинг', 'Прототип', 'Дизайн', 'Разработка', 'Тестирование', 'Запуск'],
+    },
+    cases: {
+      title: 'Кейсы и результаты',
+      items: [
+        { name: 'Лендинг B2B-услуг', metrics: ['+41% лидов', '-23% стоимость заявки', 'Срок запуска 6 дней'] },
+        { name: 'Корпоративный сайт', metrics: ['x2 органический трафик', '+34% время на сайте', 'Рост бренд-запросов'] },
+        { name: 'Интернет-магазин', metrics: ['+29% конверсия в корзину', '+18% повторные покупки', '-35% отказов'] },
+      ],
+    },
+    testimonials: {
+      title: 'Отзывы клиентов',
+      items: [
+        {
+          author: 'Александр Р.',
+          role: 'CEO, FinTech стартап',
+          text: 'Получили сайт уровня digital-агентства. Всё точно по срокам, а заявки пошли уже в первую неделю.',
+        },
+        {
+          author: 'Мария К.',
+          role: 'Маркетолог, онлайн-школа',
+          text: 'Сильный UX и грамотная структура. Реклама стала окупаться быстрее, чем на старом сайте.',
+        },
+        {
+          author: 'Данияр С.',
+          role: 'Основатель eCommerce бренда',
+          text: 'Очень аккуратная работа: дизайн, код и аналитика. Видно профессиональный системный подход.',
+        },
+      ],
+    },
+    faq: {
+      title: 'FAQ',
+      items: [
+        { q: 'Сколько стоит сайт?', a: 'Стоимость зависит от задач. Лендинг от $300, корпоративный сайт от $800.' },
+        { q: 'Какие сроки разработки?', a: 'Лендинг: 5-7 дней, корпоративный сайт: 14-20 дней, eCommerce: от 20 дней.' },
+        { q: 'Вы работаете по договору?', a: 'Да, можем оформить договор и зафиксировать этапы, сроки и объем работ.' },
+        { q: 'Можно ли вносить правки?', a: 'Да, в каждом этапе предусмотрены согласования и итерации правок.' },
+        { q: 'Вы делаете SEO?', a: 'Да, базовое SEO включено. При необходимости делаю расширенную SEO-подготовку.' },
+        { q: 'Есть ли поддержка после запуска?', a: 'Да, предоставляю поддержку и развитие сайта по выбранному пакету.' },
+      ],
+    },
+    guarantees: {
+      title: 'Гарантии',
+      items: [
+        'Фиксация сроков и этапов работ до старта',
+        'Прозрачная смета и никаких скрытых платежей',
+        'Передача исходного кода и доступов',
+        'Техническая поддержка после запуска',
+      ],
+    },
+    audience: {
+      title: 'Кому подойдут мои сайты',
+      items: ['Экспертам и личным брендам', 'Малому и среднему бизнесу', 'Digital-агентствам (white-label)', 'Стартапам и IT-продуктам'],
+    },
+    technologies: {
+      title: 'Используемые технологии',
+      items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
+    },
+    consult: {
+      title: 'Бесплатная консультация по вашему проекту',
+      text: 'Разберем задачу, предложу структуру сайта и план запуска под ваш бюджет.',
+      button: 'Получить консультацию',
+    },
+    contacts: {
+      title: 'Контакты',
+      text: 'Оставьте заявку — отвечу в ближайшее время и предложу оптимальное решение.',
+      form: { name: 'Ваше имя', contact: 'Telegram / WhatsApp / Email', message: 'Кратко о проекте', submit: 'Отправить заявку' },
+    },
+    footer: '© 2026 LinkHUB Studio. Все права защищены.',
   },
   en: {
-    // HERO
-    hero_title: "Adylov Botirzhon",
-    hero_subtitle: "Frontend Developer & UX/UI Designer",
-    hero_desc: "Creating digital products that combine aesthetics and functionality. Focused on minimalism, performance, and user experience. Building projects that attract attention and bring value.",
-    
-    // NAVIGATION / SECTIONS
-    nav_about: "About",
-    nav_works: "My Works",
-    nav_process: "Process",
-    nav_pricing: "Pricing",
-    nav_contact: "Contact",
-
-    // ABOUT
-    about_title: "About Me",
-    education_title: "Education",
-    education_uni: "Osh State University",
-    education_major: "Software Engineering",
-    education_course: "UX/UI Advanced Course",
-    education_cert: "Google Certification",
-    experience_title: "Experience",
-    experience_lead: "Lead Frontend Developer",
-    experience_freelance: "Freelance Web Developer & UX/UI Designer",
-
-    // WORKFLOW
-    workflow_title: "Workflow",
-    step_1_title: "Briefing",
-    step_1_desc: "Understanding your business, goals, and audience. Forming technical specifications.",
-    step_2_title: "Prototyping",
-    step_2_desc: "Creating an interactive prototype in Figma. Approving every screen with you.",
-    step_3_title: "Development",
-    step_3_desc: "Coding and programming. Pixel-perfect, clean code, responsive design.",
-    step_4_title: "Launch",
-    step_4_desc: "Testing, optimizing, and deploying. Post-release support.",
-
-    // APPROACH
-    approach_title: "Design Approach",
-    approach_1_title: "Aesthetics",
-    approach_1_desc: "Every project is a visual statement. We create design that is memorable.",
-    approach_2_title: "Systematic",
-    approach_2_desc: "Design system, components, tokens. Everything scales easily.",
-    approach_3_title: "Usability",
-    approach_3_desc: "Not just beautiful — usable. UX research and usability testing.",
-    approach_4_title: "Responsiveness",
-    approach_4_desc: "Mobile-first approach. Perfect look on any device.",
-
-    // PORTFOLIO
-    portfolio_title: "My Works",
-    project_fintech: "Mobile Banking App",
-    cat_fintech: "FinTech",
-    project_security: "Cyber Security Landing",
-    cat_startup: "Startup",
-    project_bureau: "Bureau Portfolio",
-    cat_architecture: "Architecture",
-    project_ecommerce: "E-Commerce Platform",
-    cat_webdesign: "Web Design",
-    project_health: "Health Tracker",
-    cat_mobile: "Mobile App",
-    project_tech: "IT Startup Identity",
-    cat_branding: "Branding",
-    project_crypto: "Crypto Dashboard",
-    cat_landing: "Landing Page",
-    project_saas: "SaaS Platform",
-    cat_uiux: "UI/UX",
-    project_agency: "Agency Website",
-    cat_corporate: "Corporate",
-
-    // TIMELINE
-    timeline_title: "Timeline",
-    days: "working days",
-    timeline_landing: "Landing Page",
-    timeline_landing_desc: "One-page site with animations and contact form.",
-    timeline_corp: "Corporate Site",
-    timeline_corp_desc: "Multi-page site with CMS and blog.",
-    timeline_app: "Web Application",
-    timeline_app_desc: "Full SPA/PWA with authentication and database.",
-
-    // PRICING
-    pricing_title: "Pricing",
-    price_start_unit: "Turnkey Landing",
-    price_business_unit: "Corporate Site",
-    price_premium_unit: "Web App / SaaS",
-    btn_order: "Order Now",
-    popular: "Popular",
-
-    // FOOTER
-    contact_title: "Contact Me",
-    copyright: "© 2026 Adylov. All rights reserved."
+    brand: 'LinkHUB Studio',
+    nav: ['Home', 'Services', 'Pricing', 'Portfolio', 'Contact'],
+    hero: {
+      badge: 'Premium web development',
+      title: 'I build websites that sell and elevate your brand',
+      subtitle:
+        'Landing pages, corporate websites, and eCommerce projects with modern design, high speed, and clear lead funnels.',
+      ctaPrimary: 'Discuss a project',
+      ctaSecondary: 'View portfolio',
+      benefits: ['Launch from 5 days', 'Conversion-focused UX/UI', 'SEO-ready structure', 'Post-launch support'],
+    },
+    about: {
+      title: 'About me',
+      cards: [
+        { title: 'Who I am', text: 'A web developer combining design thinking, marketing vision, and clean engineering execution.' },
+        { title: 'My approach', text: 'Each screen is built as part of a funnel: attention, trust, action.' },
+        { title: 'What makes me different', text: 'I work like a digital agency: strategy, design, development, launch, and analytics in one flow.' },
+        { title: 'Why clients trust me', text: 'Clear deadlines, transparent steps, reasoned decisions, and focus on business outcome.' },
+      ],
+    },
+    services: {
+      title: 'Services',
+      from: 'from',
+      includesLabel: 'Includes',
+      timelineLabel: 'Timeline',
+      items: [
+        {
+          title: 'Landing page',
+          description: 'A one-page website for fast ad launches and lead generation.',
+          includes: ['Niche analysis', 'Sales-driven structure', 'Lead form', 'Basic SEO'],
+          timeline: '5-7 days',
+          price: '$300',
+        },
+        {
+          title: 'Corporate website',
+          description: 'A multi-page company website focused on trust and service presentation.',
+          includes: ['Up to 10 pages', 'UI kit', 'Analytics setup', 'CMS/content editing'],
+          timeline: '14-20 days',
+          price: '$800',
+        },
+        {
+          title: 'Online store',
+          description: 'An eCommerce solution with catalog, cart, and smooth checkout experience.',
+          includes: ['Catalog and filters', 'Product page', 'Payments/delivery', 'Tech optimization'],
+          timeline: '20-35 days',
+          price: '$1200',
+        },
+        {
+          title: 'Figma design',
+          description: 'Modern interface with thoughtful typography and a unified brand style.',
+          includes: ['Prototype', 'UI system', 'Responsive screens', 'Handoff to development'],
+          timeline: '4-10 days',
+          price: '$250',
+        },
+        {
+          title: 'Website support',
+          description: 'Ongoing technical support, updates, and improvements after launch.',
+          includes: ['Content updates', 'Monitoring', 'Minor improvements', 'Consulting'],
+          timeline: 'monthly',
+          price: '$120',
+        },
+      ],
+    },
+    pricing: {
+      title: 'Pricing',
+      subtitle: 'Package comparison',
+      columns: ['Start', 'Business', 'Premium'],
+      rows: [
+        { feature: 'Project type', values: ['Landing page', 'Corporate website', 'Complex product / eCommerce'] },
+        { feature: 'Pages', values: ['1', 'up to 10', 'custom'] },
+        { feature: 'Custom design', values: ['Yes', 'Yes', 'Yes + design system'] },
+        { feature: 'Animation and interactivity', values: ['Basic', 'Advanced', 'Premium'] },
+        { feature: 'SEO optimization', values: ['Basic', 'Advanced', 'Extended'] },
+        { feature: 'Post-launch support', values: ['7 days', '30 days', '90 days'] },
+        { feature: 'Price', values: ['$300', '$800', '$1500+'] },
+      ],
+    },
+    portfolio: {
+      title: 'Portfolio',
+      items: [
+        {
+          niche: 'FinTech',
+          name: 'Investment platform',
+          task: 'Increase trust and lead volume from paid traffic.',
+          done: 'New offer structure, UI/UX, React landing page.',
+          result: '+38% leads in 30 days',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'Education',
+          name: 'Online language school',
+          task: 'Package product and improve trial lesson sign-ups.',
+          done: 'Redesign, quiz form, <2s page speed.',
+          result: '+52% lead conversion',
+          image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'eCommerce',
+          name: 'Electronics store',
+          task: 'Lower bounce rate and increase average order value.',
+          done: 'New catalog, filters, product pages, cart UX.',
+          result: '+27% average order value',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'B2B',
+          name: 'IT integrator website',
+          task: 'Build a premium-level service presentation.',
+          done: 'Corporate site, case studies, SEO structure, motion.',
+          result: 'x2 inbound requests',
+          image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop',
+        },
+      ],
+    },
+    why: {
+      title: 'Why clients choose me',
+      items: [
+        'Sales-oriented approach, not just visuals',
+        'Clean and scalable code',
+        'Clear communication and stage reports',
+        'Fast load speed and technical optimization',
+        'Modern minimalist design',
+        'Post-launch support and growth',
+      ],
+    },
+    process: {
+      title: 'Workflow',
+      steps: ['Request', 'Briefing', 'Prototype', 'Design', 'Development', 'Testing', 'Launch'],
+    },
+    cases: {
+      title: 'Cases and results',
+      items: [
+        { name: 'B2B services landing', metrics: ['+41% leads', '-23% lead cost', '6-day launch'] },
+        { name: 'Corporate website', metrics: ['x2 organic traffic', '+34% time on site', 'Brand demand growth'] },
+        { name: 'Online store', metrics: ['+29% add-to-cart rate', '+18% repeat purchases', '-35% bounce rate'] },
+      ],
+    },
+    testimonials: {
+      title: 'Client testimonials',
+      items: [
+        {
+          author: 'Alexander R.',
+          role: 'CEO, FinTech startup',
+          text: 'We got an agency-level website. Everything was on time, and leads started coming in during the first week.',
+        },
+        {
+          author: 'Maria K.',
+          role: 'Marketer, online school',
+          text: 'Strong UX and clear structure. Ads began paying off faster than with our old site.',
+        },
+        {
+          author: 'Daniyar S.',
+          role: 'Founder, eCommerce brand',
+          text: 'Very accurate work: design, code, and analytics. A truly professional systematic approach.',
+        },
+      ],
+    },
+    faq: {
+      title: 'FAQ',
+      items: [
+        { q: 'How much does a website cost?', a: 'Depends on scope. Landing pages start at $300, corporate websites from $800.' },
+        { q: 'How long does development take?', a: 'Landing: 5-7 days, corporate website: 14-20 days, eCommerce: from 20 days.' },
+        { q: 'Do you work with contracts?', a: 'Yes, we can formalize contract terms, milestones, and deliverables.' },
+        { q: 'Can we request revisions?', a: 'Yes, each project stage includes approval and revision cycles.' },
+        { q: 'Do you provide SEO?', a: 'Yes, basic SEO is included. Extended SEO preparation is also available.' },
+        { q: 'Is support available after launch?', a: 'Yes, support and growth options are available based on package.' },
+      ],
+    },
+    guarantees: {
+      title: 'Guarantees',
+      items: [
+        'Clear timeline and scope before project starts',
+        'Transparent pricing with no hidden fees',
+        'Full handover of source code and access',
+        'Technical support after launch',
+      ],
+    },
+    audience: {
+      title: 'Who my websites are for',
+      items: ['Experts and personal brands', 'Small and medium businesses', 'Digital agencies (white-label)', 'Startups and IT products'],
+    },
+    technologies: {
+      title: 'Tech stack',
+      items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
+    },
+    consult: {
+      title: 'Free consultation for your project',
+      text: 'We will review your task and prepare a site structure plus launch plan for your budget.',
+      button: 'Get consultation',
+    },
+    contacts: {
+      title: 'Contact',
+      text: 'Send a request and I will reply shortly with the best implementation option.',
+      form: { name: 'Your name', contact: 'Telegram / WhatsApp / Email', message: 'Project details', submit: 'Send request' },
+    },
+    footer: '© 2026 LinkHUB Studio. All rights reserved.',
   },
   kg: {
-    // HERO
-    hero_title: "Адылов Ботиржон",
-    hero_subtitle: "Frontend Иштеп чыгуучу & UX/UI Дизайнер",
-    hero_desc: "Эстетика менен функционалдуулукту айкалыштырган санариптик продуктуларды түзөм. Минимализм, ылдамдык жана колдонуучунун ыңгайлуулугуна басым жасайм.",
-    
-    // NAVIGATION / SECTIONS
-    nav_about: "Мен жөнүндө",
-    nav_works: "Менин иштерим",
-    nav_process: "Процесс",
-    nav_pricing: "Баалар",
-    nav_contact: "Байланыш",
-
-    // ABOUT
-    about_title: "Мен жөнүндө",
-    education_title: "Билим",
-    education_uni: "Ош мамлекеттик университети",
-    education_major: "Программалык инженерия",
-    education_course: "UX/UI Өнүккөн курс",
-    education_cert: "Google Сертификаты",
-    experience_title: "Иш тажрыйба",
-    experience_lead: "Lead Frontend Developer",
-    experience_freelance: "Freelance Web Developer & UX/UI Designer",
-
-    // WORKFLOW
-    workflow_title: "Иш процесси",
-    step_1_title: "Брифинг",
-    step_1_desc: "Бизнесиңиз, максаттарыңыз жана аудиторияңыз менен таанышуу. Техникалык тапшырма түзүү.",
-    step_2_title: "Прототип",
-    step_2_desc: "Figma'да интерактивдүү прототип түзүү. Ар бир экранды сиз менен макулдашуу.",
-    step_3_title: "Иштеп чыгуу",
-    step_3_desc: "Код жазуу жана программалоо. Pixel-perfect, таза код, адаптивдүүлүк.",
-    step_4_title: "Ишке киргизүү",
-    step_4_desc: "Тестирлөө, оптималдаштыруу жана жайылтуу. Релизден кийин колдоо.",
-
-    // APPROACH
-    approach_title: "Дизайнга болгон мамиле",
-    approach_1_title: "Эстетика",
-    approach_1_desc: "Ар бир долбоор — бул визуалдык билдирүү. Биз эсте каларлык дизайн түзөбүз.",
-    approach_2_title: "Системалуулук",
-    approach_2_desc: "Дизайн-система, компоненттер. Баары оңой масштабдалат.",
-    approach_3_title: "Ыңгайлуулук",
-    approach_3_desc: "Жөн эле кооз эмес — ыңгайлуу. UX-изилдөөлөр жана тестирлөө.",
-    approach_4_title: "Адаптивдүүлүк",
-    approach_4_desc: "Mobile-first ыкмасы. Каалаган түзмөктө идеалдуу көрүнүш.",
-
-    // PORTFOLIO
-    portfolio_title: "Менин иштерим",
-    project_fintech: "Мобилдик Банкинг",
-    cat_fintech: "Финтех",
-    project_security: "Киберкоопсуздук Лендинги",
-    cat_startup: "Стартап",
-    project_bureau: "Бюро Портфолиосу",
-    cat_architecture: "Архитектура",
-    project_ecommerce: "E-Commerce Платформа",
-    cat_webdesign: "Веб-дизайн",
-    project_health: "Ден соолук Трекери",
-    cat_mobile: "Мобилдик тиркеме",
-    project_tech: "IT Стартап",
-    cat_branding: "Брендинг",
-    project_crypto: "Крипто Дашборд",
-    cat_landing: "Лендинг",
-    project_saas: "SaaS Платформа",
-    cat_uiux: "UI/UX",
-    project_agency: "Агенттик Сайты",
-    cat_corporate: "Корпоративдик",
-
-    // TIMELINE
-    timeline_title: "Аткаруу мөөнөттөрү",
-    days: "жумуш күнү",
-    timeline_landing: "Лендинг",
-    timeline_landing_desc: "Анимациялар жана формасы бар бир барактуу сайт.",
-    timeline_corp: "Корпоративдик сайт",
-    timeline_corp_desc: "CMS жана блог менен көп барактуу сайт.",
-    timeline_app: "Веб-тиркеме",
-    timeline_app_desc: "Авторизация жана маалымат базасы бар толук SPA/PWA.",
-
-    // PRICING
-    pricing_title: "Баалар",
-    price_start_unit: "Лендинг «ачкычка»",
-    price_business_unit: "Корпоративдик сайт",
-    price_premium_unit: "Веб-тиркеме / SaaS",
-    btn_order: "Буйрутма берүү",
-    popular: "Популярдуу",
-
-    // FOOTER
-    contact_title: "Байланышуу",
-    copyright: "© 2026 Адылов. Бардык укуктар корголгон."
-  }
+    brand: 'LinkHUB Studio',
+    nav: ['Башкы бет', 'Кызматтар', 'Тарифтер', 'Портфолио', 'Байланыш'],
+    hero: {
+      badge: 'Премиум веб-иштеп чыгуу',
+      title: 'Сатууга иштеген жана брендди күчөткөн сайттарды жасайм',
+      subtitle:
+        'Лендингдер, корпоративдик сайттар жана интернет-дүкөндөр: заманбап дизайн, жогорку ылдамдык жана так заявка воронкасы.',
+      ctaPrimary: 'Долбоорду талкуулоо',
+      ctaSecondary: 'Жумуштарды көрүү',
+      benefits: ['Ишке киргизүү 5 күндөн', 'Конверсиялык UX/UI', 'SEOга даяр структура', 'Релизден кийинки колдоо'],
+    },
+    about: {
+      title: 'Мен жөнүндө',
+      cards: [
+        { title: 'Киммин', text: 'Дизайн ой-жүгүртүүсүн, маркетингди жана сапаттуу инженердик ишке ашырууну бириктирген веб-иштеп чыгуучумун.' },
+        { title: 'Менин ыкмам', text: 'Ар бир экран воронканын бөлүгү катары курулат: көңүл буруу, ишеним, аракет.' },
+        { title: 'Айырмачылыгым', text: 'Digital-агенттик сыяктуу иштейм: стратегия, дизайн, иштеп чыгуу, ишке киргизүү жана аналитика бир процессте.' },
+        { title: 'Эмне үчүн ишенишет', text: 'Так мөөнөт, түшүнүктүү этаптар, негиздүү чечимдер жана бизнес жыйынтыкка фокус.' },
+      ],
+    },
+    services: {
+      title: 'Кызматтар',
+      from: 'баштап',
+      includesLabel: 'Курамына кирет',
+      timelineLabel: 'Мөөнөт',
+      items: [
+        {
+          title: 'Лендинг',
+          description: 'Жарнаманы тез баштоо жана лид алуу үчүн бир барактуу сайт.',
+          includes: ['Нишаны талдоо', 'Сатуучу структура', 'Заявка формасы', 'Негизги SEO'],
+          timeline: '5-7 күн',
+          price: '$300',
+        },
+        {
+          title: 'Корпоративдик сайт',
+          description: 'Компанияны ишенимдүү көрсөтүү үчүн көп барактуу сайт.',
+          includes: ['10 бетке чейин', 'UI кит', 'Аналитика орнотуу', 'CMS/контент оңдоо'],
+          timeline: '14-20 күн',
+          price: '$800',
+        },
+        {
+          title: 'Интернет-дүкөн',
+          description: 'Каталог, корзина жана ыңгайлуу сатып алуу сценарийи бар eCommerce чечим.',
+          includes: ['Каталог жана фильтр', 'Товар барагы', 'Төлөм/жеткирүү', 'Техникалык оптимизация'],
+          timeline: '20-35 күн',
+          price: '$1200',
+        },
+        {
+          title: 'Figma дизайн',
+          description: 'Заманбап интерфейс, так типографика жана бренд стили.',
+          includes: ['Прототип', 'UI системасы', 'Адаптивдүү экрандар', 'Иштеп чыгууга өткөрүү'],
+          timeline: '4-10 күн',
+          price: '$250',
+        },
+        {
+          title: 'Сайт колдоосу',
+          description: 'Релизден кийин техникалык коштоо, жаңыртуу жана жакшыртуу.',
+          includes: ['Контент жаңыртуу', 'Мониторинг', 'Майда жакшыртуулар', 'Консультация'],
+          timeline: 'ай сайын',
+          price: '$120',
+        },
+      ],
+    },
+    pricing: {
+      title: 'Тарифтер',
+      subtitle: 'Пакеттерди салыштыруу',
+      columns: ['Start', 'Business', 'Premium'],
+      rows: [
+        { feature: 'Долбоор түрү', values: ['Лендинг', 'Корпоративдик сайт', 'Татаал продукт / eCommerce'] },
+        { feature: 'Беттер саны', values: ['1', '10го чейин', 'жеке'] },
+        { feature: 'Уникалдуу дизайн', values: ['Ооба', 'Ооба', 'Ооба + дизайн-система'] },
+        { feature: 'Анимация жана интерактив', values: ['Негизги', 'Кеңейтилген', 'Премиум'] },
+        { feature: 'SEO оптимизация', values: ['Негизги', 'Кеңейтилген', 'Өркүндөтүлгөн'] },
+        { feature: 'Релизден кийинки колдоо', values: ['7 күн', '30 күн', '90 күн'] },
+        { feature: 'Баасы', values: ['$300', '$800', '$1500+'] },
+      ],
+    },
+    portfolio: {
+      title: 'Портфолио',
+      items: [
+        {
+          niche: 'FinTech',
+          name: 'Инвестиция платформасы',
+          task: 'Ишенимди жана paid трафиктен заявкаларды көбөйтүү.',
+          done: 'Оффер структурасы, UI/UX, React лендинг.',
+          result: '30 күндө +38% заявка',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'Education',
+          name: 'Онлайн тил мектеби',
+          task: 'Продуктту туура таңгактап, сыноо сабакка жазылууну көбөйтүү.',
+          done: 'Редизайн, квиз-форма, жүктөлүү < 2s.',
+          result: 'Заявка конверсиясы +52%',
+          image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'eCommerce',
+          name: 'Электроника дүкөнү',
+          task: 'Кайтуу көрсөткүчүн азайтып, орточо чекти көтөрүү.',
+          done: 'Жаңы каталог, фильтр, товар картасы жана корзина UX.',
+          result: 'Орточо чек +27%',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+        },
+        {
+          niche: 'B2B',
+          name: 'IT интегратор сайты',
+          task: 'Кызматтарды премиум деңгээлде көрсөтүү.',
+          done: 'Корпоративдик сайт, кейстер, SEO структура, анимация.',
+          result: 'Кирген кайрылуу x2',
+          image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop',
+        },
+      ],
+    },
+    why: {
+      title: 'Эмне үчүн мени тандашат',
+      items: [
+        'Фокус визуалга гана эмес, сатууга да',
+        'Таза жана кеңейтилүүчү код',
+        'Түшүнүктүү коммуникация жана этаптык отчет',
+        'Жогорку ылдамдык жана тех-оптимизация',
+        'Заманбап минималисттик дизайн',
+        'Релизден кийин колдоо жана өнүктүрүү',
+      ],
+    },
+    process: {
+      title: 'Иш этаптары',
+      steps: ['Заявка', 'Брифинг', 'Прототип', 'Дизайн', 'Иштеп чыгуу', 'Тестирлөө', 'Ишке киргизүү'],
+    },
+    cases: {
+      title: 'Кейстер жана жыйынтыктар',
+      items: [
+        { name: 'B2B кызмат лендинги', metrics: ['+41% лид', 'Заявка баасы -23%', '6 күндө ишке кирди'] },
+        { name: 'Корпоративдик сайт', metrics: ['Органикалык трафик x2', 'Сайтта убакыт +34%', 'Бренд суроо-талабы өстү'] },
+        { name: 'Интернет-дүкөн', metrics: ['Корзинага кошуу +29%', 'Кайра сатып алуу +18%', 'Кайтуу -35%'] },
+      ],
+    },
+    testimonials: {
+      title: 'Кардарлардын пикирлери',
+      items: [
+        {
+          author: 'Александр Р.',
+          role: 'CEO, FinTech стартап',
+          text: 'Digital-агенттик деңгээлдеги сайт алдык. Мөөнөт так сакталды, биринчи жумада эле заявкалар келди.',
+        },
+        {
+          author: 'Мария К.',
+          role: 'Маркетолог, онлайн-мектеп',
+          text: 'UX күчтүү жана структурасы так. Эски сайтка салыштырмалуу жарнама тезирээк актала баштады.',
+        },
+        {
+          author: 'Данияр С.',
+          role: 'eCommerce бренд негиздөөчү',
+          text: 'Дизайн, код жана аналитика өтө так жасалган. Чыныгы профессионал системалык ыкма.',
+        },
+      ],
+    },
+    faq: {
+      title: 'FAQ',
+      items: [
+        { q: 'Сайт канча турат?', a: 'Баасы максатка жараша. Лендинг $300дөн, корпоративдик сайт $800дөн башталат.' },
+        { q: 'Иштеп чыгуу мөөнөтү кандай?', a: 'Лендинг: 5-7 күн, корпоративдик сайт: 14-20 күн, eCommerce: 20 күндөн.' },
+        { q: 'Келишим менен иштейсизби?', a: 'Ооба, этаптар, мөөнөттөр жана жумуш көлөмү келишимде бекитилет.' },
+        { q: 'Түзөтүү киргизсе болобу?', a: 'Ооба, ар бир этапта макулдашуу жана түзөтүү цикли каралган.' },
+        { q: 'SEO жасайсызбы?', a: 'Ооба, негизги SEO камтылган. Зарыл болсо кеңейтилген SEO даярдоо бар.' },
+        { q: 'Релизден кийин колдоо барбы?', a: 'Ооба, тандалган пакетке жараша колдоо жана өнүктүрүү кызматын берем.' },
+      ],
+    },
+    guarantees: {
+      title: 'Кепилдиктер',
+      items: [
+        'Стартка чейин мөөнөт жана этаптар так бекитилет',
+        'Ачык смета, жашыруун төлөмдөр жок',
+        'Баштапкы код жана бардык доступдар өткөрүлөт',
+        'Релизден кийин техникалык колдоо',
+      ],
+    },
+    audience: {
+      title: 'Сайттар кимдер үчүн ылайыктуу',
+      items: ['Эксперттер жана жеке бренддер', 'Чакан жана орто бизнес', 'Digital-агенттиктер (white-label)', 'Стартаптар жана IT продуктылар'],
+    },
+    technologies: {
+      title: 'Колдонулган технологиялар',
+      items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
+    },
+    consult: {
+      title: 'Долбооруңуз боюнча акысыз консультация',
+      text: 'Маселени талдап, бюджетиңизге ылайык сайт структурасы жана ишке киргизүү планын сунуштайм.',
+      button: 'Консультация алуу',
+    },
+    contacts: {
+      title: 'Байланыш',
+      text: 'Заявка калтырыңыз — жакын арада жооп берип, оптималдуу чечим сунуштайм.',
+      form: { name: 'Атыңыз', contact: 'Telegram / WhatsApp / Email', message: 'Долбоор жөнүндө кыскача', submit: 'Заявка жөнөтүү' },
+    },
+    footer: '© 2026 LinkHUB Studio. Бардык укуктар корголгон.',
+  },
 };
