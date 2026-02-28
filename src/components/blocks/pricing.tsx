@@ -1,7 +1,6 @@
 "use client";
 
 import { Switch } from "@/components/ui/switch";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
@@ -39,7 +38,6 @@ export function Pricing({
   popularBadgeText = "Popular",
 }: PricingProps) {
   const [isMonthly, setIsMonthly] = useState(true);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
   const switchRef = useRef<HTMLButtonElement>(null);
 
   const handleToggle = (checked: boolean) => {
@@ -100,36 +98,22 @@ export function Pricing({
         {plans.map((plan, index) => (
           <motion.div
             key={index}
-            initial={{ y: 50, opacity: 1 }}
-            whileInView={
-              isDesktop
-                ? {
-                    y: plan.isPopular ? -20 : 0,
-                    opacity: 1,
-                    x: index === 2 ? -30 : index === 0 ? 30 : 0,
-                    scale: index === 0 || index === 2 ? 0.94 : 1.0,
-                  }
-                : {}
-            }
-            viewport={{ once: false, amount: 0.1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{
+              y: plan.isPopular ? -15 : 0,
+              opacity: 1,
+            }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{
-              duration: 1.6,
-              type: "spring",
-              stiffness: 100,
-              damping: 30,
-              delay: 0.4,
-              opacity: { duration: 0.5 },
+              duration: 0.6,
+              ease: "easeOut",
+              delay: index * 0.1,
             }}
             className={cn(
               `rounded-2xl border-[1px] p-8 text-center lg:flex lg:flex-col lg:justify-center relative bg-[var(--card-bg)] text-[var(--text-primary)] transition-all duration-300`,
-              plan.isPopular ? "border-[var(--text-primary)] border-2" : "border-[var(--border-color)]",
+              plan.isPopular ? "border-[var(--text-primary)] border-2 z-10" : "border-[var(--border-color)] z-0",
               "flex flex-col",
-              !plan.isPopular && "mt-5",
-              index === 0 || index === 2
-                ? "z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]"
-                : "z-10",
-              index === 0 && "origin-right",
-              index === 2 && "origin-left"
+              !plan.isPopular && "mt-5"
             )}
           >
             {plan.isPopular && (

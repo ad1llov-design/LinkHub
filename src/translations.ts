@@ -55,18 +55,29 @@ type Locale = {
   };
   faq: { title: string; items: { q: string; a: string }[] };
   guarantees: { title: string; items: string[] };
-  audience: { title: string; items: string[] };
+  audience: { title: string; items: { title: string; text: string }[] };
   technologies: { title: string; items: string[] };
   antiPortfolio: { label: string; title: string; items: string[]; closing: string };
   calculator: { title: string; text: string; button: string };
-  consult: { title: string; text: string; button: string };
   contacts: {
     title: string;
     description: string;
     form: { name: string; contact: string; submit: string };
     socialText: string;
   };
-  footer: string;
+  footer: {
+    brandDesc: string;
+    copyright: string;
+    navTitle: string;
+    servicesTitle: string;
+    services: string[];
+    contacts: {
+      phone: string;
+      address: string;
+      hours: string;
+      email: string;
+    }
+  };
 };
 
 export const translations: Record<Lang, Locale> = {
@@ -150,7 +161,7 @@ export const translations: Record<Lang, Locale> = {
         { feature: 'Анимации и интерактив', values: ['Базовые', 'Расширенные', 'Премиум уровень'] },
         { feature: 'SEO-оптимизация', values: ['Базовая', 'Расширенная', 'Продвинутая'] },
         { feature: 'Поддержка после запуска', values: ['7 дней', '30 дней', '90 дней'] },
-        { feature: 'Стоимость', values: ['300', '800', '1500'] },
+        { feature: 'Стоимость', values: ['200', '600', '1000'] },
       ],
     },
     portfolio: {
@@ -218,24 +229,24 @@ export const translations: Record<Lang, Locale> = {
       items: [
         {
           author: {
-            name: 'Александр Р.',
-            handle: '@aleks_fin',
+            name: 'Азамат Р.',
+            handle: '@aza_fin',
             avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Получили сайт уровня digital-агентства. Всё точно по срокам, а заявки пошли уже в первую неделю.',
         },
         {
           author: {
-            name: 'Мария К.',
-            handle: '@maria_edtech',
+            name: 'Айзада К.',
+            handle: '@aiza_edtech',
             avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Сильный UX и грамотная структура. Реклама стала окупаться быстрее, чем на старом сайте.',
         },
         {
           author: {
-            name: 'Данияр С.',
-            handle: '@daniyar_ecom',
+            name: 'Тимур С.',
+            handle: '@timur_ecom',
             avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Очень аккуратная работа: дизайн, код и аналитика. Видно профессиональный системный подход.',
@@ -264,7 +275,12 @@ export const translations: Record<Lang, Locale> = {
     },
     audience: {
       title: 'Кому подойдут мои сайты',
-      items: ['Экспертам и личным брендам', 'Малому и среднему бизнесу', 'Digital-агентствам (white-label)', 'Стартапам и IT-продуктам'],
+      items: [
+        { title: 'Экспертам и личным брендам', text: 'Упакуем ваш опыт в стильный сайт, который будет транслировать профессионализм и доверие аудитории.' },
+        { title: 'Малому и среднему бизнесу', text: 'Создадим представительство в сети для стабильного потока заявок и автоматизации продаж.' },
+        { title: 'Digital-агентствам (white-label)', text: 'Надежный партнер для разработки сайтов под ключ вашим клиентам с полным погружением.' },
+        { title: 'Стартапам и IT-продуктам', text: 'Быстрый запуск MVP или лендингов для проверки гипотез и привлечения первых пользователей.' }
+      ],
     },
     technologies: {
       title: 'Используемые технологии',
@@ -274,17 +290,12 @@ export const translations: Record<Lang, Locale> = {
       label: 'Не сотрудничаем',
       title: 'Мы категорически не работаем с тем, что связано:',
       items: ['алкоголь', 'табак', 'сетевой маркетинг', 'финансовые пирамиды', 'микрокредитные компании', 'банки', 'политические партии', 'экстрасенсы, чародеи, маги и т.д.'],
-      closing: 'Благодарим за понимание 👍'
+      closing: 'Благодарим за понимание'
     },
     calculator: {
       title: 'Хотите узнать, сколько будет стоить сайт со скидкой? Пройдите калькулятор!',
       text: 'Ответьте всего на 10 вопросов и мы рассчитаем вам стоимость и вышлем КП',
       button: 'Калькулятор цен'
-    },
-    consult: {
-      title: 'Бесплатная консультация по вашему проекту',
-      text: 'Разберем задачу, предложу структуру сайта и план запуска под ваш бюджет.',
-      button: 'Получить консультацию',
     },
     contacts: {
       title: 'Есть дополнительные вопросы?',
@@ -292,7 +303,19 @@ export const translations: Record<Lang, Locale> = {
       form: { name: 'Имя', contact: 'Телефон', submit: 'Перезвоните мне' },
       socialText: 'Нажмите, чтобы связаться с нами через мессенджеры',
     },
-    footer: '© 2026 LinkHUB Studio. Все права защищены.',
+    footer: {
+      brandDesc: 'Студия веб-разработки полного цикла нового поколения. Мы не просто создаем красивую картинку, мы делаем продукт, который решает задачи бизнеса и приносит прибыль.',
+      copyright: '© 2024-2026 LinkHUB Studio. Все права защищены. Политика конфиденциальности',
+      navTitle: 'Навигация',
+      servicesTitle: 'Направления',
+      services: ['Корпоративные сайты', 'Landing Page', 'Интернет-магазины', 'Дизайн в Figma', 'Техническая поддержка'],
+      contacts: {
+        phone: '+996 (557) 55-50-58',
+        address: 'г. Бишкек, онлайн',
+        hours: 'Пн-Пт 10:00 - 18:00',
+        email: 'hello@linkhub.dev'
+      }
+    },
   },
   en: {
     brand: 'LinkHUB Studio',
@@ -374,7 +397,7 @@ export const translations: Record<Lang, Locale> = {
         { feature: 'Animation and interactivity', values: ['Basic', 'Advanced', 'Premium'] },
         { feature: 'SEO optimization', values: ['Basic', 'Advanced', 'Extended'] },
         { feature: 'Post-launch support', values: ['7 days', '30 days', '90 days'] },
-        { feature: 'Price', values: ['300', '800', '1500'] },
+        { feature: 'Price', values: ['200', '600', '1000'] },
       ],
     },
     portfolio: {
@@ -442,24 +465,24 @@ export const translations: Record<Lang, Locale> = {
       items: [
         {
           author: {
-            name: 'Alexander R.',
-            handle: '@aleks_fin',
+            name: 'Azamat R.',
+            handle: '@aza_fin',
             avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'We got a digital agency-level website. Everything was on time, and leads started coming in the very first week.',
         },
         {
           author: {
-            name: 'Maria K.',
-            handle: '@maria_edtech',
+            name: 'Aizada K.',
+            handle: '@aiza_edtech',
             avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Strong UX and logical structure. Advertising started paying off faster than with the old site.',
         },
         {
           author: {
-            name: 'Daniyar S.',
-            handle: '@daniyar_ecom',
+            name: 'Timur S.',
+            handle: '@timur_ecom',
             avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Very accurate work: design, code, and analytics. A professional, systematic approach is evident.',
@@ -488,7 +511,12 @@ export const translations: Record<Lang, Locale> = {
     },
     audience: {
       title: 'Who my websites are for',
-      items: ['Experts and personal brands', 'Small and medium businesses', 'Digital agencies (white-label)', 'Startups and IT products'],
+      items: [
+        { title: 'Experts and personal brands', text: 'We package your expertise into a stylish site demonstrating professionalism and building trust.' },
+        { title: 'Small and medium businesses', text: 'Creating a digital presence for a stable lead flow and sales automation.' },
+        { title: 'Digital agencies (white-label)', text: 'A reliable partner for turnkey website development with full immersion.' },
+        { title: 'Startups and IT products', text: 'Rapid MVP or landing page launches to test hypotheses and attract early adopters.' }
+      ],
     },
     technologies: {
       title: 'Tech stack',
@@ -498,17 +526,12 @@ export const translations: Record<Lang, Locale> = {
       label: 'We do not work with',
       title: 'We strictly do not collaborate with projects related to:',
       items: ['alcohol', 'tobacco', 'network marketing', 'pyramid schemes', 'microcredit loops', 'banks', 'political parties', 'psychics, fortune-tellers, mages, etc.'],
-      closing: 'Thank you for understanding 👍'
+      closing: 'Thank you for understanding'
     },
     calculator: {
       title: 'Want to know how much your website will cost with a discount? Try the calculator!',
       text: 'Answer just 10 questions, and we will calculate the cost of your project.',
       button: 'Price Calculator'
-    },
-    consult: {
-      title: 'Free consultation for your project',
-      text: 'We will review your task and prepare a site structure plus launch plan for your budget.',
-      button: 'Get consultation',
     },
     contacts: {
       title: 'Have additional questions?',
@@ -516,7 +539,19 @@ export const translations: Record<Lang, Locale> = {
       form: { name: 'Name', contact: 'Phone', submit: 'Call me back' },
       socialText: 'Click to reach us via messengers',
     },
-    footer: '© 2026 LinkHUB Studio. All rights reserved.',
+    footer: {
+      brandDesc: 'Next-generation full-cycle web development studio. We don’t just create a beautiful picture, we build a product that solves business problems and generates profit.',
+      copyright: '© 2024-2026 LinkHUB Studio. All rights reserved. Privacy Policy',
+      navTitle: 'Navigation',
+      servicesTitle: 'Services',
+      services: ['Corporate websites', 'Landing Pages', 'eCommerce', 'Figma Design', 'Technical Support'],
+      contacts: {
+        phone: '+996 (557) 55-50-58',
+        address: 'Bishkek, Remote',
+        hours: 'Mon-Fri 10:00 - 18:00',
+        email: 'hello@linkhub.dev'
+      }
+    },
   },
   kg: {
     brand: 'LinkHUB Studio',
@@ -598,7 +633,7 @@ export const translations: Record<Lang, Locale> = {
         { feature: 'Анимация жана интерактив', values: ['Негизги', 'Кеңейтилген', 'Премиум'] },
         { feature: 'SEO оптимизация', values: ['Негизги', 'Кеңейтилген', 'Өркүндөтүлгөн'] },
         { feature: 'Релизден кийинки колдоо', values: ['7 күн', '30 күн', '90 күн'] },
-        { feature: 'Баасы', values: ['300', '800', '1500'] },
+        { feature: 'Баасы', values: ['200', '600', '1000'] },
       ],
     },
     portfolio: {
@@ -666,24 +701,24 @@ export const translations: Record<Lang, Locale> = {
       items: [
         {
           author: {
-            name: 'Александр Р.',
-            handle: '@aleks_fin',
+            name: 'Азамат Р.',
+            handle: '@aza_fin',
             avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Digital-агентство деңгээлиндеги сайт алдык. Баары өз убагында болду, биринчи жумада эле кардарлар келе баштады.',
         },
         {
           author: {
-            name: 'Мария К.',
-            handle: '@maria_edtech',
+            name: 'Айзада К.',
+            handle: '@aiza_edtech',
             avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Мыкты UX жана туура структура. Жарнама эски сайтка караганда тезирээк актай баштады.',
         },
         {
           author: {
-            name: 'Данияр С.',
-            handle: '@daniyar_ecom',
+            name: 'Тимур С.',
+            handle: '@timur_ecom',
             avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Аябай так иш: дизайн, код жана аналитика. Профессионалдык системалуу мамиле байкалып турат.',
@@ -712,7 +747,12 @@ export const translations: Record<Lang, Locale> = {
     },
     audience: {
       title: 'Сайттар кимдер үчүн ылайыктуу',
-      items: ['Эксперттер жана жеке бренддер', 'Чакан жана орто бизнес', 'Digital-агенттиктер (white-label)', 'Стартаптар жана IT продуктылар'],
+      items: [
+        { title: 'Эксперттер жана жеке бренддер', text: 'Сиздин тажрыйбаңызды жогорку деңгээлде көрсөтүп, ишеним жаратуучу стилдүү сайт түзөбүз.' },
+        { title: 'Чакан жана орто бизнес', text: 'Сатууну автоматташтырган жана туруктуу кардар агымын камсыз кылган интернет өкүлчүлүк.' },
+        { title: 'Digital-агенттиктер (white-label)', text: 'Ишенимдүү өнөктөш катары сиздин кардарларыңыз үчүн "ачкычка чейин" сайттарды иштеп чыгабыз.' },
+        { title: 'Стартаптар жана IT продуктылар', text: 'Алгачкы кардарларды табуу жана гипотезаларды текшерүү үчүн MVP же лендингди тез ишке киргизебиз.' }
+      ],
     },
     technologies: {
       title: 'Колдонулган технологиялар',
@@ -722,17 +762,12 @@ export const translations: Record<Lang, Locale> = {
       label: 'Биз кызматташпайбыз',
       title: 'Биз төмөнкү багыттар менен такыр иштебейбиз:',
       items: ['алкоголь', 'тамеки', 'тармак маркетинги (сетевой)', 'финансы пирамидасы', 'микрокредиттик компаниялар', 'банктар', 'саясий партиялар', 'көз ачыктар, сыйкырчылар ж.б.'],
-      closing: 'Түшүнгөнүңүз үчүн чоң рахмат 👍'
+      closing: 'Түшүнгөнүңүз үчүн чоң рахмат'
     },
     calculator: {
       title: 'Сайттын баасын арзандатуу менен билгиңиз келеби? Калькулятордон өтүңүз!',
       text: 'Болгону 10 суроого жооп берип, баасын эсептеп беребиз',
       button: 'Баа эсептөөчү калькулятор'
-    },
-    consult: {
-      title: 'Долбооруңуз боюнча акысыз консультация',
-      text: 'Маселени талдап, бюджетиңизге ылайык сайт структурасы жана ишке киргизүү планын сунуштайм.',
-      button: 'Консультация алуу',
     },
     contacts: {
       title: 'Суроолоруңуз барбы?',
@@ -740,6 +775,18 @@ export const translations: Record<Lang, Locale> = {
       form: { name: 'Атыңыз', contact: 'Телефон номериңиз', submit: 'Мага чалыңыз' },
       socialText: 'Мессенджер аркылуу байланышуу үчүн төмөнкүнү басыңыз',
     },
-    footer: '© 2026 LinkHUB Studio. Бардык укуктар корголгон.',
+    footer: {
+      brandDesc: 'Жаңы муундагы толук циклдик веб-иштеп чыгуу студиясы. Биз жөн гана кооз сүрөт эмес, бизнестин милдеттерин чечкен жана киреше алып келген продукт жасайбыз.',
+      copyright: '© 2024-2026 LinkHUB Studio. Бардык укуктар корголгон. Купуялык саясаты',
+      navTitle: 'Навигация',
+      servicesTitle: 'Кызматтар',
+      services: ['Корпоративдик сайттар', 'Лендинг', 'Интернет-дүкөндөр', 'Figma дизайн', 'Техникалык колдоо'],
+      contacts: {
+        phone: '+996 (557) 55-50-58',
+        address: 'г. Бишкек, онлайн',
+        hours: 'Дүй-Жум 10:00 - 18:00',
+        email: 'hello@linkhub.dev'
+      }
+    },
   },
 };

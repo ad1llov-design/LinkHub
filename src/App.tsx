@@ -176,7 +176,7 @@ function App() {
           <h2 className="section-title reveal">{t.about.title}</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {t.about.cards.map((card) => (
-              <article key={card.title} className="card-premium reveal p-6">
+              <article key={card.title} className="card-premium reveal p-6 flex flex-col justify-center">
                 <h3 className="mb-3 text-xl font-semibold">{card.title}</h3>
                 <p className="text-[var(--text-secondary)]">{card.text}</p>
               </article>
@@ -210,14 +210,18 @@ function App() {
 
         <section className="py-10 md:py-16">
           <h2 className="section-title reveal">{t.why.title}</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {t.why.items.map((item) => (
-              <div key={item} className="card-premium reveal flex items-start flex-col gap-3 p-6 relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 mb-2">
-                  <ShieldCheck size={20} className="text-emerald-500" />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {t.why.items.map((item, idx) => (
+              <div key={item} className="card-premium reveal p-8 flex flex-col gap-4 relative overflow-hidden group">
+                <div className="absolute -right-4 -bottom-4 text-8xl font-black text-[var(--text-primary)] opacity-[0.03] select-none group-hover:scale-110 transition-transform duration-500">
+                  0{idx + 1}
                 </div>
-                <span className="font-medium text-[var(--text-primary)] leading-tight">{item}</span>
+                <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                  <ShieldCheck className="text-emerald-500" size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-[var(--text-primary)] relative z-10 leading-snug max-w-[80%]">
+                  {item}
+                </h3>
               </div>
             ))}
           </div>
@@ -225,27 +229,60 @@ function App() {
 
         <section className="py-10 md:py-16">
           <h2 className="section-title reveal">{t.process.title}</h2>
-          <div className="max-w-3xl mx-auto flex flex-col gap-6 relative">
-            {t.process.steps.map((step, idx) => (
-              <div key={step} className="flex flex-col items-center group reveal">
-                <div className="card-premium p-6 md:p-8 w-full flex flex-col sm:flex-row gap-6 items-center text-center sm:text-left z-10 transition hover:-translate-y-1">
-                  <div className="w-14 h-14 shrink-0 rounded-full bg-[var(--text-primary)] text-[var(--bg-color)] flex items-center justify-center font-bold text-xl ring-8 ring-[var(--bg-color)]">
-                    {idx + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">{step}</h3>
-                    <p className="text-sm md:text-base text-[var(--text-secondary)] mt-2 leading-relaxed">{processDescriptions[lang][idx]}</p>
-                  </div>
+          
+          {(() => {
+            const RenderCard = ({ idx, step }: { idx: number, step: string }) => (
+              <div className="card-premium p-6 md:p-8 flex flex-col md:flex-row gap-5 items-start z-10 hover:-translate-y-1 transition-transform w-full h-full relative group">
+                <div className="w-12 h-12 shrink-0 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold text-xl border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-[var(--bg-color)] transition-colors">
+                  {idx + 1}
                 </div>
-                {/* Arrow pointing down to next step, except for the last one */}
-                {idx < t.process.steps.length - 1 && (
-                  <div className="h-10 w-0.5 bg-[var(--border-color)] my-2 relative transition-all group-hover:bg-emerald-500/50">
-                    <div className="absolute -bottom-2 -left-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[var(--border-color)] group-hover:border-t-emerald-500/50 transition-all" />
-                  </div>
-                )}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2 text-[var(--text-primary)]">{step}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{processDescriptions[lang][idx]}</p>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+
+            return (
+              <>
+                 {/* Mobile Vertical View */}
+                 <div className="md:hidden flex flex-col gap-4">
+                  {t.process.steps.map((step, idx) => (
+                    <div key={idx} className="reveal"><RenderCard idx={idx} step={step} /></div>
+                  ))}
+                 </div>
+                 
+                 {/* Desktop Snake View */}
+                 <div className="hidden md:flex flex-col relative max-w-5xl mx-auto">
+                    {Array.from({ length: Math.ceil(t.process.steps.length / 2) }).map((_, rowIndex) => {
+                       const idx1 = rowIndex * 2;
+                       const idx2 = rowIndex * 2 + 1;
+                       const isReverse = rowIndex % 2 !== 0;
+
+                       return (
+                         <div key={rowIndex} className={`flex gap-12 w-full mb-12 relative reveal ${isReverse ? 'flex-row-reverse' : 'flex-row'}`}>
+                            {/* Horizontal connecting subtle line */}
+                            {idx2 < t.process.steps.length && (
+                              <div className="absolute top-1/2 left-[30%] right-[30%] h-[1px] bg-[var(--border-color)] -translate-y-1/2 -z-10" />
+                            )}
+                            
+                            <div className="flex-1 w-full relative">
+                               <RenderCard idx={idx1} step={t.process.steps[idx1]} />
+                            </div>
+                            <div className="flex-1 w-full relative">
+                               {idx2 < t.process.steps.length ? (
+                                 <RenderCard idx={idx2} step={t.process.steps[idx2]} />
+                               ) : (
+                                 <div className="w-full h-full" />
+                               )}
+                            </div>
+                         </div>
+                       )
+                    })}
+                 </div>
+              </>
+            )
+          })()}
         </section>
 
         <section className="py-10 md:py-16">
@@ -306,8 +343,13 @@ function App() {
           <h2 className="section-title reveal">{t.audience.title}</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.audience.items.map((item) => (
-              <div key={item} className="card-premium reveal p-6 flex items-center justify-center text-center">
-                <div className="font-medium">{item}</div>
+              <div key={item.title} className="card-premium reveal p-6 flex flex-col items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-emerald-500/10 shrink-0 text-emerald-500 font-bold">
+                  {/* Just an icon or initial */}
+                  <CheckCircle2 size={24} />
+                </div>
+                <h3 className="font-semibold text-lg">{item.title}</h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.text}</p>
               </div>
             ))}
           </div>
@@ -399,27 +441,16 @@ function App() {
           </div>
         </section>
 
-        <section className="py-10 md:py-16 text-center flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-bold max-w-2xl reveal">{t.calculator.title}</h2>
-          <p className="mt-4 text-[var(--text-secondary)] max-w-xl reveal">{t.calculator.text}</p>
-          <a
-            href="#contacts"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 px-8 py-4 font-bold text-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)] reveal"
-          >
-            {t.calculator.button}
-          </a>
-        </section>
-
         <section className="py-10 md:py-16">
-          <div className="card-premium reveal p-8 md:p-10 border border-[var(--text-secondary)]">
-            <h2 className="text-3xl font-semibold md:text-4xl">{t.consult.title}</h2>
-            <p className="mt-3 max-w-3xl text-[var(--text-secondary)]">{t.consult.text}</p>
+          <div className="card-premium reveal p-8 md:p-12 text-center flex flex-col items-center border border-emerald-500/20 bg-gradient-to-b from-[var(--glass-bg)] to-emerald-900/10">
+            <h2 className="text-3xl md:text-4xl font-bold max-w-2xl">{t.calculator.title}</h2>
+            <p className="mt-4 text-[var(--text-secondary)] max-w-xl text-lg">{t.calculator.text}</p>
             <a
               href="#contacts"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[var(--text-primary)] px-6 py-3 font-medium text-[var(--bg-color)] transition hover:-translate-y-0.5"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 px-10 py-5 font-bold text-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
             >
-              {t.consult.button}
-              <ArrowRight size={18} />
+              {t.calculator.button}
+              <ArrowRight size={20} />
             </a>
           </div>
         </section>
@@ -453,8 +484,89 @@ function App() {
         </section>
       </main>
 
-      <footer className="border-t border-[var(--border-color)] py-8 text-center text-sm text-[var(--text-secondary)]">
-        {t.footer}
+      <footer className="bg-black text-white py-16 mt-16 border-t border-white/10 relative z-[100]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Column 1: Brand Info */}
+            <div className="space-y-6">
+              <a href="#" className="flex items-center gap-2">
+                <Globe className="h-8 w-8 text-emerald-500" />
+                <span className="text-2xl font-bold font-display tracking-tight text-white">{t.brand}</span>
+              </a>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+                {t.footer.brandDesc}
+              </p>
+            </div>
+
+            {/* Column 2: Navigation */}
+            <div>
+              <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.navTitle}</h4>
+              <ul className="space-y-4">
+                {navAnchors.map((href, i) => (
+                  <li key={href}>
+                    <a href={href} className="text-gray-400 hover:text-emerald-500 transition-colors text-sm">
+                      {t.nav[i]}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Services */}
+            <div>
+              <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.servicesTitle}</h4>
+              <ul className="space-y-4">
+                {t.footer.services.map((service) => (
+                  <li key={service} className="text-gray-400 text-sm">
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 4: Contacts */}
+            <div>
+              <h4 className="text-lg font-semibold mb-6 text-white">{t.nav[4]}</h4>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="flex items-center gap-3">
+                  <span className="text-emerald-500">📞</span>
+                  {t.footer.contacts.phone}
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-emerald-500">📍</span>
+                  {t.footer.contacts.address}
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-emerald-500">🕒</span>
+                  {t.footer.contacts.hours}
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-emerald-500">✉️</span>
+                  <a href={`mailto:${t.footer.contacts.email}`} className="hover:text-emerald-500 transition-colors">
+                    {t.footer.contacts.email}
+                  </a>
+                </li>
+              </ul>
+              
+              <div className="mt-8 flex gap-4">
+                <a href="https://t.me/xwvllxx" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all">
+                  <Send size={18} />
+                </a>
+                <a href="https://wa.me/+996557555058" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all">
+                  <MessageCircle size={18} />
+                </a>
+                <a href={`mailto:${t.footer.contacts.email}`} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all">
+                  <Mail size={18} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <p>{t.footer.copyright}</p>
+            <p>Made by {t.brand}</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
