@@ -30,7 +30,12 @@ type Locale = {
   };
   pricing: {
     title: string;
-    subtitle: string;
+    description: string;
+    annualBillingText: string;
+    saveText: string;
+    billedMonthlyText: string;
+    billedAnnuallyText: string;
+    popularBadgeText: string;
     columns: string[];
     rows: { feature: string; values: string[] }[];
   };
@@ -127,8 +132,13 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     pricing: {
-      title: 'Тарифы',
-      subtitle: 'Сравнение пакетов',
+      title: 'Простые, прозрачные тарифы',
+      description: 'Выберите тариф, который подходит именно вам\nВсе тарифы включают базовую поддержку и высокое качество.',
+      annualBillingText: 'Оплата за год',
+      saveText: '(Экономия 20%)',
+      billedMonthlyText: 'оплата помесячно',
+      billedAnnuallyText: 'оплата за год',
+      popularBadgeText: 'Популярный',
       columns: ['Start', 'Business', 'Premium'],
       rows: [
         { feature: 'Тип проекта', values: ['Лендинг', 'Корпоративный сайт', 'Сложный продукт / eCommerce'] },
@@ -137,7 +147,7 @@ export const translations: Record<Lang, Locale> = {
         { feature: 'Анимации и интерактив', values: ['Базовые', 'Расширенные', 'Премиум уровень'] },
         { feature: 'SEO-оптимизация', values: ['Базовая', 'Расширенная', 'Продвинутая'] },
         { feature: 'Поддержка после запуска', values: ['7 дней', '30 дней', '90 дней'] },
-        { feature: 'Стоимость', values: ['$300', '$800', '$1500+'] },
+        { feature: 'Стоимость', values: ['300', '800', '1500'] },
       ],
     },
     portfolio: {
@@ -325,8 +335,13 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     pricing: {
-      title: 'Pricing',
-      subtitle: 'Package comparison',
+      title: 'Simple, Transparent Pricing',
+      description: 'Choose the plan that works for you\nAll plans include basic support and high quality execution.',
+      annualBillingText: 'Annual billing',
+      saveText: '(Save 20%)',
+      billedMonthlyText: 'billed monthly',
+      billedAnnuallyText: 'billed annually',
+      popularBadgeText: 'Popular',
       columns: ['Start', 'Business', 'Premium'],
       rows: [
         { feature: 'Project type', values: ['Landing page', 'Corporate website', 'Complex product / eCommerce'] },
@@ -335,7 +350,7 @@ export const translations: Record<Lang, Locale> = {
         { feature: 'Animation and interactivity', values: ['Basic', 'Advanced', 'Premium'] },
         { feature: 'SEO optimization', values: ['Basic', 'Advanced', 'Extended'] },
         { feature: 'Post-launch support', values: ['7 days', '30 days', '90 days'] },
-        { feature: 'Price', values: ['$300', '$800', '$1500+'] },
+        { feature: 'Price', values: ['300', '800', '1500'] },
       ],
     },
     portfolio: {
@@ -523,8 +538,13 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     pricing: {
-      title: 'Тарифтер',
-      subtitle: 'Пакеттерди салыштыруу',
+      title: 'Жөнөкөй жана ачык тарифтер',
+      description: 'Сизге ылайыктуу тарифти тандаңыз\nБардык тарифтер негизги колдоону жана жогорку сапатты камтыйт.',
+      annualBillingText: 'Жылдык төлөм',
+      saveText: '(20% үнөмдөө)',
+      billedMonthlyText: 'ай сайын төлөө',
+      billedAnnuallyText: 'жыл сайын төлөө',
+      popularBadgeText: 'Популярдуу',
       columns: ['Start', 'Business', 'Premium'],
       rows: [
         { feature: 'Долбоор түрү', values: ['Лендинг', 'Корпоративдик сайт', 'Татаал продукт / eCommerce'] },
@@ -533,7 +553,7 @@ export const translations: Record<Lang, Locale> = {
         { feature: 'Анимация жана интерактив', values: ['Негизги', 'Кеңейтилген', 'Премиум'] },
         { feature: 'SEO оптимизация', values: ['Негизги', 'Кеңейтилген', 'Өркүндөтүлгөн'] },
         { feature: 'Релизден кийинки колдоо', values: ['7 күн', '30 күн', '90 күн'] },
-        { feature: 'Баасы', values: ['$300', '$800', '$1500+'] },
+        { feature: 'Баасы', values: ['300', '800', '1500'] },
       ],
     },
     portfolio: {

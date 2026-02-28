@@ -15,8 +15,9 @@ import {
   Star,
   Layers3,
 } from 'lucide-react';
-import { DottedSurface } from '@/components/ui/dotted-surface';
-import { SplineSceneBasic } from '@/components/ui/demo';
+import { DottedSurface } from './components/ui/dotted-surface';
+import { SplineSceneBasic } from './components/ui/demo';
+import { Pricing, PricingPlan } from './components/blocks/pricing';
 import { Lang, translations } from './translations';
 
 function App() {
@@ -72,8 +73,29 @@ function App() {
   }, [lang]);
 
   const navAnchors = useMemo(() => ['#hero', '#services', '#pricing', '#portfolio', '#contacts'], []);
-  const pricingFeatureRows = t.pricing.rows.slice(0, -1);
-  const pricingPriceRow = t.pricing.rows[t.pricing.rows.length - 1];
+
+  const pricingPlans: PricingPlan[] = useMemo(() => {
+    return t.pricing.columns.map((col, index) => {
+      const isPopular = index === 1;
+      const priceStr = t.pricing.rows[t.pricing.rows.length - 1].values[index];
+      const monthlyPriceNum = parseInt(priceStr.replace(/\D/g, ''), 10) || 0;
+      const yearlyPriceNum = Math.floor(monthlyPriceNum * 0.8); // 20% discount
+
+      const features = t.pricing.rows.slice(0, -1).map(row => `${row.feature}: ${row.values[index]}`);
+
+      return {
+        name: col,
+        price: monthlyPriceNum.toString(),
+        yearlyPrice: yearlyPriceNum.toString(),
+        period: '', // Empty as the design manages the period at the component top layer
+        features: features,
+        description: '', // You can add custom descriptions per plan if needed
+        buttonText: t.consult.button,
+        href: '#contacts',
+        isPopular: isPopular,
+      };
+    });
+  }, [t]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-primary)]">
@@ -170,39 +192,17 @@ function App() {
           </div>
         </section>
 
-        <section id="pricing" className="reveal py-10 md:py-16">
-          <h2 className="section-title">{t.pricing.title}</h2>
-          <p className="mb-5 text-sm uppercase tracking-[0.14em] text-[var(--text-secondary)]">{t.pricing.subtitle}</p>
-          <div className="grid gap-4 md:grid-cols-3">
-            {t.pricing.columns.map((col, colIndex) => (
-              <article
-                key={col}
-                className={`card-premium p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl ${
-                  colIndex === 1 ? 'ring-1 ring-[var(--text-secondary)] bg-[var(--border-color)]/20' : ''
-                }`}
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <h3 className="text-2xl font-semibold">{col}</h3>
-                  {colIndex === 1 && <span className="rounded-full bg-[var(--text-primary)] px-3 py-1 text-xs font-bold text-[var(--bg-color)]">Best Value</span>}
-                </div>
-                <p className="mb-4 text-3xl font-bold text-[var(--text-primary)]">{pricingPriceRow.values[colIndex]}</p>
-                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                  {pricingFeatureRows.map((row) => (
-                    <li key={`${col}-${row.feature}`} className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="mt-1 text-emerald-500" />
-                      <span>
-                        <strong className="mr-1 text-[var(--text-primary)]">{row.feature}:</strong>
-                        {row.values[colIndex]}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <a href="#contacts" className="btn-cta mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 font-medium">
-                  {t.consult.button}
-                </a>
-              </article>
-            ))}
-          </div>
+        <section id="pricing">
+          <Pricing 
+            plans={pricingPlans} 
+            title={t.pricing.title} 
+            description={t.pricing.description}
+            annualBillingText={t.pricing.annualBillingText}
+            saveText={t.pricing.saveText}
+            billedMonthlyText={t.pricing.billedMonthlyText}
+            billedAnnuallyText={t.pricing.billedAnnuallyText}
+            popularBadgeText={t.pricing.popularBadgeText}
+          />
         </section>
 
         <section id="portfolio" className="reveal py-10 md:py-16">
