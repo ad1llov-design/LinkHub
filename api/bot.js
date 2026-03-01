@@ -109,7 +109,7 @@ export default async function handler(req, res) {
 
          await sendTelegramMessage(
            chatId, 
-           `Спасибо за ответы! Наш менеджер скоро свяжется с вами лично для обсуждения деталей. 🚀`
+           `Спасибо за ответы! Наш специалист Батыржон скоро свяжется с вами лично для обсуждения деталей. 🚀`
          );
 
          const username = msg.from.username ? `@${msg.from.username}` : 'Скрыт';
