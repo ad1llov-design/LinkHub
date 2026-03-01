@@ -25,6 +25,17 @@
   --glass-hover: rgba(0, 0, 0, 0.04);
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
 *,
 *::before,
 *::after {
@@ -39,7 +50,7 @@ body,
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background: var(--bg-color);
   color: var(--text-primary);
   line-height: 1.6;
@@ -59,26 +70,37 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* =========================================
+   PREMIUM GLASSMORPHISM SYSTEM (2026 Tech)
+   ========================================= */
 .card-premium {
-  background: var(--card-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 10, 0.4); /* Dark default */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-color 0.3s ease, box-shadow 0.3s ease;
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
 .light-theme .card-premium {
-  border: 1px solid rgba(0, 0, 0, 0.08); /* Darker border for light mode glass */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
 }
 
 .card-premium:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.15);
-  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.08); /* Subtle emerald glow */
+}
+
+.light-theme .card-premium:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.05);
 }
 
 .card-mini {
@@ -115,19 +137,7 @@ body {
   opacity: 0.9;
 }
 
-/* Intersection Observer Animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: opacity, transform;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Intersection Observer Animations REMOVED in favor of Framer Motion for better FPS */
 
 .scale-reveal {
   width: 28px;

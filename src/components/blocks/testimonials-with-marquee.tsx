@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card"
+import { Reveal } from "@/components/ui/reveal"
 
 export interface TestimonialsSectionProps {
   title: string
@@ -19,8 +20,8 @@ export function TestimonialsSection({
   className 
 }: TestimonialsSectionProps) {
   return (
-    <section className={cn("py-10 md:py-16 reveal", className)}>
-      <div className="mx-auto flex flex-col items-center text-center gap-8 md:gap-12 overflow-hidden w-full">
+    <section className={cn("py-10 md:py-16", className)}>
+      <Reveal className="mx-auto flex flex-col items-center text-center gap-8 md:gap-12 overflow-hidden w-full">
         <div className="flex flex-col items-center gap-3 px-4">
           <h2 className="section-title mb-0">{title}</h2>
           {description && (
@@ -66,7 +67,7 @@ export function TestimonialsSection({
             style={{ background: 'linear-gradient(to left, var(--bg-color), transparent)'}} 
           />
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

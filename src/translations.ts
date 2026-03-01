@@ -251,6 +251,18 @@ export const translations: Record<Lang, Locale> = {
           },
           text: 'Очень аккуратная работа: дизайн, код и аналитика. Видно профессиональный системный подход.',
         },
+        {
+          author: { name: 'Евгений В.', handle: '@evg_logistic', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face' },
+          text: 'Сайт отрабатывает на 10/10. Быстрая загрузка, удобная админка. Конверсия выросла в полтора раза.',
+        },
+        {
+          author: { name: 'Динара Т.', handle: '@dina_beauty', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face' },
+          text: 'Идеальное попадание в стиль бренда. Картинка сочная, а запуск занял всего 10 дней.',
+        },
+        {
+          author: { name: 'Максим О.', handle: '@max_dev', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face' },
+          text: 'Как технарь, я оценил качество кода. Никаких лагов, 90+ в Google PageSpeed. Рекомендую.',
+        },
       ],
     },
     faq: {
@@ -487,6 +499,18 @@ export const translations: Record<Lang, Locale> = {
           },
           text: 'Very accurate work: design, code, and analytics. A professional, systematic approach is evident.',
         },
+        {
+          author: { name: 'Eugene V.', handle: '@evg_logistic', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face' },
+          text: 'The website performs 10/10. Fast loading, convenient admin panel, and conversion increased by 1.5 times.',
+        },
+        {
+          author: { name: 'Dinara T.', handle: '@dina_beauty', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face' },
+          text: 'Perfect alignment with our brand. Clients constantly praise the design, and launch took only 10 days.',
+        },
+        {
+          author: { name: 'Maxim O.', handle: '@max_dev', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face' },
+          text: 'As an engineer, I appreciated the code quality. Zero lag, 90+ on Google PageSpeed. Highly recommended.',
+        },
       ],
     },
     faq: {
@@ -722,6 +746,18 @@ export const translations: Record<Lang, Locale> = {
             avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
           },
           text: 'Аябай так иш: дизайн, код жана аналитика. Профессионалдык системалуу мамиле байкалып турат.',
+        },
+        {
+          author: { name: 'Евгений В.', handle: '@evg_logistic', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face' },
+          text: 'Сайт 10/10 иштейт. Тез жүктөлөт, ыңгайлуу админка. Конверсия өнүгүп жатат.',
+        },
+        {
+          author: { name: 'Динара Т.', handle: '@dina_beauty', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face' },
+          text: 'Бренддин стилине идеалдуу туура келди. Ишке киргизүү 10 эле күндү алды.',
+        },
+        {
+          author: { name: 'Максим О.', handle: '@max_dev', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face' },
+          text: 'Коддун сапатын биз бийик бааладык. Эч кандай катуулар жок. Сунуштайм.',
         },
       ],
     },

@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Locale } from '../translations';
+import { TELEGRAM_LINK } from '../App';
 
 interface CalculatorPageProps {
   t: Locale;
-  onBack: () => void;
 }
 
-export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
+export default function CalculatorPage({ t }: CalculatorPageProps) {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isCalculated, setIsCalculated] = useState(false);
@@ -19,17 +21,17 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
     {
       question: "Какой тип сайта вам нужен?",
       options: [
-        { label: "Лендинг (одностраничный)", value: 50 },
-        { label: "Многостраничный корпоративный", value: 150 },
-        { label: "Интернет-магазин (eCommerce)", value: 250 },
-        { label: "Сложный веб-сервис / Портал", value: 350 }
+        { label: "Лендинг (одностраничный)", value: 150 },
+        { label: "Многостраничный корпоративный", value: 300 },
+        { label: "Интернет-магазин (eCommerce)", value: 500 },
+        { label: "Сложный веб-сервис / Портал", value: 700 }
       ]
     },
     {
       question: "Есть ли у вас готовый дизайн (Figma)?",
       options: [
-        { label: "Нет, нужен дизайн под ключ", value: 50 },
-        { label: "Есть референсы, нужен дизайн", value: 20 },
+        { label: "Нет, нужен дизайн под ключ", value: 100 },
+        { label: "Есть референсы, нужен дизайн", value: 50 },
         { label: "Да, дизайн готов к верстке", value: 0 }
       ]
     },
@@ -54,7 +56,7 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
       options: [
         { label: "Нет, сайт статичный", value: 0 },
         { label: "Да, стандартная CMS (WordPress/Sanity)", value: 50 },
-        { label: "Да, кастомная админка", value: 150 }
+        { label: "Да, кастомная админка", value: 200 }
       ]
     },
     {
@@ -140,7 +142,7 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
   return (
     <div className="min-h-[85vh] py-10 md:py-20 flex flex-col items-center justify-center max-w-4xl mx-auto px-4 w-full">
       <button 
-        onClick={(e) => { e.preventDefault(); onBack(); }}
+        onClick={() => navigate('/')}
         className="self-start flex items-center gap-2 mb-8 text-[var(--text-secondary)] hover:text-emerald-500 transition-colors"
       >
         <ArrowLeft size={20} />
@@ -240,19 +242,12 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
               </p>
 
               <div className="flex flex-col w-full max-w-sm gap-4">
-                <form 
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    onBack();
-                  }}
-                  className="flex flex-col gap-3 w-full"
+                <button 
+                  onClick={() => window.open(TELEGRAM_LINK, '_blank')}
+                  className="w-full inline-flex justify-center items-center rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 font-bold transition hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.2)]"
                 >
-                  <input required type="text" placeholder="Ваше имя" className="w-full bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl px-4 py-3 focus:border-emerald-500 focus:outline-none transition-colors" />
-                  <input required type="tel" placeholder="Ваш телефон / Telegram" className="w-full bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl px-4 py-3 focus:border-emerald-500 focus:outline-none transition-colors" />
-                  <button type="submit" className="w-full mt-2 inline-flex justify-center items-center rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 font-bold transition hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-                    Обсудить проект
-                  </button>
-                </form>
+                  Обсудить в Telegram
+                </button>
 
                 <button 
                   onClick={() => {
