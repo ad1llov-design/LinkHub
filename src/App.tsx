@@ -182,7 +182,7 @@ function App() {
             <SplineSceneBasic />
           </div>
 
-          <div className="relative z-10 max-w-3xl reveal space-y-6">
+          <div className="relative z-10 max-w-3xl reveal space-y-6 pointer-events-none">
             <span className="inline-flex rounded-full border border-[var(--glass-border)] px-4 py-1.5 text-xs tracking-[0.14em] uppercase text-[var(--text-secondary)]">
               {t.hero.badge}
             </span>
@@ -191,14 +191,14 @@ function App() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="#contacts"
-                className="btn-cta inline-flex items-center gap-2 rounded-xl px-6 py-3 font-medium"
+                className="btn-cta inline-flex items-center gap-2 rounded-xl px-6 py-3 font-medium pointer-events-auto"
               >
                 {t.hero.ctaPrimary}
                 <ArrowRight size={18} />
               </a>
               <a
                 href="#portfolio"
-                className="inline-flex items-center gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:bg-[var(--glass-hover)]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:bg-[var(--glass-hover)] pointer-events-auto"
               >
                 {t.hero.ctaSecondary}
               </a>
@@ -294,44 +294,32 @@ function App() {
                   ))}
                  </div>
                  
-                 {/* Desktop Snake View */}
-                 <div className="hidden md:flex flex-col relative max-w-5xl mx-auto mt-10">
-                    {Array.from({ length: Math.ceil(t.process.steps.length / 2) }).map((_, rowIndex) => {
-                       const idx1 = rowIndex * 2;
-                       const idx2 = rowIndex * 2 + 1;
-                       const isReverse = rowIndex % 2 !== 0;
-
+                 {/* Desktop Z-Pattern View */}
+                 <div className="hidden md:grid grid-cols-2 gap-x-16 gap-y-16 relative max-w-5xl mx-auto mt-10">
+                    {t.process.steps.map((step, idx) => {
+                       const isRightCol = idx % 2 !== 0;
                        return (
-                         <div key={rowIndex} className={`flex gap-16 w-full relative reveal ${isReverse ? 'flex-row-reverse' : 'flex-row'} ${rowIndex > 0 ? 'mt-16' : ''}`}>
+                         <div key={idx} className="relative reveal h-full">
+                            <RenderCard idx={idx} step={step} />
                             
-                            {/* Horizontal connecting arrow from Card 1 to Card 2 */}
-                            {idx2 < t.process.steps.length && (
-                              <div className={`absolute top-1/2 -translate-y-1/2 w-16 flex items-center justify-center text-[var(--border-color)] ${isReverse ? 'left-1/2 -translate-x-1/2 rotate-180' : 'left-1/2 -translate-x-1/2'}`}>
-                                <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* Horizontal connecting arrow to the right (if even, and next exists) */}
+                            {!isRightCol && idx < t.process.steps.length - 1 && (
+                              <div className="absolute top-1/2 -right-16 translate-x-4 -translate-y-1/2 w-8 flex items-center justify-center text-[var(--border-color)] z-[-1]">
+                                <svg width="40" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M0 12H58M58 12L48 2M58 12L48 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                               </div>
                             )}
 
-                            {/* Vertical connecting arrow to the next row */}
-                            {rowIndex < Math.ceil(t.process.steps.length / 2) - 1 && (
-                              <div className={`absolute -bottom-16 w-full flex justify-center text-[var(--border-color)] ${isReverse ? 'justify-start pl-[25%]' : 'justify-end pr-[25%]'}`}>
-                                <div className="h-16 w-[2px] bg-[var(--border-color)] relative">
-                                   <div className="absolute -bottom-2 -left-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[var(--border-color)]" />
-                                </div>
+                            {/* Diagonal arrow from Right column down to Left column (if odd, and next exists) */}
+                            {isRightCol && idx < t.process.steps.length - 1 && (
+                              <div className="absolute -bottom-16 -left-12 right-1/2 h-16 flex items-center justify-center text-[var(--border-color)] opacity-50 z-[-1]">
+                                <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M100 0 C 100 50, 0 50, 0 85" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+                                  <path d="M-5 75 L 0 90 L 5 75" stroke="currentColor" strokeWidth="2" fill="currentColor" />
+                                </svg>
                               </div>
                             )}
-                            
-                            <div className="flex-1 w-full relative">
-                               <RenderCard idx={idx1} step={t.process.steps[idx1]} />
-                            </div>
-                            <div className="flex-1 w-full relative">
-                               {idx2 < t.process.steps.length ? (
-                                 <RenderCard idx={idx2} step={t.process.steps[idx2]} />
-                               ) : (
-                                 <div className="w-full h-full" />
-                               )}
-                            </div>
                          </div>
                        )
                     })}
@@ -648,7 +636,7 @@ function App() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-            <p>{t.footer.copyright}</p>
+            <p>{t.footer.copyright.replace("LinkHub Studio", "г. Ош / Онлайн")}</p>
           </div>
         </div>
       </footer>

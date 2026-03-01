@@ -19,17 +19,17 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
     {
       question: "Какой тип сайта вам нужен?",
       options: [
-        { label: "Лендинг (одностраничный)", value: 150 },
-        { label: "Многостраничный корпоративный", value: 300 },
-        { label: "Интернет-магазин (eCommerce)", value: 500 },
-        { label: "Сложный веб-сервис / Портал", value: 800 }
+        { label: "Лендинг (одностраничный)", value: 50 },
+        { label: "Многостраничный корпоративный", value: 150 },
+        { label: "Интернет-магазин (eCommerce)", value: 250 },
+        { label: "Сложный веб-сервис / Портал", value: 350 }
       ]
     },
     {
       question: "Есть ли у вас готовый дизайн (Figma)?",
       options: [
-        { label: "Нет, нужен дизайн под ключ", value: 100 },
-        { label: "Есть референсы, нужен дизайн", value: 50 },
+        { label: "Нет, нужен дизайн под ключ", value: 50 },
+        { label: "Есть референсы, нужен дизайн", value: 20 },
         { label: "Да, дизайн готов к верстке", value: 0 }
       ]
     },
@@ -53,8 +53,8 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
       question: "Нужна ли админ-панель (CMS) для управления контентом?",
       options: [
         { label: "Нет, сайт статичный", value: 0 },
-        { label: "Да, стандартная CMS (WordPress/Sanity)", value: 100 },
-        { label: "Да, кастомная админка", value: 250 }
+        { label: "Да, стандартная CMS (WordPress/Sanity)", value: 50 },
+        { label: "Да, кастомная админка", value: 150 }
       ]
     },
     {
@@ -139,7 +139,10 @@ export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
 
   return (
     <div className="min-h-[85vh] py-10 md:py-20 flex flex-col items-center justify-center max-w-4xl mx-auto px-4 w-full">
-      <button onClick={onBack} className="self-start flex items-center gap-2 mb-8 text-[var(--text-secondary)] hover:text-emerald-500 transition-colors">
+      <button 
+        onClick={(e) => { e.preventDefault(); onBack(); }}
+        className="self-start flex items-center gap-2 mb-8 text-[var(--text-secondary)] hover:text-emerald-500 transition-colors"
+      >
         <ArrowLeft size={20} />
         <span>{t.nav[0] ? "Вернуться на главную" : "Вернуться"}</span>
       </button>
