@@ -740,7 +740,7 @@ function App() {
                 <a href="https://wa.me/+996557555058" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] hover:-translate-y-1 transition-transform bg-gradient-to-br from-green-500/20 to-green-600/10">
                   <MessageCircle size={20} />
                 </a>
-                <a href="mailto:hello@linkhub.dev" className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] hover:-translate-y-1 transition-transform">
+                <a href="mailto:adilovbatir959@gmail.com" className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] hover:-translate-y-1 transition-transform">
                   <Mail size={20} />
                 </a>
               </div>

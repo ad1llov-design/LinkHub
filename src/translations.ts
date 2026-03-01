@@ -330,7 +330,7 @@ export const translations: Record<Lang, Locale> = {
         phone: '+996 (557) 55-50-58',
         address: 'г. Паш, онлайн',
         hours: 'Пн-Пт 10:00 - 18:00',
-        email: 'hello@linkhub.dev'
+        email: 'adilovbatir959@gmail.com'
       }
     },
   },
@@ -584,7 +584,7 @@ export const translations: Record<Lang, Locale> = {
         phone: '+996 (557) 55-50-58',
         address: 'Osh, Remote',
         hours: 'Mon-Fri 10:00 - 18:00',
-        email: 'hello@linkhub.dev'
+        email: 'adilovbatir959@gmail.com'
       }
     },
   },
@@ -838,7 +838,7 @@ export const translations: Record<Lang, Locale> = {
         phone: '+996 (557) 55-50-58',
         address: 'Паш ш., онлайн',
         hours: 'Дүйш-Жума 10:00 - 18:00',
-        email: 'hello@linkhub.dev'
+        email: 'adilovbatir959@gmail.com'
       }
     },
   },
