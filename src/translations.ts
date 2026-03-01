@@ -69,8 +69,6 @@ export type Locale = {
     brandDesc: string;
     copyright: string;
     navTitle: string;
-    servicesTitle: string;
-    services: string[];
     contacts: {
       phone: string;
       address: string;
@@ -83,7 +81,7 @@ export type Locale = {
 export const translations: Record<Lang, Locale> = {
   ru: {
     brand: 'PixelCode',
-    nav: ['Главная', 'Услуги', 'Тарифы', 'Портфолио', 'Контакты'],
+    nav: ['Главная', 'Обо мне', 'Тарифы', 'Портфолио', 'Контакты'],
     hero: {
       badge: 'Премиум веб-разработка',
       title: 'Создаем сайты, которые продают и усиливают бренд',
@@ -328,8 +326,6 @@ export const translations: Record<Lang, Locale> = {
       brandDesc: 'Студия веб-разработки полного цикла нового поколения. Мы не просто создаем красивую картинку, мы делаем продукт, который решает задачи бизнеса и приносит прибыль.',
       copyright: '© 2024-2026 PixelCode. Все права защищены. Политика конфиденциальности',
       navTitle: 'Навигация',
-      servicesTitle: 'Направления',
-      services: ['Корпоративные сайты', 'Landing Page', 'Интернет-магазины', 'Дизайн в Figma', 'Техническая поддержка'],
       contacts: {
         phone: '+996 (557) 55-50-58',
         address: 'г. Паш, онлайн',
@@ -340,7 +336,7 @@ export const translations: Record<Lang, Locale> = {
   },
   en: {
     brand: 'PixelCode',
-    nav: ['Home', 'Services', 'Pricing', 'Portfolio', 'Contacts'],
+    nav: ['Home', 'About Me', 'Pricing', 'Portfolio', 'Contacts'],
     hero: {
       badge: 'Premium Web Development',
       title: 'We create websites that sell and elevate your brand',
@@ -584,8 +580,6 @@ export const translations: Record<Lang, Locale> = {
       brandDesc: 'Next-generation full-cycle web development studio. We don’t just create a beautiful picture, we build a product that solves business problems and generates profit.',
       copyright: '© 2024-2026 PixelCode. All rights reserved. Privacy Policy',
       navTitle: 'Navigation',
-      servicesTitle: 'Services',
-      services: ['Corporate websites', 'Landing Pages', 'eCommerce', 'Figma Design', 'Technical Support'],
       contacts: {
         phone: '+996 (557) 55-50-58',
         address: 'Pash, Remote',
@@ -596,11 +590,11 @@ export const translations: Record<Lang, Locale> = {
   },
   kg: {
     brand: 'PixelCode',
-    nav: ['Башкы', 'Кызматтар', 'Тарифтер', 'Портфолио', 'Байланыш'],
+    nav: ['Башкы', 'Мен жөнүндө', 'Тарифтер', 'Портфолио', 'Байланыштар'],
     hero: {
       badge: 'Премиум веб-иштеп чыгуу',
       title: 'Биз сатуучу жана брендди күчөтүүчү сайттарды жасайбыз',
-      subtitle: 'Заманбап дизайны, жогорку ылдамдыгы жана түшүнүктүү конверсиялык воронкасы бар лендинг, корпоративдик сайт жана интернет-дүкөндөр.',
+      subtitle: 'Лендинг, корпоративдик сайттар жана интернет-дүкөндөр заманбап дизайн, жогорку ылдамдык жана түшүнүктүү өтүнмө воронкасы менен.',
       ctaPrimary: 'Проектини талкуулоо',
       ctaSecondary: 'Биздин иштерди көрүү',
       benefits: ['5 күндөн баштап ишке киргизүү', 'Конверсиялык UX/UI', 'SEO-даяр түзүм', 'Релизден кийинки колдоо'],
@@ -840,8 +834,6 @@ export const translations: Record<Lang, Locale> = {
       brandDesc: 'Жаңы муундагы толук циклдуу веб-иштеп чыгуу студиясы. Биз жөн гана кооз сүрөт жаратпайбыз, бизнес көйгөйлөрүн чечип, киреше алып келүүчү продукт жасайбыз.',
       copyright: '© 2024-2026 PixelCode. Бардык укуктар корголгон. Купуялык саясаты',
       navTitle: 'Навигация',
-      servicesTitle: 'Кызматтар',
-      services: ['Корпоративдик сайттар', 'Лендинг', 'Интернет-дүкөндөр', 'Figma дизайн', 'Техникалык колдоо'],
       contacts: {
         phone: '+996 (557) 55-50-58',
         address: 'Паш ш., онлайн',

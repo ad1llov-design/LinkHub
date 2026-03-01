@@ -613,50 +613,52 @@ function App() {
           </Reveal>
         </section>
 
-        <Reveal>
-          <Pricing
-            title={t.pricing.title}
-            description={t.pricing.description}
-            annualBillingText={t.pricing.annualBillingText}
-            saveText={t.pricing.saveText}
-            popularBadgeText={t.pricing.popularBadgeText}
-            plans={[
-              {
-                name: t.pricing.columns[0],
-                price: t.pricing.rows[6].values[0],
-                yearlyPrice: String(Number(t.pricing.rows[6].values[0]) * 0.8),
-                period: "per project",
-                features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[0]}`),
-                description: "Complete solution for standard requirements.",
-                buttonText: t.hero.ctaPrimary,
-                href: "#contacts",
-                isPopular: false,
-              },
-              {
-                name: t.pricing.columns[1],
-                price: t.pricing.rows[6].values[1],
-                yearlyPrice: String(Number(t.pricing.rows[6].values[1]) * 0.8),
-                period: "per project",
-                features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[1]}`),
-                description: "Optimal balance of cost and features.",
-                buttonText: t.hero.ctaPrimary,
-                href: "#contacts",
-                isPopular: true,
-              },
-              {
-                name: t.pricing.columns[2],
-                price: t.pricing.rows[6].values[2],
-                yearlyPrice: String(Number(t.pricing.rows[6].values[2]) * 0.8),
-                period: "per project",
-                features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[2]}`),
-                description: "Maximum capabilities for complex projects.",
-                buttonText: t.hero.ctaPrimary,
-                href: "#contacts",
-                isPopular: false,
-              }
-            ]}
-          />
-        </Reveal>
+        <section id="pricing" className="py-10 md:py-16">
+          <Reveal>
+            <Pricing
+              title={t.pricing.title}
+              description={t.pricing.description}
+              annualBillingText={t.pricing.annualBillingText}
+              saveText={t.pricing.saveText}
+              popularBadgeText={t.pricing.popularBadgeText}
+              plans={[
+                {
+                  name: t.pricing.columns[0],
+                  price: t.pricing.rows[6].values[0],
+                  yearlyPrice: String(Number(t.pricing.rows[6].values[0]) * 0.8),
+                  period: "per project",
+                  features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[0]}`),
+                  description: "Complete solution for standard requirements.",
+                  buttonText: t.hero.ctaPrimary,
+                  href: "#contacts",
+                  isPopular: false,
+                },
+                {
+                  name: t.pricing.columns[1],
+                  price: t.pricing.rows[6].values[1],
+                  yearlyPrice: String(Number(t.pricing.rows[6].values[1]) * 0.8),
+                  period: "per project",
+                  features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[1]}`),
+                  description: "Optimal balance of cost and features.",
+                  buttonText: t.hero.ctaPrimary,
+                  href: "#contacts",
+                  isPopular: true,
+                },
+                {
+                  name: t.pricing.columns[2],
+                  price: t.pricing.rows[6].values[2],
+                  yearlyPrice: String(Number(t.pricing.rows[6].values[2]) * 0.8),
+                  period: "per project",
+                  features: t.pricing.rows.slice(0, 6).map(row => `${row.feature}: ${row.values[2]}`),
+                  description: "Maximum capabilities for complex projects.",
+                  buttonText: t.hero.ctaPrimary,
+                  href: "#contacts",
+                  isPopular: false,
+                }
+              ]}
+            />
+          </Reveal>
+        </section>
 
         <section className="py-10 md:py-16">
           <Reveal>
@@ -780,19 +782,7 @@ function App() {
               </ul>
             </div>
 
-            {/* Column 3: Services */}
-            <div>
-              <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.servicesTitle}</h4>
-              <ul className="space-y-4">
-                {t.footer.services.map((service) => (
-                  <li key={service} className="text-gray-400 text-sm">
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 4: Contacts */}
+            {/* Column 3: Contacts */}
             <div>
               <h4 className="text-lg font-semibold mb-6 text-white">{t.nav[4]}</h4>
               <ul className="space-y-4 text-sm text-gray-400">
