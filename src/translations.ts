@@ -328,7 +328,7 @@ export const translations: Record<Lang, Locale> = {
       navTitle: 'Навигация',
       contacts: {
         phone: '+996 (557) 55-50-58',
-        address: 'г. Паш, онлайн',
+        address: 'г. Ош, онлайн',
         hours: 'Пн-Пт 10:00 - 18:00',
         email: 'adilovbatir959@gmail.com'
       }
@@ -836,7 +836,7 @@ export const translations: Record<Lang, Locale> = {
       navTitle: 'Навигация',
       contacts: {
         phone: '+996 (557) 55-50-58',
-        address: 'Паш ш., онлайн',
+        address: 'Ош ш., онлайн',
         hours: 'Дүйш-Жума 10:00 - 18:00',
         email: 'adilovbatir959@gmail.com'
       }
