@@ -211,7 +211,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <section 
+            <section 
               id="hero" 
               className="relative min-h-[92vh] overflow-hidden py-14 md:py-24"
               onMouseMove={handleMouseMove}
@@ -223,8 +223,7 @@ function App() {
             transition={{ duration: 1 }}
             style={{ 
               rotateX: rotX, 
-              rotateY: rotY, 
-              filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.5))"
+              rotateY: rotY
             }}
             className="absolute right-[-28%] top-[-10%] h-[72vh] w-[72vw] md:right-[-4%] md:top-[2%] md:h-[86vh] md:w-[48vw] pointer-events-auto"
           >
@@ -344,31 +343,46 @@ function App() {
                  {/* Mobile Vertical View */}
                  <div className="md:hidden flex flex-col gap-6">
                   {t.process.steps.map((step, idx) => (
-                    <div key={idx} className="relative">
+                    <div key={idx} className="relative flex flex-col items-center">
                       <RenderCard idx={idx} step={step} />
                       {idx < t.process.steps.length - 1 && (
-                         <div className="absolute -bottom-6 left-[3.25rem] w-[2px] h-6 bg-gradient-to-b from-emerald-500/50 to-transparent" />
+                         <div className="w-[2px] h-6 bg-[var(--border-color)] my-2" />
                       )}
                     </div>
                   ))}
                  </div>
                  
-                 {/* Desktop Horizontal Scroll View */}
-                 <div className="hidden md:flex flex-row overflow-x-auto hide-scrollbar pb-8 pt-4 gap-12 snap-x snap-mandatory">
-                    {t.process.steps.map((step, idx) => (
-                       <div key={idx} className="relative flex items-center shrink-0 snap-start min-w-[340px] max-w-[400px]">
-                          <RenderCard idx={idx} step={step} />
-                          
-                          {/* Horizontal connecting arrow to the right (if not last) */}
-                          {idx < t.process.steps.length - 1 && (
-                            <div className="absolute top-1/2 -right-[2.5rem] translate-x-1 -translate-y-1/2 w-6 flex items-center justify-center text-[var(--border-color)] z-[-1]">
-                              <svg width="40" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 12H58M58 12L48 2M58 12L48 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            </div>
-                          )}
-                       </div>
-                    ))}
+                 {/* Desktop Wrapping Grid View (Variant B) */}
+                 <div className="hidden md:grid grid-cols-3 gap-x-12 gap-y-16 relative max-w-6xl mx-auto mt-10">
+                    {t.process.steps.map((step, idx) => {
+                       const isLastInRow = (idx + 1) % 3 === 0;
+                       const isLastItem = idx === t.process.steps.length - 1;
+                       
+                       return (
+                         <div key={idx} className="relative h-full flex flex-col items-center">
+                            <RenderCard idx={idx} step={step} />
+                            
+                            {/* Arrow to the right (if not last in row and not last item) */}
+                            {!isLastInRow && !isLastItem && (
+                              <div className="absolute top-1/2 -right-8 translate-x-2 -translate-y-1/2 w-8 flex items-center justify-center text-[var(--border-color)] z-[-1] hidden lg:flex">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              </div>
+                            )}
+
+                            {/* Arrow pointing down from the first item of the line to indicate reading flow */}
+                            {/* We drop the rigid arrows and just use simple vertical ones if we want, but Variant B is usually assumed standard wrap. We will put a subtle down arrow on every card if it has a card strictly below it, or no arrows vertically to keep it clean, but user asked for standard desktop wrap with arrows. */}
+                            {idx < t.process.steps.length - 3 && (
+                               <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 h-8 flex items-center justify-center text-[var(--border-color)] z-[-1]">
+                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                 </svg>
+                               </div>
+                            )}
+                         </div>
+                       )
+                    })}
                  </div>
                 </>
               )
