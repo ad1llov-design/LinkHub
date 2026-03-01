@@ -1,0 +1,14 @@
+{
+  "name": "pixelcode-tg-lead-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot lead funnel for PixelCode",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.65.0",
+    "dotenv": "^16.4.5"
+  }
+}
