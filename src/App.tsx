@@ -50,7 +50,6 @@ import { Pricing } from './components/blocks/pricing';
 import { TestimonialsSection } from './components/blocks/testimonials-with-marquee';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
-import CalculatorPage from './pages/CalculatorPage';
 import { ContactWidget } from './components/ContactWidget';
 
 // Hardcoded for the bot redirect funnel.
@@ -681,25 +680,6 @@ function App() {
             </Reveal>
           </section>
 
-          <section className="py-10 md:py-16">
-            <Reveal>
-              <div className="card-premium p-8 md:p-12 text-center flex flex-col items-center border border-emerald-500/20 bg-gradient-to-b from-[var(--glass-bg)] to-emerald-900/10">
-                <h2 className="text-3xl md:text-4xl font-bold max-w-2xl">{t.calculator.title}</h2>
-                <p className="mt-4 text-[var(--text-secondary)] max-w-xl text-lg">{t.calculator.text}</p>
-                <button
-                  onClick={() => {
-                    navigate('/calculator');
-                    window.scrollTo({ top: 0, behavior: 'instant' });
-                  }}
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 px-10 py-5 font-bold text-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
-                >
-                  {t.calculator.button}
-                  <ArrowRight size={20} />
-                </button>
-              </div>
-            </Reveal>
-          </section>
-
           <section id="contacts" className="py-10 md:py-16">
             <Reveal>
               <div className="card-premium max-w-3xl mx-auto p-8 md:p-12 text-center bg-gradient-to-b from-[var(--glass-bg)] to-indigo-900/10 border-indigo-500/20">
@@ -750,13 +730,11 @@ function App() {
           </section>
           </article>
           } />
-          <Route path="/calculator" element={<CalculatorPage t={t} />} />
         </Routes>
       </main>
 
-      {location.pathname !== '/calculator' && (
-        <footer className="bg-black text-white py-16 border-t border-white/10 relative z-[100]">
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <footer className="bg-black text-white py-16 border-t border-white/10 relative z-[100]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               {/* Column 1: Brand Info */}
               <div className="space-y-6">
@@ -826,7 +804,6 @@ function App() {
             </div>
           </div>
         </footer>
-        )}
         {/* Floating Action Button */}
         <ContactWidget telegramUrl={BOT_LINK} whatsappUrl={WHATSAPP_LINK} />
       </div>
