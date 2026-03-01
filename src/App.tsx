@@ -31,17 +31,16 @@ import { Pricing } from './components/blocks/pricing';
 import { TestimonialsSection } from './components/blocks/testimonials-with-marquee';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import CalculatorPage from './pages/CalculatorPage';
 
 function App() {
   const [lang, setLang] = useState<Lang>('ru');
+  const [view, setView] = useState<'main' | 'calculator'>('main');
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const { resolvedTheme, setTheme } = useTheme();
   const isLight = resolvedTheme === 'light';
   const t = translations[lang];
-  const location = useLocation();
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,14 +129,19 @@ function App() {
       <DottedSurface />
 
       <header className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--glass-bg)]/90 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-          <a href="#hero" className="text-sm font-semibold tracking-[0.18em] uppercase">
-            {t.brand}
+        <div className="mx-auto flex w-full max-w-[100rem] items-center justify-between px-4 py-4 md:px-8">
+          <a href="#hero" className="flex items-center gap-2">
+            <Globe className="h-6 w-6 text-emerald-500" />
           </a>
 
           <nav className="hidden items-center gap-6 text-sm text-[var(--text-secondary)] md:flex">
             {t.nav.map((item, index) => (
-              <a key={item} href={navAnchors[index]} className="transition hover:text-[var(--text-primary)]">
+              <a 
+                key={item} 
+                href={navAnchors[index]} 
+                onClick={() => setView('main')}
+                className="transition hover:text-[var(--text-primary)]"
+              >
                 {item}
               </a>
             ))}
@@ -170,12 +174,11 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        <Routes>
-          <Route path="/" element={
-            <>
-              <section id="hero" className="relative min-h-[92vh] overflow-hidden py-14 md:py-24">
-          <div className="absolute right-[-28%] top-[-10%] h-[72vh] w-[72vw] md:right-[-8%] md:top-[2%] md:h-[86vh] md:w-[52vw] hero-robot">
+      <main className="mx-auto w-full max-w-[100rem] px-4 md:px-8">
+        {view === 'main' ? (
+          <>
+            <section id="hero" className="relative min-h-[92vh] overflow-hidden py-14 md:py-24">
+          <div className="absolute right-[-28%] top-[-10%] h-[72vh] w-[72vw] md:right-[-4%] md:top-[2%] md:h-[86vh] md:w-[48vw] hero-robot pointer-events-auto">
             <SplineSceneBasic />
           </div>
 
@@ -292,17 +295,31 @@ function App() {
                  </div>
                  
                  {/* Desktop Snake View */}
-                 <div className="hidden md:flex flex-col relative max-w-5xl mx-auto">
+                 <div className="hidden md:flex flex-col relative max-w-5xl mx-auto mt-10">
                     {Array.from({ length: Math.ceil(t.process.steps.length / 2) }).map((_, rowIndex) => {
                        const idx1 = rowIndex * 2;
                        const idx2 = rowIndex * 2 + 1;
                        const isReverse = rowIndex % 2 !== 0;
 
                        return (
-                         <div key={rowIndex} className={`flex gap-12 w-full mb-12 relative reveal ${isReverse ? 'flex-row-reverse' : 'flex-row'}`}>
-                            {/* Horizontal connecting subtle line */}
+                         <div key={rowIndex} className={`flex gap-16 w-full relative reveal ${isReverse ? 'flex-row-reverse' : 'flex-row'} ${rowIndex > 0 ? 'mt-16' : ''}`}>
+                            
+                            {/* Horizontal connecting arrow from Card 1 to Card 2 */}
                             {idx2 < t.process.steps.length && (
-                              <div className="absolute top-1/2 left-[30%] right-[30%] h-[1px] bg-[var(--border-color)] -translate-y-1/2 -z-10" />
+                              <div className={`absolute top-1/2 -translate-y-1/2 w-16 flex items-center justify-center text-[var(--border-color)] ${isReverse ? 'left-1/2 -translate-x-1/2 rotate-180' : 'left-1/2 -translate-x-1/2'}`}>
+                                <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M0 12H58M58 12L48 2M58 12L48 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              </div>
+                            )}
+
+                            {/* Vertical connecting arrow to the next row */}
+                            {rowIndex < Math.ceil(t.process.steps.length / 2) - 1 && (
+                              <div className={`absolute -bottom-16 w-full flex justify-center text-[var(--border-color)] ${isReverse ? 'justify-start pl-[25%]' : 'justify-end pr-[25%]'}`}>
+                                <div className="h-16 w-[2px] bg-[var(--border-color)] relative">
+                                   <div className="absolute -bottom-2 -left-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[var(--border-color)]" />
+                                </div>
+                              </div>
                             )}
                             
                             <div className="flex-1 w-full relative">
@@ -484,13 +501,16 @@ function App() {
           <div className="card-premium reveal p-8 md:p-12 text-center flex flex-col items-center border border-emerald-500/20 bg-gradient-to-b from-[var(--glass-bg)] to-emerald-900/10">
             <h2 className="text-3xl md:text-4xl font-bold max-w-2xl">{t.calculator.title}</h2>
             <p className="mt-4 text-[var(--text-secondary)] max-w-xl text-lg">{t.calculator.text}</p>
-            <Link
-              to="/calculator"
+            <button
+              onClick={() => {
+                setView('calculator');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 px-10 py-5 font-bold text-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
             >
               {t.calculator.button}
               <ArrowRight size={20} />
-            </Link>
+            </button>
           </div>
         </section>
 
@@ -540,16 +560,16 @@ function App() {
             </div>
           </div>
         </section>
-            </>
-          } />
-          <Route path="/calculator" element={<CalculatorPage t={t} />} />
-        </Routes>
+          </>
+        ) : (
+          <CalculatorPage t={t} onBack={() => { setView('main'); window.scrollTo({ top: 0, behavior: 'smooth' }) }} />
+        )}
       </main>
 
       {/* Conditionally render footer only if we are not taking up screen size, 
           or just render it always. I will keep it globally accessible. */}
-      {location.pathname !== '/calculator' && (
-        <footer className="bg-black text-white py-16 mt-16 border-t border-white/10 relative z-[100]">
+      {view === 'main' && (
+        <footer className="bg-black text-white py-16 border-t border-white/10 relative z-[100]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Column 1: Brand Info */}
@@ -629,7 +649,6 @@ function App() {
 
           <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <p>{t.footer.copyright}</p>
-            <p>Made by {t.brand}</p>
           </div>
         </div>
       </footer>

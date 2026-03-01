@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Locale } from '../translations';
-import { Link } from 'react-router-dom';
 
 interface CalculatorPageProps {
   t: Locale;
+  onBack: () => void;
 }
 
-export default function CalculatorPage({ t }: CalculatorPageProps) {
+export default function CalculatorPage({ t, onBack }: CalculatorPageProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isCalculated, setIsCalculated] = useState(false);
@@ -19,17 +19,17 @@ export default function CalculatorPage({ t }: CalculatorPageProps) {
     {
       question: "Какой тип сайта вам нужен?",
       options: [
-        { label: "Лендинг (одностраничный)", value: 300 },
-        { label: "Многостраничный корпоративный", value: 800 },
-        { label: "Интернет-магазин (eCommerce)", value: 1200 },
-        { label: "Сложный веб-сервис / Портал", value: 2000 }
+        { label: "Лендинг (одностраничный)", value: 150 },
+        { label: "Многостраничный корпоративный", value: 300 },
+        { label: "Интернет-магазин (eCommerce)", value: 500 },
+        { label: "Сложный веб-сервис / Портал", value: 800 }
       ]
     },
     {
       question: "Есть ли у вас готовый дизайн (Figma)?",
       options: [
-        { label: "Нет, нужен дизайн под ключ", value: 200 },
-        { label: "Есть референсы, нужен дизайн", value: 150 },
+        { label: "Нет, нужен дизайн под ключ", value: 100 },
+        { label: "Есть референсы, нужен дизайн", value: 50 },
         { label: "Да, дизайн готов к верстке", value: 0 }
       ]
     },
@@ -45,16 +45,16 @@ export default function CalculatorPage({ t }: CalculatorPageProps) {
       question: "Есть ли у вас готовые тексты (Копирайтинг)?",
       options: [
         { label: "Да, все тексты готовы", value: 0 },
-        { label: "Частично, нужно доработать", value: 100 },
-        { label: "Нет, тексты нужно написать с нуля", value: 250 }
+        { label: "Частично, нужно доработать", value: 50 },
+        { label: "Нет, тексты нужно написать с нуля", value: 100 }
       ]
     },
     {
       question: "Нужна ли админ-панель (CMS) для управления контентом?",
       options: [
         { label: "Нет, сайт статичный", value: 0 },
-        { label: "Да, стандартная CMS (WordPress/Sanity)", value: 300 },
-        { label: "Да, кастомная админка", value: 700 }
+        { label: "Да, стандартная CMS (WordPress/Sanity)", value: 100 },
+        { label: "Да, кастомная админка", value: 250 }
       ]
     },
     {
@@ -76,8 +76,8 @@ export default function CalculatorPage({ t }: CalculatorPageProps) {
       question: "Нужна ли интеграция с внешними сервисами (CRM, Платежи)?",
       options: [
         { label: "Нет", value: 0 },
-        { label: "Да, базовая CRM (Amo, Bitrix) / Подписка", value: 250 },
-        { label: "Сложные API-интеграции (1C, Кассы и т.д.)", value: 600 }
+        { label: "Да, базовая CRM (Amo, Bitrix) / Подписка", value: 100 },
+        { label: "Сложные API-интеграции (1C, Кассы и т.д.)", value: 200 }
       ]
     },
     {
@@ -91,8 +91,8 @@ export default function CalculatorPage({ t }: CalculatorPageProps) {
       question: "Нужна ли техническая поддержка после запуска?",
       options: [
         { label: "Достаточно базовой (1 месяц - бесплатно)", value: 0 },
-        { label: "Да, поддержка на 3 месяца", value: 200 },
-        { label: "Да, постоянное сопровождение", value: 500 }
+        { label: "Да, поддержка на 3 месяца", value: 100 },
+        { label: "Да, постоянное сопровождение", value: 200 }
       ]
     }
   ];
@@ -139,10 +139,10 @@ export default function CalculatorPage({ t }: CalculatorPageProps) {
 
   return (
     <div className="min-h-[85vh] py-10 md:py-20 flex flex-col items-center justify-center max-w-4xl mx-auto px-4 w-full">
-      <Link to="/" className="self-start flex items-center gap-2 mb-8 text-[var(--text-secondary)] hover:text-emerald-500 transition-colors">
+      <button onClick={onBack} className="self-start flex items-center gap-2 mb-8 text-[var(--text-secondary)] hover:text-emerald-500 transition-colors">
         <ArrowLeft size={20} />
         <span>{t.nav[0] ? "Вернуться на главную" : "Вернуться"}</span>
-      </Link>
+      </button>
 
       <div className="w-full card-premium p-6 md:p-12 relative overflow-hidden">
         {/* Progress Bar */}
@@ -233,20 +233,31 @@ export default function CalculatorPage({ t }: CalculatorPageProps) {
               </div>
 
               <p className="text-sm text-[var(--text-secondary)] mb-8 max-w-sm">
-                Оставьте заявку, чтобы получить точную смету и обсудить детали вашего проекта.
+                Хотите обсудить проект детальнее или получить точную смету? Оставьте контакты, и я свяжусь с вами.
               </p>
 
               <div className="flex flex-col w-full max-w-sm gap-4">
-                <a href="/#contacts" className="w-full inline-flex justify-center items-center rounded-full bg-[var(--text-primary)] text-[var(--bg-color)] px-6 py-4 font-bold transition hover:scale-105">
-                  Оставить заявку
-                </a>
+                <form 
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    onBack();
+                  }}
+                  className="flex flex-col gap-3 w-full"
+                >
+                  <input required type="text" placeholder="Ваше имя" className="w-full bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl px-4 py-3 focus:border-emerald-500 focus:outline-none transition-colors" />
+                  <input required type="tel" placeholder="Ваш телефон / Telegram" className="w-full bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl px-4 py-3 focus:border-emerald-500 focus:outline-none transition-colors" />
+                  <button type="submit" className="w-full mt-2 inline-flex justify-center items-center rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 font-bold transition hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                    Обсудить проект
+                  </button>
+                </form>
+
                 <button 
                   onClick={() => {
                     setCurrentStep(0);
                     setAnswers({});
                     setIsCalculated(false);
                   }}
-                  className="w-full inline-flex justify-center items-center rounded-full border border-[var(--border-color)] px-6 py-4 font-bold transition hover:bg-white/5"
+                  className="w-full mt-4 inline-flex justify-center items-center rounded-xl border border-[var(--border-color)] px-6 py-4 font-bold transition hover:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 >
                   Пройти заново
                 </button>
