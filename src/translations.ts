@@ -582,7 +582,7 @@ export const translations: Record<Lang, Locale> = {
       navTitle: 'Navigation',
       contacts: {
         phone: '+996 (557) 55-50-58',
-        address: 'Pash, Remote',
+        address: 'Osh, Remote',
         hours: 'Mon-Fri 10:00 - 18:00',
         email: 'hello@linkhub.dev'
       }
