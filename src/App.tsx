@@ -102,8 +102,8 @@ function App() {
     
     // NOTE: Hardcoding token here is unsafe for production, but done via requirement.
     // Replace YOUR_TELEGRAM_BOT_TOKEN_HERE / CHAT_ID
-    const botToken = 'YOUR_TELEGRAM_BOT_TOKEN_HERE';
-    const chatId = 'YOUR_TELEGRAM_CHAT_ID_HERE';
+    const botToken = '8412566173:AAEpJRSA3kMsjwmd7cl4DAdl4jBOvOtTwEg';
+    const chatId = '1319315093';
     const msgTemplate = `🔥 Новая заявка с сайта:\n\n👤 Имя: ${formData.name}\n📞 Контакт: ${formData.phone}`;
     
     try {
