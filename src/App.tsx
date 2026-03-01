@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Helmet } from 'react-helmet-async';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 export const TELEGRAM_LINK = "https://t.me/ad1llovdesign"; // Ensure this matches your bot link
@@ -53,6 +53,8 @@ import CalculatorPage from './pages/CalculatorPage';
 
 function App() {
   const [lang, setLang] = useState<Lang>('ru');
+  const [activeSection, setActiveSection] = useState<string>('hero');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   
@@ -159,37 +161,82 @@ function App() {
 
   const navAnchors = useMemo(() => ['#hero', '#services', '#pricing', '#portfolio', '#contacts'], []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navAnchors.map(anchor => document.querySelector(anchor) as HTMLElement | null);
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navAnchors[i].replace('#', ''));
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [navAnchors]);
+
+  const handleNavClick = (anchor: string) => {
+    handleScrollToAnchor(anchor);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-primary)]">
       <DottedSurface />
 
-      <header className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--glass-bg)]/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--glass-bg)]/90 backdrop-blur-xl transition-all duration-300">
         <div className="mx-auto flex w-full max-w-[100rem] items-center justify-between px-4 py-4 md:px-8">
-          <a href="#hero" className="flex items-center gap-2">
-            <Globe className="h-6 w-6 text-emerald-500" />
+          {/* Logo & Brand Name */}
+          <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }} className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]">
+            <div className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-emerald-500" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 21V3H13.5C16.5376 3 19 5.46243 19 8.5V8.5C19 11.5376 16.5376 14 13.5 14H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <rect x="7" y="3" width="6.5" height="11" fill="currentColor" fillOpacity="0.2"/>
+              </svg>
+            </div>
+            <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+              {BRAND_NAME}
+            </span>
           </a>
 
-          <nav className="hidden items-center gap-6 text-sm text-[var(--text-secondary)] md:flex">
-            {t.nav.map((item, index) => (
-              <button 
-                key={item} 
-                onClick={() => handleScrollToAnchor(navAnchors[index])}
-                className="transition hover:text-[var(--text-primary)]"
-              >
-                {item}
-              </button>
-            ))}
+          {/* Desktop Navigation */}
+          <nav className="hidden items-center gap-8 md:flex">
+            {t.nav.map((item, index) => {
+              const anchorId = navAnchors[index].replace('#', '');
+              const isActive = activeSection === anchorId;
+              
+              return (
+                <button 
+                  key={item} 
+                  onClick={() => handleNavClick(navAnchors[index])}
+                  className={`relative text-sm font-medium transition-colors hover:text-[var(--text-primary)] ${
+                    isActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)]'
+                  }`}
+                >
+                  {item}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-500 rounded-full"
+                    />
+                  )}
+                </button>
+              );
+            })}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-1">
-              <Globe size={16} className="mx-1 opacity-70" />
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-1">
               {(['ru', 'en', 'kg'] as Lang[]).map((value) => (
                 <button
                   key={value}
                   onClick={() => setLang(value)}
                   className={`rounded-full px-2.5 py-1 text-xs font-semibold uppercase transition ${
-                    lang === value ? 'bg-[var(--text-primary)] text-[var(--bg-color)]' : 'text-[var(--text-primary)]/80'
+                    lang === value ? 'bg-[var(--text-primary)] text-[var(--bg-color)]' : 'text-[var(--text-primary)]/80 hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {value}
@@ -200,12 +247,71 @@ function App() {
             <button
               onClick={() => setTheme(isLight ? 'dark' : 'light')}
               aria-label="Toggle theme"
-              className="rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-2.5 transition hover:scale-105"
+              className="rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-2 transition hover:scale-105"
             >
-              {isLight ? <Moon size={18} /> : <Sun size={18} />}
+              {isLight ? <Moon size={16} /> : <Sun size={16} />}
+            </button>
+            
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="md:hidden rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-2 text-[var(--text-primary)] transition hover:scale-105"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {isMobileMenuOpen ? (
+                  <path d="M18 6L6 18M6 6l12 12" />
+                ) : (
+                  <path d="M3 12h18M3 6h18M3 18h18" />
+                )}
+              </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-[var(--border-color)] bg-[var(--bg-color)]/95 backdrop-blur-3xl overflow-hidden"
+            >
+              <nav className="flex flex-col p-4 gap-4">
+                {t.nav.map((item, index) => {
+                  const anchorId = navAnchors[index].replace('#', '');
+                  const isActive = activeSection === anchorId;
+                  
+                  return (
+                    <button 
+                      key={item} 
+                      onClick={() => handleNavClick(navAnchors[index])}
+                      className={`text-left text-lg font-medium p-2 rounded-lg transition-colors ${
+                        isActive ? 'bg-emerald-500/10 text-emerald-500' : 'text-[var(--text-primary)] hover:bg-[var(--glass-bg)]'
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
+                
+                <div className="flex items-center gap-2 mt-2 pt-4 border-t border-[var(--border-color)] justify-center">
+                  {(['ru', 'en', 'kg'] as Lang[]).map((value) => (
+                    <button
+                      key={value}
+                      onClick={() => { setLang(value); setIsMobileMenuOpen(false); }}
+                      className={`rounded-full px-4 py-2 text-sm font-semibold uppercase transition ${
+                        lang === value ? 'bg-emerald-500/20 text-emerald-500' : 'text-[var(--text-primary)]/80 hover:bg-[var(--glass-bg)]'
+                      }`}
+                    >
+                      {value}
+                    </button>
+                  ))}
+                </div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="mx-auto w-full max-w-[100rem] px-4 md:px-8">
