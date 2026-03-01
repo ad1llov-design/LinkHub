@@ -1,4 +1,4 @@
-const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8412566173:AAEpJRSA3kMsjwmd7cl4DAdl4jBOvOtTwEg';
+const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8731974947:AAFeXWhKCYD25pmS1Ir2hlZZc9M43vkFmj8';
 const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '1319315093';
 
 // In Serverless functions, variables in memory (like userStates) are wiped 
