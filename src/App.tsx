@@ -498,14 +498,7 @@ function App() {
                             )}
 
                             {/* Arrow pointing down from the first item of the line to indicate reading flow */}
-                            {/* We drop the rigid arrows and just use simple vertical ones if we want, but Variant B is usually assumed standard wrap. We will put a subtle down arrow on every card if it has a card strictly below it, or no arrows vertically to keep it clean, but user asked for standard desktop wrap with arrows. */}
-                            {idx < t.process.steps.length - 3 && (
-                               <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 h-8 flex items-center justify-center text-[var(--border-color)] z-[-1]">
-                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                 </svg>
-                               </div>
-                            )}
+                            {/* Disabled per user request for cleaner UI */}
                          </div>
                        )
                     })}
