@@ -229,7 +229,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Азамат Р.',
             handle: '@aza_fin',
-            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=150&h=150&fit=crop'
           },
           text: 'Получили сайт уровня digital-агентства. Всё точно по срокам, а заявки пошли уже в первую неделю.',
         },
@@ -237,7 +237,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Айзада К.',
             handle: '@aiza_edtech',
-            avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?w=150&h=150&fit=crop'
           },
           text: 'Сильный UX и грамотная структура. Реклама стала окупаться быстрее, чем на старом сайте.',
         },
@@ -245,7 +245,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Тимур С.',
             handle: '@timur_ecom',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=150&h=150&fit=crop'
           },
           text: 'Очень аккуратная работа: дизайн, код и аналитика. Видно профессиональный системный подход.',
         },
@@ -483,7 +483,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Azamat R.',
             handle: '@aza_fin',
-            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=150&h=150&fit=crop'
           },
           text: 'We got a digital agency-level website. Everything was on time, and leads started coming in the very first week.',
         },
@@ -491,7 +491,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Aizada K.',
             handle: '@aiza_edtech',
-            avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?w=150&h=150&fit=crop'
           },
           text: 'Strong UX and logical structure. Advertising started paying off faster than with the old site.',
         },
@@ -499,7 +499,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Timur S.',
             handle: '@timur_ecom',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=150&h=150&fit=crop'
           },
           text: 'Very accurate work: design, code, and analytics. A professional, systematic approach is evident.',
         },
@@ -737,7 +737,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Азамат Р.',
             handle: '@aza_fin',
-            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=150&h=150&fit=crop'
           },
           text: 'Digital-агентство деңгээлиндеги сайт алдык. Баары өз убагында болду, биринчи жумада эле кардарлар келе баштады.',
         },
@@ -745,7 +745,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Айзада К.',
             handle: '@aiza_edtech',
-            avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?w=150&h=150&fit=crop'
           },
           text: 'Мыкты UX жана туура структура. Жарнама эски сайтка караганда тезирээк актай баштады.',
         },
@@ -753,7 +753,7 @@ export const translations: Record<Lang, Locale> = {
           author: {
             name: 'Тимур С.',
             handle: '@timur_ecom',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
+            avatar: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=150&h=150&fit=crop'
           },
           text: 'Аябай так иш: дизайн, код жана аналитика. Профессионалдык системалуу мамиле байкалып турат.',
         },
