@@ -85,6 +85,19 @@ body {
               box-shadow 0.3s ease;
   overflow: hidden;
   position: relative;
+  will-change: transform, backdrop-filter;
+  transform: translateZ(0); /* Hardware acceleration */
+}
+
+@media (max-width: 768px) {
+  .card-premium {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: none !important;
+  }
+  .light-theme .card-premium {
+    box-shadow: none !important;
+  }
 }
 
 .light-theme .card-premium {
