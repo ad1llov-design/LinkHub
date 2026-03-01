@@ -82,11 +82,11 @@ export type Locale = {
 
 export const translations: Record<Lang, Locale> = {
   ru: {
-    brand: 'LinkHUB Studio',
+    brand: 'PixelCode',
     nav: ['Главная', 'Услуги', 'Тарифы', 'Портфолио', 'Контакты'],
     hero: {
       badge: 'Премиум веб-разработка',
-      title: 'Создаю сайты, которые продают и усиливают бренд',
+      title: 'Создаем сайты, которые продают и усиливают бренд',
       subtitle:
         'Лендинги, корпоративные сайты и интернет-магазины с современным дизайном, высокой скоростью и понятной воронкой заявки.',
       ctaPrimary: 'Обсудить проект',
@@ -94,12 +94,12 @@ export const translations: Record<Lang, Locale> = {
       benefits: ['Запуск от 5 дней', 'Конверсионный UX/UI', 'SEO-ready структура', 'Поддержка после релиза'],
     },
     about: {
-      title: 'Обо мне',
+      title: 'О нас',
       cards: [
-        { title: 'Кто я', text: 'Веб-разработчик, который совмещает дизайн-мышление, маркетинг и чистую инженерную реализацию.' },
-        { title: 'Мой подход', text: 'Каждый экран проектируется как часть воронки: внимание, доверие, действие.' },
-        { title: 'Чем отличаюсь', text: 'Работаю как digital-студия: стратегия, дизайн, разработка, запуск и аналитика в одном процессе.' },
-        { title: 'Почему доверяют', text: 'Прозрачные сроки, четкие этапы, аргументированные решения и фокус на бизнес-результате.' },
+        { title: 'Кто мы', text: 'Команда веб-разработчиков и дизайнеров, совмещающая бизнес-мышление, маркетинг и чистую инженерную реализацию.' },
+        { title: 'Наш подход', text: 'Каждый экран проектируется как часть воронки: внимание, доверие, действие.' },
+        { title: 'Как мы работаем', text: 'Как полноценная digital-студия: стратегия, дизайн, разработка, запуск и аналитика в одном процессе.' },
+        { title: 'Почему нам доверяют', text: 'Прозрачные сроки, четкие этапы, аргументированные решения и фокус на бизнес-результате.' },
       ],
     },
     services: {
@@ -202,10 +202,10 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     why: {
-      title: 'Почему выбирают меня',
+      title: 'Почему выбирают нас',
       items: [
         'Фокус на продажах, а не только на визуале',
-        'Чистый и масштабируемый код',
+        'Чистый и масштабируемый код от инженерной команды',
         'Понятная коммуникация и отчеты по этапам',
         'Быстрая загрузка и техническая оптимизация',
         'Современный минималистичный дизайн',
@@ -286,7 +286,7 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     audience: {
-      title: 'Кому подойдут мои сайты',
+      title: 'Кому подойдут наши сайты',
       items: [
         { title: 'Экспертам и личным брендам', text: 'Упакуем ваш опыт в стильный сайт, который будет транслировать профессионализм и доверие аудитории.' },
         { title: 'Малому и среднему бизнесу', text: 'Создадим представительство в сети для стабильного потока заявок и автоматизации продаж.' },
@@ -299,10 +299,15 @@ export const translations: Record<Lang, Locale> = {
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
     antiPortfolio: {
-      label: 'Не сотрудничаем',
-      title: 'Мы категорически не работаем с тем, что связано:',
-      items: ['алкоголь', 'табак', 'сетевой маркетинг', 'финансовые пирамиды', 'микрокредитные компании', 'банки', 'политические партии', 'экстрасенсы, чародеи, маги и т.д.'],
-      closing: 'Благодарим за понимание'
+      label: 'Анти-портфолио',
+      title: 'С кем мы не работаем',
+      items: [
+        'Именно вы (заказчик) лучше знаете какой цвет кнопки конвертирует',
+        'Проект нужен был "вчера" и без технического задания',
+        'У вас нет времени на согласование дизайна, но вы требуете гарантий',
+        'Вы ищете "просто чтобы было дешево", игнорируя бизнес-показатели'
+      ],
+      closing: 'Если это не про вас — мы сработаемся.'
     },
     calculator: {
       title: 'Хотите узнать, сколько будет стоить сайт со скидкой? Пройдите калькулятор!',
@@ -330,24 +335,23 @@ export const translations: Record<Lang, Locale> = {
     },
   },
   en: {
-    brand: 'LinkHUB Studio',
-    nav: ['Home', 'Services', 'Pricing', 'Portfolio', 'Contact'],
+    brand: 'PixelCode',
+    nav: ['Home', 'Services', 'Pricing', 'Portfolio', 'Contacts'],
     hero: {
-      badge: 'Premium web development',
-      title: 'I build websites that sell and elevate your brand',
-      subtitle:
-        'Landing pages, corporate websites, and eCommerce projects with modern design, high speed, and clear lead funnels.',
-      ctaPrimary: 'Discuss a project',
-      ctaSecondary: 'View portfolio',
-      benefits: ['Launch from 5 days', 'Conversion-focused UX/UI', 'SEO-ready structure', 'Post-launch support'],
+      badge: 'Premium Web Development',
+      title: 'We create websites that sell and elevate your brand',
+      subtitle: 'Landing pages, corporate websites, and e-commerce platforms with modern design, high speed, and a clear conversion funnel.',
+      ctaPrimary: 'Discuss Project',
+      ctaSecondary: 'View Our Work',
+      benefits: ['Launch in 5 days', 'Conversion UX/UI', 'SEO-ready structure', 'Post-release support'],
     },
     about: {
-      title: 'About me',
+      title: 'About Us',
       cards: [
-        { title: 'Who I am', text: 'A web developer combining design thinking, marketing vision, and clean engineering execution.' },
-        { title: 'My approach', text: 'Each screen is built as part of a funnel: attention, trust, action.' },
-        { title: 'What makes me different', text: 'I work like a digital agency: strategy, design, development, launch, and analytics in one flow.' },
-        { title: 'Why clients trust me', text: 'Clear deadlines, transparent steps, reasoned decisions, and focus on business outcome.' },
+        { title: 'Who We Are', text: 'A team of web developers and designers combining business thinking, marketing, and clean engineering.' },
+        { title: 'Our Approach', text: 'Every screen is designed as part of a funnel: attention, trust, action.' },
+        { title: 'How We Work', text: 'As a full-cycle digital studio: strategy, design, development, launch, and analytics in one united process.' },
+        { title: 'Why Trust Us', text: 'Transparent deadlines, clear stages, reasoned decisions, and a focus on business results.' },
       ],
     },
     services: {
@@ -450,10 +454,10 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     why: {
-      title: 'Why clients choose me',
+      title: 'Why Choose Us',
       items: [
         'Sales-oriented approach, not just visuals',
-        'Clean and scalable code',
+        'Clean and scalable code from an engineering team',
         'Clear communication and stage reports',
         'Fast load speed and technical optimization',
         'Modern minimalist design',
@@ -534,23 +538,28 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     audience: {
-      title: 'Who my websites are for',
+      title: 'Who Our Websites Are For',
       items: [
-        { title: 'Experts and personal brands', text: 'We package your expertise into a stylish site demonstrating professionalism and building trust.' },
-        { title: 'Small and medium businesses', text: 'Creating a digital presence for a stable lead flow and sales automation.' },
-        { title: 'Digital agencies (white-label)', text: 'A reliable partner for turnkey website development with full immersion.' },
-        { title: 'Startups and IT products', text: 'Rapid MVP or landing page launches to test hypotheses and attract early adopters.' }
+        { title: 'Experts and Personal Brands', text: 'We package your expertise into a stylish website that broadcasts professionalism and audience trust.' },
+        { title: 'Small and Medium Businesses', text: 'We create a digital presence for a stable flow of leads and sales automation.' },
+        { title: 'Digital Agencies (White-label)', text: 'A reliable partner for turnkey website development for your clients with full immersion.' },
+        { title: 'Startups and IT Products', text: 'Rapid MVP or landing page launches for testing hypotheses and attracting early users.' }
       ],
     },
     technologies: {
-      title: 'Tech stack',
+      title: 'Technologies Used',
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
     antiPortfolio: {
-      label: 'We do not work with',
-      title: 'We strictly do not collaborate with projects related to:',
-      items: ['alcohol', 'tobacco', 'network marketing', 'pyramid schemes', 'microcredit loops', 'banks', 'political parties', 'psychics, fortune-tellers, mages, etc.'],
-      closing: 'Thank you for understanding'
+      label: 'Anti-portfolio',
+      title: 'Who We Don\'t Work With',
+      items: [
+        'You (the client) know exactly which button color converts best',
+        'The project was needed "yesterday" without any technical specifications',
+        'You have no time for design approval, but demand guarantees',
+        'You are looking "just for the cheapest option", ignoring business metrics'
+      ],
+      closing: 'If this is not about you — we will work well together.'
     },
     calculator: {
       title: 'Want to know how much your website will cost with a discount? Try the calculator!',
@@ -578,24 +587,23 @@ export const translations: Record<Lang, Locale> = {
     },
   },
   kg: {
-    brand: 'LinkHUB Studio',
-    nav: ['Башкы бет', 'Кызматтар', 'Тарифтер', 'Портфолио', 'Байланыш'],
+    brand: 'PixelCode',
+    nav: ['Башкы', 'Кызматтар', 'Тарифтер', 'Портфолио', 'Байланыш'],
     hero: {
       badge: 'Премиум веб-иштеп чыгуу',
-      title: 'Сатууга иштеген жана брендди күчөткөн сайттарды жасайм',
-      subtitle:
-        'Лендингдер, корпоративдик сайттар жана интернет-дүкөндөр: заманбап дизайн, жогорку ылдамдык жана так заявка воронкасы.',
-      ctaPrimary: 'Долбоорду талкуулоо',
-      ctaSecondary: 'Жумуштарды көрүү',
-      benefits: ['Ишке киргизүү 5 күндөн', 'Конверсиялык UX/UI', 'SEOга даяр структура', 'Релизден кийинки колдоо'],
+      title: 'Биз сатуучу жана брендди күчөтүүчү сайттарды жасайбыз',
+      subtitle: 'Заманбап дизайны, жогорку ылдамдыгы жана түшүнүктүү конверсиялык воронкасы бар лендинг, корпоративдик сайт жана интернет-дүкөндөр.',
+      ctaPrimary: 'Проектини талкуулоо',
+      ctaSecondary: 'Биздин иштерди көрүү',
+      benefits: ['5 күндөн баштап ишке киргизүү', 'Конверсиялык UX/UI', 'SEO-даяр түзүм', 'Релизден кийинки колдоо'],
     },
     about: {
-      title: 'Мен жөнүндө',
+      title: 'Биз жөнүндө',
       cards: [
-        { title: 'Киммин', text: 'Дизайн ой-жүгүртүүсүн, маркетингди жана сапаттуу инженердик ишке ашырууну бириктирген веб-иштеп чыгуучумун.' },
-        { title: 'Менин ыкмам', text: 'Ар бир экран воронканын бөлүгү катары курулат: көңүл буруу, ишеним, аракет.' },
-        { title: 'Айырмачылыгым', text: 'Digital-агенттик сыяктуу иштейм: стратегия, дизайн, иштеп чыгуу, ишке киргизүү жана аналитика бир процессте.' },
-        { title: 'Эмне үчүн ишенишет', text: 'Так мөөнөт, түшүнүктүү этаптар, негиздүү чечимдер жана бизнес жыйынтыкка фокус.' },
+        { title: 'Биз кимбиз', text: 'Бизнес-ой жүгүртүүнү, маркетингди жана таза инженердик ишке ашырууну айкалыштырган веб-иштеп чыгуучулар командасы.' },
+        { title: 'Биздин мамиле', text: 'Ар бир экран воронканын бир бөлүгү катары долбоорлонот: көңүл буруу, ишеним, аракет.' },
+        { title: 'Кантип иштейбиз', text: 'Digital-студия катары: стратегия, дизайн, иштеп чыгуу, ишке киргизүү жана аналитика бир процессте.' },
+        { title: 'Эмне үчүн бизге ишенишет', text: 'Айкын мөөнөттөр, так этаптар, негизделген чечимдер жана бизнес-натыйжага көңүл буруу.' },
       ],
     },
     services: {
@@ -698,14 +706,14 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     why: {
-      title: 'Эмне үчүн мени тандашат',
+      title: 'Эмне үчүн бизди тандашат',
       items: [
-        'Фокус визуалга гана эмес, сатууга да',
-        'Таза жана кеңейтилүүчү код',
-        'Түшүнүктүү коммуникация жана этаптык отчет',
-        'Жогорку ылдамдык жана тех-оптимизация',
+        'Визуалга эле эмес, сатууга көңүл буруу',
+        'Инженердик командадан таза жана масштабдуу код',
+        'Түшүнүктүү коммуникация жана этаптар боюнча отчеттор',
+        'Тез жүктөө жана техникалык оптималдаштыруу',
         'Заманбап минималисттик дизайн',
-        'Релизден кийин колдоо жана өнүктүрүү',
+        'Ишке киргизгенден кийинки колдоо жана өнүктүрүү',
       ],
     },
     process: {
@@ -782,12 +790,12 @@ export const translations: Record<Lang, Locale> = {
       ],
     },
     audience: {
-      title: 'Сайттар кимдер үчүн ылайыктуу',
+      title: 'Биздин сайттар кимдерге ылайыктуу',
       items: [
-        { title: 'Эксперттер жана жеке бренддер', text: 'Сиздин тажрыйбаңызды жогорку деңгээлде көрсөтүп, ишеним жаратуучу стилдүү сайт түзөбүз.' },
-        { title: 'Чакан жана орто бизнес', text: 'Сатууну автоматташтырган жана туруктуу кардар агымын камсыз кылган интернет өкүлчүлүк.' },
-        { title: 'Digital-агенттиктер (white-label)', text: 'Ишенимдүү өнөктөш катары сиздин кардарларыңыз үчүн "ачкычка чейин" сайттарды иштеп чыгабыз.' },
-        { title: 'Стартаптар жана IT продуктылар', text: 'Алгачкы кардарларды табуу жана гипотезаларды текшерүү үчүн MVP же лендингди тез ишке киргизебиз.' }
+        { title: 'Эксперттерге жана жеке бренддерге', text: 'Сиздин тажрыйбаңызды профессионалдуулукту жана аудиториянын ишенимин чагылдыра турган стилдүү сайтка таңгактайбыз.' },
+        { title: 'Чакан жана орто бизнеске', text: 'Сурамдардын туруктуу агымы жана сатууну автоматташтыруу үчүн интернетте өкүлчүлүк түзөбүз.' },
+        { title: 'Digital-агенттиктерге (white-label)', text: 'Сиздин кардарларыңызга сайттарды толук иштеп чыгуу үчүн ишенимдүү өнөктөш.' },
+        { title: 'Стартаптарга жана IT-өнүмдөргө', text: 'Гипотезаларды текшерүү жана алгачкы колдонуучуларды тартуу үчүн MVP же лендингдерди тез ишке киргизүү.' }
       ],
     },
     technologies: {
@@ -795,10 +803,15 @@ export const translations: Record<Lang, Locale> = {
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
     antiPortfolio: {
-      label: 'Биз кызматташпайбыз',
-      title: 'Биз төмөнкү багыттар менен такыр иштебейбиз:',
-      items: ['алкоголь', 'тамеки', 'тармак маркетинги (сетевой)', 'финансы пирамидасы', 'микрокредиттик компаниялар', 'банктар', 'саясий партиялар', 'көз ачыктар, сыйкырчылар ж.б.'],
-      closing: 'Түшүнгөнүңүз үчүн чоң рахмат'
+      label: 'Анти-портфолио',
+      title: 'Биз кимдер менен иштешпейбиз',
+      items: [
+        'Сиз (кардар) кайсы баскычтын түсү жакшы конвертация кыларын так билесиз',
+        'Проект "кечээ" керек болчу жана эч кандай техникалык тапшырма жок',
+        'Тастыктоого убактыңыз жок, бирок кепилдик талап кыласыз',
+        'Жеңил-желпи жана бизнес көрсөткүчтөрдү эске албай "арзан эле болсун" деп издейсиз'
+      ],
+      closing: 'Эгерде бул сиз жөнүндө болбосо — биз жакшы иштешебиз.'
     },
     calculator: {
       title: 'Сайттын баасын арзандатуу менен билгиңиз келеби? Калькулятордон өтүңүз!',
