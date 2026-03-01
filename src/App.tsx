@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { Helmet } from 'react-helmet-async';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
@@ -208,9 +209,27 @@ function App() {
       </header>
 
       <main className="mx-auto w-full max-w-[100rem] px-4 md:px-8">
+        <Helmet>
+          <title>{`${t.hero.title.slice(0, 50)} | ${t.brand}`}</title>
+          <meta name="description" content={t.hero.subtitle} />
+          <meta property="og:title" content={`${t.hero.title} | ${t.brand}`} />
+          <meta property="og:description" content={t.hero.subtitle} />
+          
+          <script type="application/ld+json">
+            {`
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "${t.brand}",
+                "url": "https://linkhub.design/",
+                "description": "${t.hero.subtitle}"
+              }
+            `}
+          </script>
+        </Helmet>
         <Routes>
           <Route path="/" element={
-            <>
+            <article>
             <section 
               id="hero" 
               className="relative min-h-[92vh] overflow-hidden py-14 md:py-24"
@@ -265,11 +284,34 @@ function App() {
         <section className="py-10 md:py-16" id="about">
           <Reveal>
             <h2 className="section-title">{t.about.title}</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              {t.about.cards.map((card) => (
-                <article key={card.title} className="card-premium p-6 flex flex-col justify-center">
-                  <h3 className="mb-3 text-xl font-medium">{card.title}</h3>
-                  <p className="text-[var(--text-secondary)]">{card.text}</p>
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {t.services.items.map((service) => (
+                <article key={service.title} className="card-premium flex flex-col p-6 md:p-8">
+                  <h3 className="mb-3 text-xl font-bold md:text-2xl">{service.title}</h3>
+                  <p className="mb-6 text-sm leading-relaxed text-[var(--text-secondary)]">{service.description}</p>
+                  
+                  <div className="mb-6 flex-1 space-y-4 rounded-xl bg-black/20 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-emerald-500">{t.services.includesLabel}</p>
+                    <ul className="space-y-3">
+                      {service.includes.map((inc) => (
+                        <li key={inc} className="flex items-start text-sm">
+                          <CheckCircle2 size={16} className="mr-3 mt-0.5 shrink-0 text-emerald-500/70" />
+                          <span>{inc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-auto flex items-end justify-between border-t border-[var(--glass-border)] pt-6">
+                    <div>
+                      <p className="text-xs text-[var(--text-secondary)] mb-1">{t.services.timelineLabel}</p>
+                      <p className="font-medium">{service.timeline}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-[var(--text-secondary)] mb-1">{t.services.from}</p>
+                      <p className="text-2xl font-bold text-[var(--text-primary)]">{service.price}</p>
+                    </div>
+                  </div>
                 </article>
               ))}
             </div>
@@ -280,11 +322,8 @@ function App() {
           <h2 className="section-title">{t.portfolio.title}</h2>
           <div className="grid gap-5 md:grid-cols-2">
             {t.portfolio.items.map((item) => (
-              <a
+              <article
                 key={item.name}
-                href={item.image}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="portfolio-card card-premium group overflow-hidden"
               >
                 <div className="h-56 w-full bg-cover bg-center" style={{ backgroundImage: `url(${item.image})` }} />
@@ -295,7 +334,7 @@ function App() {
                   <p className="text-sm text-[var(--text-secondary)]">{item.done}</p>
                   <p className="font-medium text-emerald-500">{item.result}</p>
                 </div>
-              </a>
+              </article>
             ))}
           </div>
         </section>
@@ -305,7 +344,7 @@ function App() {
             <h2 className="section-title">{t.why.title}</h2>
             <div className="grid gap-6 sm:grid-cols-2">
               {t.why.items.map((item, idx) => (
-                <div key={item} className="card-premium p-8 flex flex-col gap-4 relative overflow-hidden group">
+                <article key={item} className="card-premium p-8 flex flex-col gap-4 relative overflow-hidden group">
                   <div className="absolute -right-4 -bottom-4 text-8xl font-black text-[var(--text-primary)] opacity-[0.03] select-none group-hover:scale-110 transition-transform duration-500">
                     0{idx + 1}
                   </div>
@@ -315,7 +354,7 @@ function App() {
                   <h3 className="text-xl font-medium text-[var(--text-primary)] relative z-10 leading-snug max-w-[80%]">
                     {item}
                   </h3>
-                </div>
+                </article>
               ))}
             </div>
           </Reveal>
@@ -449,13 +488,13 @@ function App() {
             <h2 className="section-title">{t.audience.title}</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {t.audience.items.map((item) => (
-                <div key={item.title} className="card-premium p-6 flex flex-col items-start gap-4">
+                <article key={item.title} className="card-premium p-6 flex flex-col items-start gap-4">
                   <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-emerald-500/10 shrink-0 text-emerald-500 font-bold">
                     <CheckCircle2 size={24} />
                   </div>
                   <h3 className="font-medium text-lg">{item.title}</h3>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.text}</p>
-                </div>
+                </article>
               ))}
             </div>
           </Reveal>
@@ -620,9 +659,9 @@ function App() {
             </div>
           </Reveal>
         </section>
-        </>
+        </article>
         } />
-        <Route path="/calculator" element={<CalculatorPage t={t} />} />
+        <Route path="/calculator" element={<CalculatorPage />} />
       </Routes>
     </main>
 
