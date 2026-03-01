@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 export const TELEGRAM_LINK = "https://t.me/ad1llovdesign"; // Ensure this matches your bot link
-export const BRAND_NAME = "LinkHUB";
+export const BRAND_NAME = "PixelCode";
 
 export const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -284,34 +284,14 @@ function App() {
         <section className="py-10 md:py-16" id="about">
           <Reveal>
             <h2 className="section-title">{t.about.title}</h2>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {t.services.items.map((service) => (
-                <article key={service.title} className="card-premium flex flex-col p-6 md:p-8">
-                  <h3 className="mb-3 text-xl font-bold md:text-2xl">{service.title}</h3>
-                  <p className="mb-6 text-sm leading-relaxed text-[var(--text-secondary)]">{service.description}</p>
-                  
-                  <div className="mb-6 flex-1 space-y-4 rounded-xl bg-black/20 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-emerald-500">{t.services.includesLabel}</p>
-                    <ul className="space-y-3">
-                      {service.includes.map((inc) => (
-                        <li key={inc} className="flex items-start text-sm">
-                          <CheckCircle2 size={16} className="mr-3 mt-0.5 shrink-0 text-emerald-500/70" />
-                          <span>{inc}</span>
-                        </li>
-                      ))}
-                    </ul>
+            <div className="grid gap-4 md:grid-cols-2">
+              {t.about.cards.map((card) => (
+                <article key={card.title} className="card-premium flex flex-col gap-3 p-6 transition-colors hover:border-emerald-500/30">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--text-primary)]/5">
+                    <span className="text-emerald-500"><CheckCircle2 size={20} /></span>
                   </div>
-
-                  <div className="mt-auto flex items-end justify-between border-t border-[var(--glass-border)] pt-6">
-                    <div>
-                      <p className="text-xs text-[var(--text-secondary)] mb-1">{t.services.timelineLabel}</p>
-                      <p className="font-medium">{service.timeline}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs text-[var(--text-secondary)] mb-1">{t.services.from}</p>
-                      <p className="text-2xl font-bold text-[var(--text-primary)]">{service.price}</p>
-                    </div>
-                  </div>
+                  <h3 className="font-semibold text-lg">{card.title}</h3>
+                  <p className="text-sm leading-relaxed text-[var(--text-secondary)]">{card.text}</p>
                 </article>
               ))}
             </div>
@@ -577,26 +557,17 @@ function App() {
             <h2 className="section-title text-red-500 flex items-center gap-3">
               {t.antiPortfolio.label}
             </h2>
-            <div className="card-premium p-6 md:p-10 border border-[var(--border-color)] overflow-hidden relative w-full mt-8">
-              <Lock className="absolute -right-10 -bottom-10 opacity-5 w-64 h-64 pointer-events-none" />
-              
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 relative z-10 w-full mb-8">
-                <h3 className="text-xl md:text-2xl font-bold whitespace-nowrap text-[var(--text-primary)]">
-                  {t.antiPortfolio.title}
-                </h3>
-  
-                <div className="flex flex-wrap items-center gap-3 w-full">
-                  {t.antiPortfolio.items.map((item) => (
-                    <div key={item} className="bg-red-500/10 text-red-500 px-4 py-2 rounded-lg text-xs md:text-sm border border-red-500/20 whitespace-normal text-left max-w-full">
-                      {item}
-                    </div>
-                  ))}
-                </div>
+            <div className="card-premium p-6 md:p-8 flex flex-col gap-5 border-l-4 border-l-red-500 overflow-hidden relative">
+              <Lock className="absolute -right-6 -bottom-6 opacity-5 w-48 h-48 pointer-events-none" />
+              <h3 className="text-xl md:text-2xl font-bold">{t.antiPortfolio.title}</h3>
+              <div className="flex flex-wrap gap-3">
+                {t.antiPortfolio.items.map((item) => (
+                  <div key={item} className="bg-red-500/10 text-red-500 px-4 py-2 rounded-lg font-medium text-sm border border-red-500/20">
+                    {item}
+                  </div>
+                ))}
               </div>
-  
-              <p className="text-sm font-medium text-[var(--text-primary)]">
-                {t.antiPortfolio.closing}
-              </p>
+              <p className="font-medium mt-2">{t.antiPortfolio.closing}</p>
             </div>
           </Reveal>
         </section>
@@ -754,7 +725,7 @@ function App() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-            <p>{t.footer.copyright.replace("LinkHub Studio", BRAND_NAME)}</p>
+            <p>{t.footer.copyright}</p>
           </div>
         </div>
       </footer>

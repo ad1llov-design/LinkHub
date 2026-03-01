@@ -299,15 +299,19 @@ export const translations: Record<Lang, Locale> = {
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
     antiPortfolio: {
-      label: 'Анти-портфолио',
-      title: 'С кем мы не работаем',
+      label: 'Не сотрудничаем',
+      title: 'Мы категорически не работаем с тем, что связано:',
       items: [
-        'Именно вы (заказчик) лучше знаете какой цвет кнопки конвертирует',
-        'Проект нужен был "вчера" и без технического задания',
-        'У вас нет времени на согласование дизайна, но вы требуете гарантий',
-        'Вы ищете "просто чтобы было дешево", игнорируя бизнес-показатели'
+        'алкоголь',
+        'табак',
+        'сетевой маркетинг',
+        'финансовые пирамиды',
+        'микрокредитные компании',
+        'банки',
+        'политические партии',
+        'экстрасенсы, чародеи, маги и т.д.'
       ],
-      closing: 'Если это не про вас — мы сработаемся.'
+      closing: 'Благодарим за понимание'
     },
     calculator: {
       title: 'Хотите узнать, сколько будет стоить сайт со скидкой? Пройдите калькулятор!',
@@ -322,13 +326,13 @@ export const translations: Record<Lang, Locale> = {
     },
     footer: {
       brandDesc: 'Студия веб-разработки полного цикла нового поколения. Мы не просто создаем красивую картинку, мы делаем продукт, который решает задачи бизнеса и приносит прибыль.',
-      copyright: '© 2024-2026 LinkHUB Studio. Все права защищены. Политика конфиденциальности',
+      copyright: '© 2024-2026 PixelCode. Все права защищены. Политика конфиденциальности',
       navTitle: 'Навигация',
       servicesTitle: 'Направления',
       services: ['Корпоративные сайты', 'Landing Page', 'Интернет-магазины', 'Дизайн в Figma', 'Техническая поддержка'],
       contacts: {
         phone: '+996 (557) 55-50-58',
-        address: 'г. Бишкек, онлайн',
+        address: 'г. Паш, онлайн',
         hours: 'Пн-Пт 10:00 - 18:00',
         email: 'hello@linkhub.dev'
       }
@@ -551,15 +555,19 @@ export const translations: Record<Lang, Locale> = {
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
     antiPortfolio: {
-      label: 'Anti-portfolio',
-      title: 'Who We Don\'t Work With',
+      label: 'Do not cooperate',
+      title: 'We strictly do not work with anything related to:',
       items: [
-        'You (the client) know exactly which button color converts best',
-        'The project was needed "yesterday" without any technical specifications',
-        'You have no time for design approval, but demand guarantees',
-        'You are looking "just for the cheapest option", ignoring business metrics'
+        'alcohol',
+        'tobacco',
+        'network marketing',
+        'ponzi schemes',
+        'microcredit companies',
+        'banks',
+        'political parties',
+        'psychics, sorcerers, magicians, etc.'
       ],
-      closing: 'If this is not about you — we will work well together.'
+      closing: 'Thank you for your understanding'
     },
     calculator: {
       title: 'Want to know how much your website will cost with a discount? Try the calculator!',
@@ -574,13 +582,13 @@ export const translations: Record<Lang, Locale> = {
     },
     footer: {
       brandDesc: 'Next-generation full-cycle web development studio. We don’t just create a beautiful picture, we build a product that solves business problems and generates profit.',
-      copyright: '© 2024-2026 LinkHUB Studio. All rights reserved. Privacy Policy',
+      copyright: '© 2024-2026 PixelCode. All rights reserved. Privacy Policy',
       navTitle: 'Navigation',
       servicesTitle: 'Services',
       services: ['Corporate websites', 'Landing Pages', 'eCommerce', 'Figma Design', 'Technical Support'],
       contacts: {
         phone: '+996 (557) 55-50-58',
-        address: 'Bishkek, Remote',
+        address: 'Pash, Remote',
         hours: 'Mon-Fri 10:00 - 18:00',
         email: 'hello@linkhub.dev'
       }
@@ -803,15 +811,19 @@ export const translations: Record<Lang, Locale> = {
       items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Figma', 'WordPress', 'Node.js', 'Framer Motion'],
     },
     antiPortfolio: {
-      label: 'Анти-портфолио',
-      title: 'Биз кимдер менен иштешпейбиз',
+      label: 'Кызматташпайбыз',
+      title: 'Биз төмөнкүлөр менен таптакыр иштешпейбиз:',
       items: [
-        'Сиз (кардар) кайсы баскычтын түсү жакшы конвертация кыларын так билесиз',
-        'Проект "кечээ" керек болчу жана эч кандай техникалык тапшырма жок',
-        'Тастыктоого убактыңыз жок, бирок кепилдик талап кыласыз',
-        'Жеңил-желпи жана бизнес көрсөткүчтөрдү эске албай "арзан эле болсун" деп издейсиз'
+        'алкоголь',
+        'тамеки',
+        'тармактуу маркетинг',
+        'финансылык пирамидалар',
+        'микрокредиттик компаниялар',
+        'банктар',
+        'саясий партиялар',
+        'экстрасенс, бакшы, көз ачык ж.б.'
       ],
-      closing: 'Эгерде бул сиз жөнүндө болбосо — биз жакшы иштешебиз.'
+      closing: 'Түшүнгөнүңүз үчүн рахмат'
     },
     calculator: {
       title: 'Сайттын баасын арзандатуу менен билгиңиз келеби? Калькулятордон өтүңүз!',
@@ -825,15 +837,15 @@ export const translations: Record<Lang, Locale> = {
       socialText: 'Мессенджер аркылуу байланышуу үчүн төмөнкүнү басыңыз',
     },
     footer: {
-      brandDesc: 'Жаңы муундагы толук циклдик веб-иштеп чыгуу студиясы. Биз жөн гана кооз сүрөт эмес, бизнестин милдеттерин чечкен жана киреше алып келген продукт жасайбыз.',
-      copyright: '© 2024-2026 LinkHUB Studio. Бардык укуктар корголгон. Купуялык саясаты',
+      brandDesc: 'Жаңы муундагы толук циклдуу веб-иштеп чыгуу студиясы. Биз жөн гана кооз сүрөт жаратпайбыз, бизнес көйгөйлөрүн чечип, киреше алып келүүчү продукт жасайбыз.',
+      copyright: '© 2024-2026 PixelCode. Бардык укуктар корголгон. Купуялык саясаты',
       navTitle: 'Навигация',
       servicesTitle: 'Кызматтар',
       services: ['Корпоративдик сайттар', 'Лендинг', 'Интернет-дүкөндөр', 'Figma дизайн', 'Техникалык колдоо'],
       contacts: {
         phone: '+996 (557) 55-50-58',
-        address: 'г. Бишкек, онлайн',
-        hours: 'Дүй-Жум 10:00 - 18:00',
+        address: 'Паш ш., онлайн',
+        hours: 'Дүйш-Жума 10:00 - 18:00',
         email: 'hello@linkhub.dev'
       }
     },
