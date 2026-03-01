@@ -2,7 +2,7 @@ require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 
 // Provided by user in previous messages
-const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8412566173:AAEpJRSA3kMsjwmd7cl4DAdl4jBOvOtTwEg';
+const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8731974947:AAFeXWhKCYD25pmS1Ir2hlZZc9M43vkFmj8';
 const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '1319315093';
 
 // Create a bot that uses 'polling' to fetch new updates

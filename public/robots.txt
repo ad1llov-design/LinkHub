@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Указывает поисковым системам на карту сайта для быстрой индексации
+Sitemap: https://pixelcode.dev/sitemap.xml

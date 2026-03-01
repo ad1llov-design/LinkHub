@@ -54,7 +54,7 @@ import CalculatorPage from './pages/CalculatorPage';
 import { ContactWidget } from './components/ContactWidget';
 
 // Hardcoded for the bot redirect funnel.
-const BOT_LINK = "https://t.me/MyPixelcodform_bot?start=site";
+const BOT_LINK = "https://t.me/PixelCodeWeb_bot?start=site";
 // Placeholder WA number
 const WHATSAPP_LINK = "https://wa.me/996557555058";
 
@@ -109,7 +109,7 @@ function App() {
     
     // NOTE: Hardcoding token here is unsafe for production, but done via requirement.
     // Replace YOUR_TELEGRAM_BOT_TOKEN_HERE / CHAT_ID
-    const botToken = '8412566173:AAEpJRSA3kMsjwmd7cl4DAdl4jBOvOtTwEg';
+    const botToken = '8731974947:AAFeXWhKCYD25pmS1Ir2hlZZc9M43vkFmj8';
     const chatId = '1319315093';
     const msgTemplate = `🔥 Новая заявка с сайта:\n\n👤 Имя: ${formData.name}\n📞 Контакт: ${formData.phone}`;
     
