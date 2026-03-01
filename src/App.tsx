@@ -577,17 +577,26 @@ function App() {
             <h2 className="section-title text-red-500 flex items-center gap-3">
               {t.antiPortfolio.label}
             </h2>
-            <div className="card-premium p-6 md:p-8 flex flex-col gap-5 border-l-4 border-l-red-500 overflow-hidden relative">
-              <Lock className="absolute -right-6 -bottom-6 opacity-5 w-48 h-48 pointer-events-none" />
-              <h3 className="text-xl md:text-2xl font-bold">{t.antiPortfolio.title}</h3>
-              <div className="flex flex-wrap gap-3">
-                {t.antiPortfolio.items.map((item) => (
-                  <div key={item} className="bg-red-500/10 text-red-500 px-4 py-2 rounded-lg font-medium text-sm border border-red-500/20">
-                    {item}
-                  </div>
-                ))}
+            <div className="card-premium p-6 md:p-10 border border-[var(--border-color)] overflow-hidden relative w-full mt-8">
+              <Lock className="absolute -right-10 -bottom-10 opacity-5 w-64 h-64 pointer-events-none" />
+              
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 relative z-10 w-full mb-8">
+                <h3 className="text-xl md:text-2xl font-bold whitespace-nowrap text-[var(--text-primary)]">
+                  {t.antiPortfolio.title}
+                </h3>
+  
+                <div className="flex flex-wrap items-center gap-3 w-full">
+                  {t.antiPortfolio.items.map((item) => (
+                    <div key={item} className="bg-red-500/10 text-red-500 px-4 py-2 rounded-lg text-xs md:text-sm border border-red-500/20 whitespace-normal text-left max-w-full">
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="font-medium mt-2">{t.antiPortfolio.closing}</p>
+  
+              <p className="text-sm font-medium text-[var(--text-primary)]">
+                {t.antiPortfolio.closing}
+              </p>
             </div>
           </Reveal>
         </section>
@@ -661,7 +670,7 @@ function App() {
         </section>
         </article>
         } />
-        <Route path="/calculator" element={<CalculatorPage />} />
+        <Route path="/calculator" element={<CalculatorPage t={t} />} />
       </Routes>
     </main>
 
