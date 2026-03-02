@@ -1,4 +1,4 @@
-export type Lang = 'ru' | 'en' | 'kg';
+export type Lang = 'ru' | 'uz' | 'kg';
 
 export type Locale = {
   brand: string;
@@ -334,7 +334,7 @@ export const translations: Record<Lang, Locale> = {
       }
     },
   },
-  en: {
+  uz: {
     brand: 'PixelCode',
     nav: ['Home', 'About Me', 'Pricing', 'Portfolio', 'Contacts'],
     hero: {

@@ -51,6 +51,7 @@ import { TestimonialsSection } from './components/blocks/testimonials-with-marqu
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion';
 import { Lang, translations } from './translations';
 import { ContactWidget } from './components/ContactWidget';
+import { MobileCarousel } from './components/ui/MobileCarousel';
 
 // Hardcoded for the bot redirect funnel.
 const BOT_LINK = "https://t.me/PixelCodeWeb_bot?start=site";
@@ -58,7 +59,7 @@ const BOT_LINK = "https://t.me/PixelCodeWeb_bot?start=site";
 const WHATSAPP_LINK = "https://wa.me/996557555058";
 
 function App() {
-  const [lang, setLang] = useState<Lang>('ru');
+  const [lang, setLang] = useState<Lang>('kg');
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
@@ -141,14 +142,14 @@ function App() {
       'Проверяем на устройствах, браузерах и формах.',
       'Публикуем, подключаем аналитику и поддержку.',
     ],
-    en: [
-      'You submit a request, we define goals and KPIs.',
-      'We gather requirements, audience data, and offers.',
-      'We design structure and conversion scenarios.',
-      'We build visuals and UI components in one style.',
-      'We develop a responsive and fast website.',
-      'We test devices, browsers, and forms.',
-      'We launch, connect analytics, and support.',
+    uz: [
+      'Loyihaning maqsadi va KPI-lari aniqlanadi.',
+      'Talablar, maqsadli auditoriya va takliflar o\'rganiladi.',
+      'Tuzilma va konversiya ssenariylari loyihalashtiriladi.',
+      'Vizual va UI komponentlar bir yagona uslubda yig\'iladi.',
+      'Moslashuvchan va tez ishlovchi veb-sayt ishlab chiqiladi.',
+      'Sayt turli qurilmalar va brauzerlarda to\'liq sinovdan o\'tkaziladi.',
+      'Sayt e\'lon qilinib, tahliliy tizimlar ulanadi va qo\'llab-quvvatlanadi.',
     ],
     kg: [
       'Заявка калтырасыз, максаттар жана KPI такталат.',
@@ -238,7 +239,7 @@ function App() {
 
             <div className="flex items-center gap-3">
               <div className="hidden md:flex items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-1">
-                {(['ru', 'en', 'kg'] as Lang[]).map((value) => (
+                {(['kg', 'ru', 'uz'] as Lang[]).map((value) => (
                   <button
                     key={value}
                     onClick={() => setLang(value)}
@@ -303,7 +304,7 @@ function App() {
                   })}
                   
                   <div className="flex items-center gap-2 mt-2 pt-4 border-t border-[var(--border-color)] justify-center">
-                    {(['ru', 'en', 'kg'] as Lang[]).map((value) => (
+                    {(['kg', 'ru', 'uz'] as Lang[]).map((value) => (
                       <button
                         key={value}
                         onClick={() => { setLang(value); setIsMobileMenuOpen(false); }}
@@ -435,7 +436,7 @@ function App() {
           <section className="py-10 md:py-16">
             <Reveal>
               <h2 className="section-title">{t.why.title}</h2>
-              <div className="grid gap-6 sm:grid-cols-2">
+              <div className="hidden sm:grid gap-6 sm:grid-cols-2">
                 {t.why.items.map((item, idx) => (
                   <article key={item} className="card-premium p-8 flex flex-col gap-4 relative overflow-hidden group">
                     <div className="absolute -right-4 -bottom-4 text-8xl font-black text-[var(--text-primary)] opacity-[0.03] select-none group-hover:scale-110 transition-transform duration-500">
@@ -449,6 +450,21 @@ function App() {
                     </h3>
                   </article>
                 ))}
+              </div>
+              <div className="sm:hidden -mx-4">
+                <MobileCarousel items={t.why.items.map((item, idx) => (
+                  <article key={item} className="w-full card-premium p-8 flex flex-col gap-4 relative overflow-hidden h-[240px]">
+                    <div className="absolute -right-4 -bottom-4 text-8xl font-black text-[var(--text-primary)] opacity-[0.03] select-none">
+                      0{idx + 1}
+                    </div>
+                    <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                      <ShieldCheck className="text-emerald-500" size={24} />
+                    </div>
+                    <h3 className="text-xl font-medium text-[var(--text-primary)] relative z-10 leading-snug">
+                      {item}
+                    </h3>
+                  </article>
+                ))} />
               </div>
             </Reveal>
           </section>
@@ -472,16 +488,13 @@ function App() {
 
                 return (
                   <>
-                  {/* Mobile Vertical View */}
-                  <div className="md:hidden flex flex-col gap-6">
-                    {t.process.steps.map((step, idx) => (
-                      <div key={idx} className="relative flex flex-col items-center">
+                  {/* Mobile Vertical View (Replaced with Carousel) */}
+                  <div className="md:hidden -mx-4 mt-6">
+                    <MobileCarousel items={t.process.steps.map((step, idx) => (
+                      <div key={idx} className="w-full h-full flex items-center px-4">
                         <RenderCard idx={idx} step={step} />
-                        {idx < t.process.steps.length - 1 && (
-                          <div className="w-[2px] h-6 bg-[var(--border-color)] my-2" />
-                        )}
                       </div>
-                    ))}
+                    ))} />
                   </div>
                   
                   {/* Desktop Wrapping Grid View (Variant B) */}

@@ -8,6 +8,14 @@ const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '1319315093';
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(TOKEN, { polling: true });
 
+// Avoid silent crash on polling errors
+bot.on("polling_error", (error) => {
+  console.error("Polling Error:", error.code, error.message);
+});
+bot.on("webhook_error", (error) => {
+  console.error("Webhook Error:", error.code, error.message);
+});
+
 // In-memory state store (Map: chatId -> stateObject)
 // For a production system without container restarts, this works fine. 
 // Otherwise, use Redis/SQLite.
@@ -32,10 +40,14 @@ bot.on('message', async (msg) => {
   if (text.startsWith('/start')) {
      userStates.set(chatId, { step: 0, data: {} });
      
-     await bot.sendMessage(
-       chatId, 
-       `Здравствуйте! 👋 Спасибо за обращение в PixelCode.\nЯ помогу вам рассчитать стоимость проекта.\n\nКак вас зовут?`
-     );
+     try {
+       await bot.sendMessage(
+         chatId, 
+         `Здравствуйте! 👋 Спасибо за обращение в PixelCode.\nЯ помогу вам рассчитать стоимость проекта.\n\nКак вас зовут?`
+       );
+     } catch (err) {
+       console.error("Failed to send start message", err);
+     }
      return;
   }
 
