@@ -53,12 +53,15 @@ import { Lang, translations } from './translations';
 import { ContactWidget } from './components/ContactWidget';
 import { MobileCarousel } from './components/ui/MobileCarousel';
 
+import { useMediaQuery } from './hooks/use-media-query';
+
 // Hardcoded for the bot redirect funnel.
 const BOT_LINK = "https://t.me/PixelCodeWeb_bot?start=site";
 // Placeholder WA number
 const WHATSAPP_LINK = "https://wa.me/996557555058";
 
 function App() {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [lang, setLang] = useState<Lang>('kg');
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -360,7 +363,7 @@ function App() {
               }}
               className="absolute right-[-28%] top-[-10%] h-[72vh] w-[72vw] md:right-[-4%] md:top-[2%] md:h-[86vh] md:w-[48vw] pointer-events-auto"
             >
-              <SplineSceneBasic />
+              {isDesktop && <SplineSceneBasic />}
             </motion.div>
 
             <Reveal className="relative z-10 max-w-3xl space-y-6 pointer-events-none">

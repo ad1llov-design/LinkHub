@@ -1,57 +1,89 @@
-import React, { useState, useCallback } from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface MobileCarouselProps {
   items: React.ReactNode[];
 }
 
 export function MobileCarousel({ items }: MobileCarouselProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-  }, [items.length]);
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      setCurrentIndex(Math.round(scrollLeft / clientWidth));
+    }
+  };
 
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
-  }, [items.length]);
+  const nextSlide = () => {
+    if (scrollContainerRef.current) {
+      const newIndex = currentIndex === items.length - 1 ? 0 : currentIndex + 1;
+      scrollContainerRef.current.scrollTo({
+        left: newIndex * scrollContainerRef.current.clientWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const prevSlide = () => {
+    if (scrollContainerRef.current) {
+      const newIndex = currentIndex === 0 ? items.length - 1 : currentIndex - 1;
+      scrollContainerRef.current.scrollTo({
+        left: newIndex * scrollContainerRef.current.clientWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
-    <div className="relative w-full overflow-hidden flex flex-col items-center">
-      <div className="w-full relative min-h-[280px] flex items-center justify-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="w-full absolute inset-0 flex items-center justify-center p-2"
-          >
-            {items[currentIndex]}
-          </motion.div>
-        </AnimatePresence>
+    <div className="relative w-full group py-4">
+      {/* Scroll Container */}
+      <div 
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="flex overflow-x-auto snap-x snap-mandatory flex-nowrap scrollbar-hide w-full"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {items.map((item, idx) => (
+          <div key={idx} className="w-full shrink-0 snap-center px-4 flex justify-center items-center">
+            {item}
+          </div>
+        ))}
       </div>
 
-      {/* Glass Controls */}
-      <div className="flex items-center gap-6 mt-6 z-10">
-        <button
-          onClick={prevSlide}
-          className="w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg"
-        >
-          <ChevronLeft size={24} className="text-white" />
-        </button>
-        <span className="text-sm font-medium text-white/60">
-          {currentIndex + 1} / {items.length}
-        </span>
-        <button
-          onClick={nextSlide}
-          className="w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg"
-        >
-          <ChevronRight size={24} className="text-white" />
-        </button>
+      {/* Glass Controls - Absolute Sides */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/40 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:bg-emerald-500/80 hover:border-emerald-400 transition-all shadow-[0_4px_15px_rgba(0,0,0,0.6)]"
+      >
+        <ChevronLeft size={28} />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/40 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:bg-emerald-500/80 hover:border-emerald-400 transition-all shadow-[0_4px_15px_rgba(0,0,0,0.6)]"
+      >
+        <ChevronRight size={28} />
+      </button>
+      
+      {/* Pagination Dots */}
+      <div className="flex justify-center gap-2 mt-6">
+        {items.map((_, idx) => (
+          <div 
+            key={idx} 
+            className={`transition-all duration-300 rounded-full ${
+              idx === currentIndex ? 'w-6 h-2 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]' : 'w-2 h-2 bg-[var(--text-secondary)] opacity-50'
+            }`}
+          />
+        ))}
       </div>
+      
+      <style dangerouslySetInnerHTML={{__html: `
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+      `}} />
     </div>
   );
 }
