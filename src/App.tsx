@@ -418,21 +418,36 @@ function App() {
           <section id="portfolio" className="py-10 md:py-16">
             <h2 className="section-title">{t.portfolio.title}</h2>
             <div className="grid gap-5 md:grid-cols-2">
-              {t.portfolio.items.map((item) => (
-                <article
-                  key={item.name}
-                  className="portfolio-card card-premium group overflow-hidden"
-                >
-                  <div className="h-56 w-full bg-cover bg-center" style={{ backgroundImage: `url(${item.image})` }} />
-                  <div className="space-y-2 p-5">
-                    <div className="text-xs uppercase tracking-[0.12em] text-[var(--text-secondary)]">{item.niche}</div>
-                    <h3 className="text-xl font-semibold">{item.name}</h3>
-                    <p className="text-sm text-[var(--text-secondary)]">{item.task}</p>
-                    <p className="text-sm text-[var(--text-secondary)]">{item.done}</p>
-                    <p className="font-medium text-emerald-500">{item.result}</p>
-                  </div>
-                </article>
-              ))}
+              {t.portfolio.items.map((item) => {
+                const card = (
+                  <article
+                    key={item.name}
+                    className={`portfolio-card card-premium group overflow-hidden ${item.link ? 'cursor-pointer' : ''}`}
+                  >
+                    <div className="relative h-56 w-full bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url(${item.image})` }}>
+                      {item.link && (
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300 flex items-center justify-center">
+                          <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 text-white text-sm font-semibold tracking-wide border border-white/60 rounded-full px-4 py-1.5 backdrop-blur-sm">
+                            Открыть проект →
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-2 p-5">
+                      <div className="text-xs uppercase tracking-[0.12em] text-[var(--text-secondary)]">{item.niche}</div>
+                      <h3 className="text-xl font-semibold">{item.name}</h3>
+                      <p className="text-sm text-[var(--text-secondary)]">{item.task}</p>
+                      <p className="text-sm text-[var(--text-secondary)]">{item.done}</p>
+                      <p className="font-medium text-emerald-500">{item.result}</p>
+                    </div>
+                  </article>
+                );
+                return item.link ? (
+                  <a key={item.name} href={item.link} target="_blank" rel="noopener noreferrer" className="block no-underline">
+                    {card}
+                  </a>
+                ) : card;
+              })}
             </div>
           </section>
 

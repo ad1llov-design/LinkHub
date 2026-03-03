@@ -41,7 +41,7 @@ export type Locale = {
   };
   portfolio: {
     title: string;
-    items: { niche: string; name: string; task: string; done: string; result: string; image: string }[];
+    items: { niche: string; name: string; task: string; done: string; result: string; image: string; link?: string }[];
   };
   why: { title: string; items: string[] };
   process: { title: string; steps: string[] };
@@ -166,20 +166,22 @@ export const translations: Record<Lang, Locale> = {
       title: 'Портфолио',
       items: [
         {
-          niche: 'FinTech',
-          name: 'Платформа для инвестиций',
-          task: 'Повысить доверие и заявки с платного трафика.',
-          done: 'Новая структура оффера, UI/UX, лендинг на React.',
-          result: '+38% заявок за 30 дней',
-          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+          niche: 'B2B / AI SaaS',
+          name: 'Аудит-ИИ — Платформа маркетингового аудита',
+          task: 'Автоматизировать маркетинговый аудит для агентств и CRM-интеграторов с помощью AI.',
+          done: 'Полноценный React SaaS сайт: AI-аудит, мультиязычность, панель аналитики.',
+          result: 'Живой продукт, принимает заявки',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+          link: 'https://audit-ai-woad.vercel.app/',
         },
         {
-          niche: 'Education',
-          name: 'Онлайн-школа языков',
-          task: 'Упаковать продукт и увеличить запись на пробный урок.',
-          done: 'Редизайн, квиз-форма, скорость загрузки < 2s.',
-          result: '+52% конверсия в заявку',
-          image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+          niche: 'Islamic App',
+          name: 'Sirat — Мусульманское приложение',
+          task: 'Создать современный цифровой ресурс для мусульман: намаз, Коран, зикр, хадисы.',
+          done: 'Полноценный веб-сайт с адаптивным дизайном, Quran reader, временем намаза.',
+          result: 'Действующий сайт с тысячами пользователей',
+          image: 'https://images.unsplash.com/photo-1564121211835-e88c852648ab?q=80&w=1200&auto=format&fit=crop',
+          link: 'https://sirat.uz/',
         },
         {
           niche: 'eCommerce',
@@ -420,20 +422,22 @@ export const translations: Record<Lang, Locale> = {
       title: 'Portfolio',
       items: [
         {
-          niche: 'FinTech',
-          name: 'Investment platform',
-          task: 'Increase trust and lead volume from paid traffic.',
-          done: 'New offer structure, UI/UX, React landing page.',
-          result: '+38% leads in 30 days',
-          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+          niche: 'B2B / AI SaaS',
+          name: 'Audit AI — Marketing Audit Platform',
+          task: 'Automate marketing audits for agencies and CRM integrators using AI.',
+          done: 'Full React SaaS site: AI audit, multilingual, analytics dashboard.',
+          result: 'Live product, accepting requests',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+          link: 'https://audit-ai-woad.vercel.app/',
         },
         {
-          niche: 'Education',
-          name: 'Online language school',
-          task: 'Package product and improve trial lesson sign-ups.',
-          done: 'Redesign, quiz form, <2s page speed.',
-          result: '+52% lead conversion',
-          image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+          niche: 'Islamic App',
+          name: 'Sirat — Muslim App',
+          task: 'Build a modern digital resource for Muslims: prayer, Quran, dhikr, hadith.',
+          done: 'Full website with responsive design, Quran reader, prayer times.',
+          result: 'Live site with thousands of users',
+          image: 'https://images.unsplash.com/photo-1564121211835-e88c852648ab?q=80&w=1200&auto=format&fit=crop',
+          link: 'https://sirat.uz/',
         },
         {
           niche: 'eCommerce',
@@ -674,20 +678,22 @@ export const translations: Record<Lang, Locale> = {
       title: 'Портфолио',
       items: [
         {
-          niche: 'FinTech',
-          name: 'Инвестиция платформасы',
-          task: 'Ишенимди жана paid трафиктен заявкаларды көбөйтүү.',
-          done: 'Оффер структурасы, UI/UX, React лендинг.',
-          result: '30 күндө +38% заявка',
-          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+          niche: 'B2B / AI SaaS',
+          name: 'Аудит-ИИ — Маркетинг аудит платформасы',
+          task: 'Агентстволор жана CRM интеграторлор үчүн маркетинг аудитти AI менен автоматташтыруу.',
+          done: 'Толук React SaaS сайт: AI аудит, көп тил, аналитика панели.',
+          result: 'Жандуу продукт, заявка кабыл алат',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+          link: 'https://audit-ai-woad.vercel.app/',
         },
         {
-          niche: 'Education',
-          name: 'Онлайн тил мектеби',
-          task: 'Продуктту туура таңгактап, сыноо сабакка жазылууну көбөйтүү.',
-          done: 'Редизайн, квиз-форма, жүктөлүү < 2s.',
-          result: 'Заявка конверсиясы +52%',
-          image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+          niche: 'Islamic App',
+          name: 'Sirat — Мусулман колдонмосу',
+          task: 'Мусулмандар үчүн заманбап цифровой ресурс: намаз, Куран, зикр, хадис.',
+          done: 'Адаптивдүү дизайн менен толук сайт, Quran reader, намаз убактысы.',
+          result: 'Миңдеген колдонуучулары бар жандуу сайт',
+          image: 'https://images.unsplash.com/photo-1564121211835-e88c852648ab?q=80&w=1200&auto=format&fit=crop',
+          link: 'https://sirat.uz/',
         },
         {
           niche: 'eCommerce',
