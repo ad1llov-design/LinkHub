@@ -46,7 +46,7 @@ export function MobileCarousel({ items }: MobileCarouselProps) {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {items.map((item, idx) => (
-          <div key={idx} className="w-full shrink-0 snap-center px-4 flex justify-center items-center">
+          <div key={idx} className="w-full shrink-0 snap-center px-10 md:px-14 flex justify-center items-center">
             {item}
           </div>
         ))}
@@ -55,16 +55,16 @@ export function MobileCarousel({ items }: MobileCarouselProps) {
       {/* Glass Controls - Absolute Sides */}
       <button
         onClick={prevSlide}
-        className="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/40 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:bg-emerald-500/80 hover:border-emerald-400 transition-all shadow-[0_4px_15px_rgba(0,0,0,0.6)]"
+        className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/40 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:bg-emerald-500/80 hover:border-emerald-400 transition-all shadow-[0_4px_15px_rgba(0,0,0,0.6)]"
       >
-        <ChevronLeft size={28} />
+        <ChevronLeft size={24} />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/40 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:bg-emerald-500/80 hover:border-emerald-400 transition-all shadow-[0_4px_15px_rgba(0,0,0,0.6)]"
+        className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/40 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:bg-emerald-500/80 hover:border-emerald-400 transition-all shadow-[0_4px_15px_rgba(0,0,0,0.6)]"
       >
-        <ChevronRight size={28} />
+        <ChevronRight size={24} />
       </button>
       
       {/* Pagination Dots */}
